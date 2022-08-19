@@ -1,9 +1,18 @@
 import React from 'react';
-import Button from '../Button';
+import SubmitButton from '../Form/SubmitButton';
 
-export default function LoginForm() {
+export default function LoginForm({
+  form,
+  handleChange,
+  submitForm,
+}) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitForm();
+  };
+
   return (
-    <div className="card p-4 shadow">
+    <form onSubmit={handleSubmit} className="card p-4 shadow">
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
           Email
@@ -12,21 +21,27 @@ export default function LoginForm() {
           type="email"
           className="form-control"
           placeholder="name@mail.com"
+          name="email"
+          value={form.email}
+          onChange={(e) => { handleChange(e); }}
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="email" className="form-label">
+        <label htmlFor="password" className="form-label">
           Password
         </label>
         <input
           type="password"
           className="form-control"
           placeholder="Password"
+          name="password"
+          value={form.password}
+          onChange={(e) => { handleChange(e); }}
         />
       </div>
       <div className="mb-3">
-        <Button text="Login" />
+        <SubmitButton text="Login" />
       </div>
-    </div>
+    </form>
   );
 }
