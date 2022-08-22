@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AdminLayout from './pages/Admin/AdminLayout';
-import PostDashboard from './pages/Admin/PostDashboard';
+import PostDashboard from './pages/Admin/Posts/PostDashboard';
 import LandingPage from './pages/LandingPage';
 
 function App() {

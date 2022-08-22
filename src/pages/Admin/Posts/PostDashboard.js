@@ -1,6 +1,6 @@
 import React from "react";
-import TitleSection from "../../components/Admin/TitleSection";
-import Table from "../../components/Admin/Post/Table";
+import TitleSection from "../../../components/Admin/TitleSection";
+import Table from "../../../components/Admin/Post/Table/Table";
 
 export default function PostDashboard() {
   return (
