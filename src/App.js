@@ -4,11 +4,17 @@ import './App.css';
 import AdminLayout from './pages/Admin/AdminLayout';
 import PostDashboard from './pages/Admin/Posts/PostDashboard';
 import LandingPage from './pages/LandingPage';
+import HomePage from './pages/Public/HomePage';
+import PublicLayout from './pages/Public/PublicLayout';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+
+      <Route path="/home" element={<PublicLayout />}>
+        <Route path="/home" element={<HomePage />} />
+      </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="/admin" element={<PostDashboard />} />
