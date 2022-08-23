@@ -1,9 +1,11 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AdminLayout from './pages/Admin/AdminLayout';
 import PostDashboard from './pages/Admin/Posts/PostDashboard';
 import PostFormPage from './pages/Admin/Posts/PostFormPage';
+import TierDashboard from './pages/Admin/Posts/TierDashboard';
+import CategoryDashboard from './pages/Admin/Posts/CategoryDashboard';
 import LandingPage from './pages/LandingPage';
 import Logout from './pages/Logout';
 import HomePage from './pages/Public/HomePage';
@@ -22,9 +24,12 @@ function App() {
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
-        <Route path="/admin" element={<PostDashboard />} />
+        <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
+        <Route path="/admin/dashboard" element={<PostDashboard />} />
         <Route path="/admin/posts" element={<PostDashboard />} />
         <Route path="/admin/posts/new" element={<PostFormPage />} />
+        <Route path="/admin/tiers" element={<TierDashboard />} />
+        <Route path="/admin/categories" element={<CategoryDashboard />} />
       </Route>
 
       <Route path="*" element={<h1>404 Not Found!</h1>} />

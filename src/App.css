@@ -80,3 +80,7 @@ section > h5 {
 .pagination > li:last-child {
   border-radius:  0px 1rem 1rem 0px;
 }
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: rgb(152, 181, 207);
+}
