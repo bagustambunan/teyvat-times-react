@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function Menu() {
   const usePathName = () => {
@@ -29,24 +29,42 @@ export default function Menu() {
           <div className="d-flex">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className={`nav-link ${pathName === '/' ? 'active' : ''}`} href="/">
+                <NavLink
+                  to="/"
+                  className={`nav-link ${pathName === "/" ? "active" : ""}`}
+                >
                   Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${pathName === '/subscription' ? 'active' : ''}`} href="/subscription">
+                <NavLink
+                  to="/subscription"
+                  className={`nav-link ${
+                    pathName === "/subscription" ? "active" : ""
+                  }`}
+                >
                   Subscription
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${pathName === '/history' ? 'active' : ''}`} href="/history">
+                <NavLink
+                  to="/history"
+                  className={`nav-link ${
+                    pathName === "/history" ? "active" : ""
+                  }`}
+                >
                   Reading history
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className={`nav-link ${pathName === '/profile' ? 'active' : ''}`} href="/profile">
+                <NavLink
+                  to="/profile"
+                  className={`nav-link ${
+                    pathName === "/profile" ? "active" : ""
+                  }`}
+                >
                   Profile
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

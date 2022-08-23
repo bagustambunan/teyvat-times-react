@@ -1,14 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Menu() {
   return (
     <div className="d-flex flex-column p-3 bg-light h-100 admin-menu">
-      <a
-        href="#"
+      <NavLink
+        to="/admin"
         className="fs-4 d-flex link-dark text-decoration-none"
       >
         Admin Nemesis
-      </a>
+      </NavLink>
       <hr />
       <ul className="nav nav-pills flex-column">
 
@@ -19,9 +20,9 @@ export default function Menu() {
           </button>
           <div className="collapse" id="home-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
-              <li><a href="/admin" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Dashboard</a></li>
-              <li><a href="/" target="_blank" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Main blog</a></li>
-              <li><a href="/admin/profile" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Profile</a></li>
+              <li><NavLink to="/admin" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Dashboard</NavLink></li>
+              <li><NavLink to="/" target="_blank" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Main blog</NavLink></li>
+              <li><NavLink to="/admin/profile" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Profile</NavLink></li>
             </ul>
           </div>
         </li>
@@ -33,9 +34,9 @@ export default function Menu() {
           </button>
           <div className="collapse" id="post-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
-              <li><a href="/admin/posts" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>All posts</a></li>
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Tiers</a></li>
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Categories</a></li>
+              <li><NavLink to="/admin/posts" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>All posts</NavLink></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Tiers</NavLink></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Categories</NavLink></li>
             </ul>
           </div>
         </li>
@@ -47,9 +48,9 @@ export default function Menu() {
           </button>
           <div className="collapse" id="subscription-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Subscriptions</a></li>
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Transactions</a></li>
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Vouchers</a></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Subscriptions</NavLink></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Transactions</NavLink></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Vouchers</NavLink></li>
             </ul>
           </div>
         </li>
@@ -61,17 +62,17 @@ export default function Menu() {
           </button>
           <div className="collapse" id="gift-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Gifts</a></li>
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Gift claims</a></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Gifts</NavLink></li>
+              <li><NavLink to="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Gift claims</NavLink></li>
             </ul>
           </div>
         </li>
 
         <li className="nav-item">
-          <a href="/logout" className="nav-link link-dark">
+          <NavLink to="/logout" className="nav-link link-dark">
             <i className="bi bi-arrow-bar-left me-2"></i>
             Logout
-          </a>
+          </NavLink>
         </li>
 
       </ul>
