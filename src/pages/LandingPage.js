@@ -40,7 +40,7 @@ export default function LandingPage() {
         if (res.statusCode === 200) {
           console.log(res.data.token);
           setToken(res.data.token);
-          window.location.href = "/";
+          checkToken();
         }
         if (res.statusCode !== 200) {
           if (res.code === "UNAUTHORIZED_ERROR") toast.warn("Wrong email or password");
@@ -70,7 +70,7 @@ export default function LandingPage() {
         window.location.href = "/admin";
       }
       if (decoded.user.roleID !== 1) {
-        window.location.href = "/home";
+        window.location.href = "/";
       }
     }
   }

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Navigate } from "react-router-dom";
 
 export default function Logout() {
   useEffect(() => {
@@ -6,9 +7,6 @@ export default function Logout() {
   },[]);
   const removeToken = () => {
     localStorage.removeItem('token');
-    window.location.href = "/";
   };
-  return (
-    <div>Logout success</div>
-  );
+  return <Navigate to='/welcome'/>;
 }

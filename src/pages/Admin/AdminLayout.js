@@ -1,18 +1,22 @@
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+import jwt_decode from "jwt-decode";
 import Menu from './Menu'
 
 export default function AdminLayout() {
 
+  const getToken = () => localStorage.getItem('token');
   useEffect(() => {
-    if (getToken() === null) {
+    if (getToken() !== null) {
+      const decoded = jwt_decode(getToken());
+      if (decoded.user.roleID !== 1) {
+        window.location.href = "/";
+      }
+    }
+    else {
       window.location.href = "/logout";
     }
   },[]);
-
-  const getToken = () => {
-    return localStorage.getItem('token');
-  };
 
   return (
     <div className="vh-100 d-flex">
