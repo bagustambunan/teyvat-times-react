@@ -4,7 +4,7 @@ import PostCard from './PostCard';
 
 export default function PostsSection() {
   return (
-    <section className="my-4 container bg-white border rounded py-3">
+    <section className="container bg-white border rounded py-3">
 
       <div className="row">
         <PostCard />

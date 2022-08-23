@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Carousel() {
   return (
-    <div className="rounded border">
+    <div className="mb-4 rounded border">
       <div
         id="carouselExampleCaptions"
         className="carousel slide"

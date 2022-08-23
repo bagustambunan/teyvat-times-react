@@ -29,8 +29,18 @@ export default function Menu() {
           <div className="d-flex">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className={`nav-link ${pathName === '/home' ? 'active' : ''}`} href="/home">
+                <a className={`nav-link ${pathName === '/' ? 'active' : ''}`} href="/">
                   Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className={`nav-link ${pathName === '/subscription' ? 'active' : ''}`} href="/subscription">
+                  Subscription
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className={`nav-link ${pathName === '/history' ? 'active' : ''}`} href="/history">
+                  Reading history
                 </a>
               </li>
               <li className="nav-item">
