@@ -15,7 +15,6 @@ export default function TierTable() {
       .then((res) => res.json())
       .then((res) => {
         if (!res.error) {
-          console.log(res.data);
           setTiers(res.data);
         }
       })

@@ -11,6 +11,7 @@ import Logout from './pages/Logout';
 import HomePage from './pages/Public/HomePage';
 import PublicLayout from './pages/Public/PublicLayout';
 import ReadingHistoryPage from './pages/Public/ReadingHistoryPage';
+import CategoryFormPage from './pages/Admin/Posts/CategoryFormPage';
 
 function App() {
   return (
@@ -24,12 +25,19 @@ function App() {
       </Route>
 
       <Route path="/admin" element={<AdminLayout />}>
+
         <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
         <Route path="/admin/dashboard" element={<PostDashboard />} />
+
         <Route path="/admin/posts" element={<PostDashboard />} />
         <Route path="/admin/posts/new" element={<PostFormPage />} />
+
         <Route path="/admin/tiers" element={<TierDashboard />} />
+
         <Route path="/admin/categories" element={<CategoryDashboard />} />
+        <Route path="/admin/categories/:categoryID/edit" element={<CategoryFormPage />} />
+        <Route path="/admin/categories/new" element={<CategoryFormPage />} />
+
       </Route>
 
       <Route path="*" element={<h1>404 Not Found!</h1>} />

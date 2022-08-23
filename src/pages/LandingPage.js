@@ -38,7 +38,6 @@ export default function LandingPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          console.log(res.data.token);
           setToken(res.data.token);
           checkToken();
         }
@@ -65,7 +64,6 @@ export default function LandingPage() {
   const checkToken = () => {
     if (getToken() !== null) {
       const decoded = jwt_decode(getToken());
-      console.log(decoded.user.roleID);
       if (decoded.user.roleID === 1) {
         window.location.href = "/admin";
       }

@@ -4,42 +4,42 @@ import SubmitIcon from "../../../SubmitIcon";
 export default function PostForm() {
   return (
     <form>
-      <div class="mb-3">
-        <label for="title" class="form-label">
+      <div className="mb-3">
+        <label for="title" className="form-label">
           Title
         </label>
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           id="title"
           name="title"
         />
       </div>
-      <div class="mb-3">
-        <label for="content" class="form-label">
+      <div className="mb-3">
+        <label for="content" className="form-label">
           Content
         </label>
         <textarea
-          class="form-control"
+          className="form-control"
           rows="5"
           id="content"
           name="content"
         ></textarea>
       </div>
-      <div class="mb-3">
-        <label for="summary" class="form-label">
+      <div className="mb-3">
+        <label for="summary" className="form-label">
           Summary
         </label>
         <textarea
-          class="form-control"
+          className="form-control"
           rows="5"
           id="summary"
           name="summary"
         ></textarea>
       </div>
 
-      <div class="mb-3">
-        <label for="tier" class="form-label">
+      <div className="mb-3">
+        <label for="tier" className="form-label">
           Tier
         </label>
         <select
@@ -52,8 +52,8 @@ export default function PostForm() {
         </select>
       </div>
 
-      <div class="mb-3">
-        <label for="category" class="form-label">
+      <div className="mb-3">
+        <label for="category" className="form-label">
           Category
         </label>
         <select

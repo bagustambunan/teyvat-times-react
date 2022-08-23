@@ -21,7 +21,6 @@ export default function PostTable() {
       .then((res) => (res.json()))
       .then((res) => {
         if (!res.error) {
-          console.log(res.data.posts);
           setPosts(res.data.posts);
         }
         // if (res.error) toast.error(`Error: ${res.error}`);
