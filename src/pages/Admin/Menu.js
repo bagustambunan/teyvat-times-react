@@ -4,7 +4,7 @@ export default function Menu() {
   return (
     <div className="d-flex flex-column p-3 bg-light h-100 admin-menu">
       <a
-        href="/"
+        href="#"
         className="fs-4 d-flex link-dark text-decoration-none"
       >
         Admin Nemesis
@@ -15,12 +15,13 @@ export default function Menu() {
         <li className="nav-item">
           <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
             <i className="bi bi-house me-2"></i>
-            Home
+            Dashboard
           </button>
           <div className="collapse" id="home-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Home</a></li>
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Profile</a></li>
+              <li><a href="/admin" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Dashboard</a></li>
+              <li><a href="/" target="_blank" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Main blog</a></li>
+              <li><a href="/admin/profile" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Profile</a></li>
             </ul>
           </div>
         </li>
@@ -32,7 +33,7 @@ export default function Menu() {
           </button>
           <div className="collapse" id="post-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
-              <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>All posts</a></li>
+              <li><a href="/admin/posts" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>All posts</a></li>
               <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Tiers</a></li>
               <li><a href="#" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Categories</a></li>
             </ul>

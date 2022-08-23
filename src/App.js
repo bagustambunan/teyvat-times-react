@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AdminLayout from './pages/Admin/AdminLayout';
 import PostDashboard from './pages/Admin/Posts/PostDashboard';
+import PostFormPage from './pages/Admin/Posts/PostFormPage';
 import LandingPage from './pages/LandingPage';
 import Logout from './pages/Logout';
 import HomePage from './pages/Public/HomePage';
@@ -22,6 +23,8 @@ function App() {
 
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="/admin" element={<PostDashboard />} />
+        <Route path="/admin/posts" element={<PostDashboard />} />
+        <Route path="/admin/posts/new" element={<PostFormPage />} />
       </Route>
 
       <Route path="*" element={<h1>404 Not Found!</h1>} />
