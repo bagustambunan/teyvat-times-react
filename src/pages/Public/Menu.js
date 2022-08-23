@@ -10,7 +10,7 @@ export default function Menu() {
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm p-4">
       <div className="container">
-        <a className="fs-4 navbar-brand fw-bold" href="/">
+        <a className="fs-4 navbar-brand fw-bold" href="/home">
           Teyvat News
         </a>
         <button

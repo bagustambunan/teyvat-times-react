@@ -1,11 +1,20 @@
 import React from 'react';
-import PostCard from '../../components/Public/PostCard';
+import Carousel from '../../components/Public/Carousel';
+import PostsSection from '../../components/Public/PostsSection';
 
 export default function HomePage() {
   return (
-    <>
-      <div>HomePage</div>
-      <PostCard />
-    </>
+    <div className="row">
+
+      <main className="col-12 col-md-8">
+        <Carousel />
+        <PostsSection />
+      </main>
+
+      <aside className="col-12 col-md-2">
+
+      </aside>
+      
+    </div>
   )
 }
