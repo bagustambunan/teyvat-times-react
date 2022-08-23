@@ -3,6 +3,7 @@ import React from "react";
 export default function SearchSection() {
   return (
     <section>
+      <h5>Search</h5>
       <div class="input-group mb-3">
         <input name="s" type="text" class="form-control" placeholder="Search..." />
         <button class="btn btn-outline-secondary" type="button">

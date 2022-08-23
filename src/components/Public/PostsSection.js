@@ -1,15 +1,20 @@
 import React from 'react';
+import Pagination from './Pagination';
 import PostCard from './PostCard';
 
 export default function PostsSection() {
   return (
-    <section className="my-4 row">
+    <section className="my-4 container bg-white border rounded py-3">
 
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
+      <div className="row">
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+      </div>
+
+      <Pagination />
 
     </section>
   );
