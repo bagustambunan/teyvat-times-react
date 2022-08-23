@@ -6,6 +6,7 @@ export default function Logout() {
   },[]);
   const removeToken = () => {
     localStorage.removeItem('token');
+    window.location.href = "/";
   };
   return (
     <div>Logout success</div>

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+import jwt_decode from "jwt-decode";
 import LoginForm from "../components/LandingPage/LoginForm";
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function LandingPage() {
-  // const [isLoading, setIsLoading] = useState(true);
   const [form, setForm] = useState({
     email: "jean@mail.com",
     password: "jean123",
@@ -34,13 +37,17 @@ export default function LandingPage() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (!res.error){
+        if (res.statusCode === 200) {
           console.log(res.data.token);
           setToken(res.data.token);
+          window.location.href = "/";
+        }
+        if (res.statusCode !== 200) {
+          if (res.code === "UNAUTHORIZED_ERROR") toast.warn("Wrong email or password");
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`Error: ${err.message}`);
       });
   };
 
@@ -55,15 +62,40 @@ export default function LandingPage() {
     localStorage.setItem('token',token);
     console.log('Login success');
   };
-  if (getToken() !== null) {
-    return "ANDA SUDAH LOGIN";
+  const checkToken = () => {
+    if (getToken() !== null) {
+      const decoded = jwt_decode(getToken());
+      console.log(decoded.user.roleID);
+      if (decoded.user.roleID === 1) {
+        window.location.href = "/admin";
+      }
+      if (decoded.user.roleID !== 1) {
+        window.location.href = "/home";
+      }
+    }
   }
+  useEffect(() => {
+    checkToken();
+  },[]);
 
   return (
-    <LoginForm
+    <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <LoginForm
       form={form}
       handleChange={handleChange}
       submitForm={submitForm}
     />
+    </>
   );
 }
