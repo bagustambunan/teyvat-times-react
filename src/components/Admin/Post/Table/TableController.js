@@ -1,18 +1,29 @@
 import React from 'react';
-import TableSearchForm from './TableSearchForm';
-import TableSort from './TableSort';
+import CategorySelect from '../../../CategorySelect';
+import SearchForm from '../../../SearchForm';
+import SortSelect from '../../../SortSelect';
+import TierSelect from '../../../TierSelect';
 
 export default function TableController() {
   return (
-    <section className="row row-cols-1 row-cols-md-3 mb-3">
+    <section className="row my-3">
 
-      <div className="col d-flex flex-row align-items-center">
-        <span className="me-2 text-nowrap">Sort by</span>
-        <TableSort />
+      <div className="col-12 col-md-6 row row-cols-1 row-cols-md-3">
+        <div className="col">
+          <TierSelect />
+        </div>
+
+        <div className="col">
+          <CategorySelect />
+        </div>
+
+        <div className="col">
+          <SortSelect />
+        </div>
       </div>
 
-      <div className="col">
-        <TableSearchForm />
+      <div className="col-12 col-md-6">
+        <SearchForm />
       </div>
 
     </section>
