@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function TableRow() {
+export default function TableRow({ post, i }) {
   return (
     <tr>
-      <th scope="row">1</th>
-      <td>Title 1</td>
-      <td>Tier 1</td>
-      <td>Category 1</td>
+      <th scope="row">{i}</th>
+      <td>{post.title}</td>
+      <td>{post.postTier.name}</td>
+      <td>{post.postCategory.name}</td>
       <td>
         <a href="#" className="btn btn-sm">
           <i className="text-primary bi bi-eye-fill"></i>
