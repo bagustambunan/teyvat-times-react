@@ -4,26 +4,26 @@ import SearchForm from '../../../SearchForm';
 import SortSelect from '../../../SortSelect';
 import TierSelect from '../../../TierSelect';
 
-export default function TableController() {
+export default function TableController({ form, handleChange, handleSubmit }) {
   return (
     <section className="row my-3">
 
       <div className="col-12 col-md-6 row row-cols-1 row-cols-md-3">
         <div className="col">
-          <TierSelect />
+          <TierSelect value={form.tier} handleChange={handleChange} />
         </div>
 
         <div className="col">
-          <CategorySelect />
+          <CategorySelect value={form.category} handleChange={handleChange} />
         </div>
 
         <div className="col">
-          <SortSelect />
+          <SortSelect value={form.sortOrder} handleChange={handleChange} />
         </div>
       </div>
 
       <div className="col-12 col-md-6">
-        <SearchForm />
+        <SearchForm value={form.s} handleChange={handleChange} handleSubmit={handleSubmit} />
       </div>
 
     </section>

@@ -11,8 +11,8 @@ export default function PostFormPage() {
     title: '',
     content: '',
     summary: '',
-    tier: '',
-    category: '',
+    tier: '0',
+    category: '0',
   });
 
   const getToken = () => localStorage.getItem("token");
@@ -35,11 +35,11 @@ export default function PostFormPage() {
       toast.warn('Field "summary" cannot be empty');
       return false;
     }
-    if (form.tier === '') {
+    if (form.tier === '0') {
       toast.warn('Field "tier" cannot be empty');
       return false;
     }
-    if (form.category === '') {
+    if (form.category === '0') {
       toast.warn('Field "category" cannot be empty');
       return false;
     }
@@ -138,7 +138,6 @@ export default function PostFormPage() {
 
   const handleSubmit = () => {
     if (isFormValid()) {
-      console.log(form);
       if (mode === 'New') {
         savePost();
       }

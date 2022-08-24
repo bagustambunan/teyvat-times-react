@@ -6,16 +6,30 @@ import PostRow from "./PostRow";
 
 export default function PostTable() {
   const [posts, setPosts] = useState([]);
+  const [form, setForm] = useState({
+    s: '',
+    category: '0',
+    tier: '0',
+    sortBy: 'date',
+    sortOrder: 'desc',
+    limit: 10,
+    page: 1,
+  });
+  const handleChange = (e) => {
+    const { name } = e.currentTarget;
+    const { value } = e.currentTarget;
+    setForm({ ...form, [name]: value });
+  };
+  const handleSubmit = () => {
+    console.log(form);
+    fetchPosts();
+  };
 
   const getToken = () => localStorage.getItem('token');
   const fetchPosts = () => {
-    fetch('http://localhost:8080/posts', {
+    fetch(`http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
       method: "GET",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Access-Control-Allow-Origin, Authorization, X-My-Custom-Header',
         'Authorization': `Bearer ${getToken()}`,
       },
     })
@@ -66,7 +80,7 @@ export default function PostTable() {
 
   return (
     <>
-      <TableController />
+      <TableController form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
       <table className="table table-striped w-100">
         <thead>
           <tr>

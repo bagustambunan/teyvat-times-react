@@ -1,12 +1,25 @@
-import React from 'react'
+import React from "react";
 
-export default function SearchForm() {
+export default function SearchForm({ value, handleChange, handleSubmit }) {
+  const submitForm = (e) => {
+    e.preventDefault();
+    handleSubmit(e);
+  };
   return (
-    <div className="input-group mb-3">
-      <input name="s" type="text" className="form-control" placeholder="Search..." />
-      <button className="btn btn-outline-secondary" type="button">
-        <i className="bi bi-search"></i>
-      </button>
-    </div>
-  )
+    <form onSubmit={submitForm}>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Search..."
+          name="s"
+          value={value}
+          onChange={(e) => { handleChange(e); }}
+        />
+        <button type="submit" className="btn btn-outline-secondary">
+          <i className="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+  );
 }
