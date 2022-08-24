@@ -12,6 +12,7 @@ import HomePage from './pages/Public/HomePage';
 import PublicLayout from './pages/Public/PublicLayout';
 import ReadingHistoryPage from './pages/Public/ReadingHistoryPage';
 import CategoryFormPage from './pages/Admin/Posts/CategoryFormPage';
+import ReadPage from './pages/Public/ReadPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
       <Route path="/" element={<PublicLayout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/read/:slug" element={<ReadPage />} />
         <Route path="/history" element={<ReadingHistoryPage />} />
       </Route>
 
