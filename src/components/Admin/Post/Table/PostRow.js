@@ -1,6 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-export default function TableRow({ post, i }) {
+export default function PostRow({ post, i }) {
   return (
     <tr>
       <th scope="row">{i}</th>
@@ -8,15 +9,15 @@ export default function TableRow({ post, i }) {
       <td>{post.postTier.name}</td>
       <td>{post.postCategory.name}</td>
       <td>
-        <a href="#" className="btn btn-sm">
+        <NavLink to={`/posts/${post.slug}`} className="btn btn-sm">
           <i className="text-primary bi bi-eye-fill"></i>
-        </a>
-        <a href="#" className="btn btn-sm">
+        </NavLink>
+        <NavLink to={`/admin/posts/${post.postID}/edit`} className="btn btn-sm">
           <i className="text-warning bi bi-pencil-fill"></i>
-        </a>
-        <a href="#" className="btn btn-sm">
+        </NavLink>
+        <NavLink to="/admin/posts/${post.postID}/delete" className="btn btn-sm">
           <i className="text-danger bi bi-trash-fill"></i>
-        </a>
+        </NavLink>
       </td>
     </tr>
   );

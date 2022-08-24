@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import PostForm from '../../../components/Admin/Post/PostForm'
 import TitleSection from '../../../components/Admin/TitleSection'
@@ -45,6 +46,34 @@ export default function PostFormPage() {
     return true;
   }
 
+  const fetchPost = (postID) => {
+    fetch("http://localhost:8080/posts/"+postID, {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${getToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          setForm({
+            postID: res.data.postID,
+            title: res.data.title,
+            content: res.data.content,
+            summary: res.data.summary,
+            tier: res.data.postTier.postTierID,
+            category: res.data.postCategory.postCategoryID,
+          });
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
   const savePost = () => {
     const dataToPost = {
       postTierID: parseInt(form.tier, 10),
@@ -76,12 +105,56 @@ export default function PostFormPage() {
       });
   };
 
+  const updatePost = () => {
+    const dataToPost = {
+      postTierID: parseInt(form.tier, 10),
+      postCategoryID: parseInt(form.category, 10),
+      title: form.title,
+      content: form.content,
+      summary: form.summary,
+    };
+
+    fetch("http://localhost:8080/posts/"+form.postID, {
+      method: "PUT",
+      headers: {
+        'Authorization': `Bearer ${getToken()}`,
+      },
+      body: JSON.stringify(dataToPost),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          alert('Post edited successfully');
+          window.location.href = "/admin/posts";
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
   const handleSubmit = () => {
     if (isFormValid()) {
       console.log(form);
-      savePost();
+      if (mode === 'New') {
+        savePost();
+      }
+      if (mode === 'Edit') {
+        updatePost();
+      }
     }
   };
+
+  const params = useParams();
+  useEffect(() => {
+    if (params.postID !== undefined) {
+      fetchPost(params.postID);
+      setMode('Edit')
+    }
+  },[]);
 
   return (
     <>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import Pagination from "../../../Pagination";
 import TableController from "./TableController";
-import TableRow from "./TableRow";
+import PostRow from "./PostRow";
 
 export default function PostTable() {
   const [posts, setPosts] = useState([]);
@@ -52,7 +52,7 @@ export default function PostTable() {
         </thead>
         <tbody>
           {posts.map((post, index) => (
-            <TableRow key={post.postID} post={post} i={index+1} />
+            <PostRow key={post.postID} post={post} i={index+1} />
           ))}
         </tbody>
       </table>
