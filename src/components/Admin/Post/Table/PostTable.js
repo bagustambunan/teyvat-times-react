@@ -12,16 +12,29 @@ export default function PostTable() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 10,
+    limit: 2,
     page: 1,
   });
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPage: 5,
+  });
+
+  const changePage = (page) => {
+    setPagination({ ...pagination, currentPage: page });
+    setForm({ ...form, page: page, });
+  }
+
+  useEffect(() => {
+    fetchPosts();
+  },[form.page]);
+
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
     setForm({ ...form, [name]: value });
   };
   const handleSubmit = () => {
-    console.log(form);
     fetchPosts();
   };
 
@@ -37,6 +50,7 @@ export default function PostTable() {
       .then((res) => {
         if (res.statusCode === 200) {
           setPosts(res.data.posts);
+          setPagination({ ...pagination, totalPage: res.data.totalPage });
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -97,7 +111,7 @@ export default function PostTable() {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination pagination={pagination} changePage={changePage}/>
     </>
   );
 }
