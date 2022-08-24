@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 
-export default function TierSelect() {
+export default function TierSelect({
+  showDefault = true,
+  value,
+  handleChange,
+}) {
   const [tiers, setTiers] = useState([]);
 
   const getToken = () => localStorage.getItem("token");
@@ -30,11 +35,19 @@ export default function TierSelect() {
   }, []);
 
   return (
-    <select className="form-select" name="tier">
-      <option value="0">All tiers</option>
+    <select
+      className="form-select"
+      name="tier"
+      value={value}
+      onChange={(e) => { handleChange(e); }}
+      required
+    >
+      {showDefault ? <option value="0">All tiers</option> : <option value="0">-- Select tier --</option>}
       {tiers.map((tier) => (
-        <option key={tier.postTierID} value={tier.postTierID}>{tier.name}</option>
+        <option key={tier.postTierID} value={tier.postTierID}>
+          {tier.name}
+        </option>
       ))}
     </select>
-  )
+  );
 }

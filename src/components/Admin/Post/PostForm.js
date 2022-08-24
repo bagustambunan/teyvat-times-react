@@ -1,9 +1,15 @@
 import React from "react";
-import SubmitIcon from "../../../SubmitIcon";
+import CategorySelect from "../../CategorySelect";
+import SubmitIcon from "../../SubmitIcon";
+import TierSelect from "../../TierSelect";
 
-export default function PostForm() {
+export default function PostForm({ form, handleChange, handleSubmit }) {
+  const submitForm = (e) => {
+    e.preventDefault();
+    handleSubmit();
+  };
   return (
-    <form>
+    <form onSubmit={submitForm}>
       <div className="mb-3">
         <label for="title" className="form-label">
           Title
@@ -13,6 +19,8 @@ export default function PostForm() {
           className="form-control"
           id="title"
           name="title"
+          value={form.title}
+          onChange={(e) => { handleChange(e); }}
         />
       </div>
       <div className="mb-3">
@@ -24,6 +32,8 @@ export default function PostForm() {
           rows="5"
           id="content"
           name="content"
+          value={form.content}
+          onChange={(e) => { handleChange(e); }}
         ></textarea>
       </div>
       <div className="mb-3">
@@ -35,6 +45,8 @@ export default function PostForm() {
           rows="5"
           id="summary"
           name="summary"
+          value={form.summary}
+          onChange={(e) => { handleChange(e); }}
         ></textarea>
       </div>
 
@@ -42,30 +54,14 @@ export default function PostForm() {
         <label for="tier" className="form-label">
           Tier
         </label>
-        <select
-          className="form-select"
-          name="tier"
-        >
-          <option value="1">Free</option>
-          <option value="2">Premium</option>
-          <option value="3">VIP</option>
-        </select>
+        <TierSelect showDefault={false} value={form.tier} handleChange={handleChange} />
       </div>
 
       <div className="mb-3">
         <label for="category" className="form-label">
           Category
         </label>
-        <select
-          className="form-select"
-          name="category"
-        >
-          <option value="0">All categories</option>
-          <option value="1">Politic</option>
-          <option value="2">Economy</option>
-          <option value="3">Sport</option>
-          <option value="4">Entartainment</option>
-        </select>
+        <CategorySelect showDefault={false} value={form.category} handleChange={handleChange} />
       </div>
 
       <SubmitIcon text="Save" icon="bi-save"/>

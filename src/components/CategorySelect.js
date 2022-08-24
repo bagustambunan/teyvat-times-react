@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
 
-export default function CategorySelect() {
+export default function CategorySelect({
+  showDefault = true,
+  value,
+  handleChange,
+}) {
   const [categories, setCategories] = useState([]);
 
   const getToken = () => localStorage.getItem("token");
@@ -30,11 +35,19 @@ export default function CategorySelect() {
   }, []);
 
   return (
-    <select className="form-select" name="category">
-      <option value="0">All categories</option>
+    <select
+      className="form-select"
+      name="category"
+      value={value}
+      onChange={(e) => { handleChange(e); }}
+      required
+    >
+      {showDefault ? <option value="0">All categories</option> : <option value="0">-- Select category --</option>}
       {categories.map((category) => (
-        <option key={category.postCategoryID} value={category.postCategoryID}>{category.name}</option>
+        <option key={category.postCategoryID} value={category.postCategoryID}>
+          {category.name}
+        </option>
       ))}
     </select>
-  )
+  );
 }
