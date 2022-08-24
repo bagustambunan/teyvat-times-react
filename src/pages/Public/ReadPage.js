@@ -6,10 +6,16 @@ import PostDetail from '../../components/Public/Read/PostDetail';
 export default function ReadPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState('');
+  const [myActivity, setMyActivity] = useState({
+    isLiked: 0,
+    isShared: 0,
+  });
 
   const getToken = () => localStorage.getItem("token");
+
   const fetchPost = (slug) => {
-    fetch("http://localhost:8080/pub/posts/"+slug, {
+    setIsLoading(true);
+    fetch("http://localhost:8080/pub/posts/slug/"+slug, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${getToken()}`,
@@ -18,9 +24,9 @@ export default function ReadPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          console.log(res.data);
           setPost(res.data);
-          setIsLoading(false)
+          setIsLoading(false);
+          fetchMyActivity(res.data.postID);
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -30,6 +36,65 @@ export default function ReadPage() {
         toast.error(`Error: ${err.message}`);
       });
   };
+  const fetchMyActivity = (postID) => {
+    setIsLoading(true);
+    fetch("http://localhost:8080/pub/posts/"+postID+"/activities", {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${getToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          setMyActivity({
+            isLiked: res.data.isLiked,
+            isShared: res.data.isShared,
+          })
+          setIsLoading(false);
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+  const updateMyActivity = () => {
+    const dataToPost = {
+      isLiked: myActivity.isLiked,
+      isShared: myActivity.isShared,
+    };
+    fetch("http://localhost:8080/pub/posts/"+post.postID+"/activities", {
+      method: "POST",
+      headers: {
+        'Authorization': `Bearer ${getToken()}`,
+      },
+      body: JSON.stringify(dataToPost),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
+  const changeLike = () => {
+    setMyActivity({ ...myActivity, isLiked: myActivity.isLiked === 0 ? 1 : 0 });
+  }
+  const changeShare = () => {
+    setMyActivity({ ...myActivity, isShared: myActivity.isShared === 0 ? 1 : 0 });
+  }
+  useEffect(() => {
+    if (!isLoading) {
+      updateMyActivity();
+    }
+  },[myActivity])
 
   const params = useParams();
   useEffect(() => {
@@ -44,7 +109,7 @@ export default function ReadPage() {
 
   return (
     <div className="container bg-white py-5 border rounded">
-      <PostDetail post={post}/>
+      <PostDetail post={post} myActivity={myActivity} changeLike={changeLike} changeShare={changeShare} />
     </div>
     
   );

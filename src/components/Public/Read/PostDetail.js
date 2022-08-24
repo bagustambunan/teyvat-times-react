@@ -4,7 +4,7 @@ import CategoryBox from '../../CategoryBox';
 import Like from './Like';
 import Share from './Share';
 
-export default function PostDetail({ post }) {
+export default function PostDetail({ post, myActivity, changeLike, changeShare }) {
   const parseDate = (date) => {
     const d = new Date(date);
     return `${d.toDateString()} ${d.toLocaleTimeString()}`;
@@ -30,8 +30,8 @@ export default function PostDetail({ post }) {
       </div>
 
       <div className="d-flex gap-3">
-        <Like />
-        <Share />
+        <Like isLiked={myActivity.isLiked} changeLike={changeLike} />
+        <Share isShared={myActivity.isShared} changeShare={changeShare} />
       </div>
 
     </section>

@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
 
-export default function Like() {
+export default function Like({ isLiked, changeLike }) {
   return (
-    <div>
-      <i className="bi bi-heart"></i> 12
-    </div>
-  )
+    <button
+      type="button"
+      className="p-2 bg-white border rounded"
+      onClick={() => changeLike()}
+    >
+      {isLiked === 1 ? (
+      <i className="bi bi-heart-fill text-danger"></i>
+      ) : (
+      <i className="bi bi-heart"></i>
+      )}
+      12
+    </button>
+  );
 }
