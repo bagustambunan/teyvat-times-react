@@ -5,7 +5,7 @@ export default function CategoryTable() {
   const [categories, setCategories] = useState([]);
 
   const getToken = () => localStorage.getItem("token");
-  const fetchPosts = () => {
+  const fetchCategories = () => {
     fetch("http://localhost:8080/pub/categories", {
       method: "GET",
       headers: {
@@ -27,7 +27,7 @@ export default function CategoryTable() {
   };
 
   useEffect(() => {
-    fetchPosts();
+    fetchCategories();
   }, []);
 
   return (

@@ -5,7 +5,7 @@ export default function TierTable() {
   const [tiers, setTiers] = useState([]);
 
   const getToken = () => localStorage.getItem("token");
-  const fetchPosts = () => {
+  const fetchTiers = () => {
     fetch("http://localhost:8080/pub/tiers", {
       method: "GET",
       headers: {
@@ -27,7 +27,7 @@ export default function TierTable() {
   };
 
   useEffect(() => {
-    fetchPosts();
+    fetchTiers();
   }, []);
 
   return (
