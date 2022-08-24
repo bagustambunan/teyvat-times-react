@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export default function CategoryRow({ category, i }) {
-  console.log(category);
   return (
     <tr>
       <th scope="row">{i}</th>
