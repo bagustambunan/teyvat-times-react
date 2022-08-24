@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Pagination from '../Pagination';
 import PostCard from './PostCard';
 
-export default function PostsSection() {
+export default function PostsSection({ posts, pagination, changePage }) {
+
   return (
     <section className="container bg-white border rounded py-3">
 
       <div className="row">
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        { posts.map((post) => <PostCard key={post.postID} post={post}/>) }
       </div>
 
-      <Pagination />
+      <Pagination pagination={pagination} changePage={changePage}/>
 
     </section>
   );
