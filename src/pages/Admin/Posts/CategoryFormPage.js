@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import CategoryForm from '../../../components/Admin/Category/CategoryForm'
 import TitleSection from '../../../components/Admin/TitleSection'
@@ -31,12 +31,14 @@ export default function CategoryFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          console.log(res.data);
           setForm({
             postCategoryID: res.data.postCategoryID,
             name: res.data.name,
             color: res.data.color,
           });
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
         }
       })
       .catch((err) => {
@@ -61,6 +63,10 @@ export default function CategoryFormPage() {
       .then((res) => {
         if (res.statusCode === 201) {
           alert('Category added successfully');
+          window.location.href = "/admin/categories";
+        }
+        if (res.statusCode !== 201) {
+          toast.error(`Error: ${res.message}`);
         }
       })
       .catch((err) => {
@@ -83,8 +89,12 @@ export default function CategoryFormPage() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res.statusCode === 201) {
+        if (res.statusCode === 200) {
           alert('Category edited successfully');
+          window.location.href = "/admin/categories";
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
         }
       })
       .catch((err) => {
@@ -93,7 +103,6 @@ export default function CategoryFormPage() {
   };
 
   const handleSubmit = () => {
-    console.log(form);
     if (mode === 'New') {
       saveCategory();
     }

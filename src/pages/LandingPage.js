@@ -42,7 +42,7 @@ export default function LandingPage() {
           checkToken();
         }
         if (res.statusCode !== 200) {
-          if (res.code === "UNAUTHORIZED_ERROR") toast.warn("Wrong email or password");
+          toast.warn("Wrong email or password");
         }
       })
       .catch((err) => {
@@ -59,7 +59,6 @@ export default function LandingPage() {
   const getToken = () => localStorage.getItem("token");
   const setToken = (token) => {
     localStorage.setItem('token',token);
-    console.log('Login success');
   };
   const checkToken = () => {
     if (getToken() !== null) {

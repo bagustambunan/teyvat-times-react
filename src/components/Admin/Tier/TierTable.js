@@ -14,12 +14,15 @@ export default function TierTable() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (!res.error) {
+        if (res.statusCode === 200) {
           setTiers(res.data);
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
         }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`Error: ${err.message}`);
       });
   };
 

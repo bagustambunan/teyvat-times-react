@@ -20,13 +20,15 @@ export default function PostTable() {
     })
       .then((res) => (res.json()))
       .then((res) => {
-        if (!res.error) {
+        if (res.statusCode === 200) {
           setPosts(res.data.posts);
         }
-        // if (res.error) toast.error(`Error: ${res.error}`);
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(`Error: ${err.message}`);
       });
   };
 
