@@ -81,7 +81,7 @@ export default function CategoryFormPage() {
     };
 
     fetch("http://localhost:8080/categories/"+form.postCategoryID, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         'Authorization': `Bearer ${getToken()}`,
       },
