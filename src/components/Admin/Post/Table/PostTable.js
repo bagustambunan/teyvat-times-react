@@ -33,6 +33,33 @@ export default function PostTable() {
       });
   };
 
+  const deletePost = (postID) => {
+    fetch("http://localhost:8080/posts/"+postID, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${getToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          alert('Post deleted successfully');
+          // window.location.href = "/admin";
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+  const handleDelete = (post) => {
+    if (confirm(`Delete this post?\n\n${post.title}`) === true) {
+      deletePost(post.postID);
+    }
+  }
+
   useEffect(() => {
     fetchPosts();
   },[])
@@ -52,7 +79,7 @@ export default function PostTable() {
         </thead>
         <tbody>
           {posts.map((post, index) => (
-            <PostRow key={post.postID} post={post} i={index+1} />
+            <PostRow key={post.postID} post={post} i={index+1} handleDelete={handleDelete} />
           ))}
         </tbody>
       </table>

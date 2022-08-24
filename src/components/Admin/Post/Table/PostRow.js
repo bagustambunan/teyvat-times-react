@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default function PostRow({ post, i }) {
+export default function PostRow({ post, i, handleDelete }) {
   return (
     <tr>
       <th scope="row">{i}</th>
@@ -15,9 +15,9 @@ export default function PostRow({ post, i }) {
         <NavLink to={`/admin/posts/${post.postID}/edit`} className="btn btn-sm">
           <i className="text-warning bi bi-pencil-fill"></i>
         </NavLink>
-        <NavLink to="/admin/posts/${post.postID}/delete" className="btn btn-sm">
+        <button onClick={() => handleDelete(post)} type="button" className="btn btn-sm">
           <i className="text-danger bi bi-trash-fill"></i>
-        </NavLink>
+        </button>
       </td>
     </tr>
   );
