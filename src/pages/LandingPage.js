@@ -1,65 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { toast, ToastContainer } from 'react-toastify';
+import React, { useEffect } from "react";
+import { ToastContainer } from 'react-toastify';
 import jwt_decode from "jwt-decode";
 import LoginForm from "../components/LandingPage/LoginForm";
 
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function LandingPage() {
-  const [form, setForm] = useState({
-    email: "jean@mail.com",
-    password: "jean123",
-  });
-  const handleChange = (e) => {
-    const { name } = e.currentTarget;
-    const { value } = e.currentTarget;
-    setForm({ ...form, [name]: value });
-  };
-  const isFormValid = () => {
-    if (form.email === "") {
-      return false;
-    }
-    if (form.password === "") {
-      return false;
-    }
-    return true;
-  };
-
-  const fetchToken = () => {
-    const dataToPost = {
-      email: form.email,
-      password: form.password,
-    };
-
-    fetch("http://localhost:8080/sign-in", {
-      method: "POST",
-      body: JSON.stringify(dataToPost),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.statusCode === 200) {
-          setToken(res.data.token);
-          checkToken();
-        }
-        if (res.statusCode !== 200) {
-          toast.warn("Wrong email or password");
-        }
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`);
-      });
-  };
-
-  const submitForm = () => {
-    if (isFormValid()) {
-      fetchToken();
-    }
-  };
-
+export default function LandingPage({ mode }) {
   const getToken = () => localStorage.getItem("token");
-  const setToken = (token) => {
-    localStorage.setItem('token',token);
-  };
   const checkToken = () => {
     if (getToken() !== null) {
       const decoded = jwt_decode(getToken());
@@ -88,11 +35,15 @@ export default function LandingPage() {
         draggable
         pauseOnHover
       />
-      <LoginForm
-      form={form}
-      handleChange={handleChange}
-      submitForm={submitForm}
-    />
+
+      <div className="layout-main d-flex justify-content-center align-items-center">
+
+        {mode === 'login' ? (
+          <LoginForm checkToken={checkToken} />
+        ) : ("")}
+
+      </div>
+      
     </>
   );
 }

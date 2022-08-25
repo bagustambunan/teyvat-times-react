@@ -17,7 +17,8 @@ import ReadPage from './pages/Public/ReadPage';
 function App() {
   return (
     <Routes>
-      <Route path="/welcome" element={<LandingPage />} />
+      <Route path="/welcome" element={<LandingPage mode="login" />} />
+      <Route path="/signup" element={<LandingPage mode="register" />} />
       <Route path="/logout" element={<Logout />} />
 
       <Route path="/" element={<PublicLayout />}>
