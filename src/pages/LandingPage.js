@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import LoginForm from "../components/LandingPage/LoginForm";
 
 import 'react-toastify/dist/ReactToastify.css';
+import RegisterForm from "../components/LandingPage/RegisterForm";
 
 export default function LandingPage({ mode }) {
   const getToken = () => localStorage.getItem("token");
@@ -40,6 +41,10 @@ export default function LandingPage({ mode }) {
 
         {mode === 'login' ? (
           <LoginForm checkToken={checkToken} />
+        ) : ("")}
+
+        {mode === 'register' ? (
+          <RegisterForm checkToken={checkToken} />
         ) : ("")}
 
       </div>

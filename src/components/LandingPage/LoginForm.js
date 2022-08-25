@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SubmitButton from '../Form/SubmitButton';
 
@@ -45,22 +46,18 @@ export default function LoginForm({ checkToken }) {
         toast.error(`Error: ${err.message}`);
       });
   };
-
-  const submitForm = () => {
-    if (isFormValid()) {
-      fetchToken();
-    }
-  };
   const setToken = (token) => {
     localStorage.setItem('token',token);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    submitForm();
+    if (isFormValid()) {
+      fetchToken();
+    }
   };
 
   return (
-    <div className="card p-4 col-12 col-md-4 shadow">
+    <div className="card p-4 col-12 col-md-3 shadow">
       <h4 className="mb-5 text-center">Login To Your Account</h4>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
@@ -91,6 +88,9 @@ export default function LoginForm({ checkToken }) {
         </div>
         <div className="mb-3">
           <SubmitButton text="Login" />
+        </div>
+        <div className="mb-3 text-center">
+          <NavLink className="link" to="/signup">Create new account</NavLink>
         </div>
       </form>
     </div>
