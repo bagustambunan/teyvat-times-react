@@ -6,10 +6,6 @@ import Share from './Share';
 
 export default function PostDetail({ post, myActivity, changeLike, changeShare }) {
   console.log(post);
-  const parseDate = (date) => {
-    const d = new Date(date);
-    return `${d.toDateString()} ${d.toLocaleTimeString()}`;
-  }
   return (
     <section>
       <div className="mb-3">
@@ -19,7 +15,7 @@ export default function PostDetail({ post, myActivity, changeLike, changeShare }
       
       <div>
         <h2>{post.title}</h2>
-        <p className="fst-italic text-muted small">Written by {post.createdBy.name} at {parseDate(post.createdAt)}</p>
+        <p className="fst-italic text-muted small">Written by {post.createdBy.name} at {post.getCreatedAt()}</p>
       </div>
       
       <div className="read-img">

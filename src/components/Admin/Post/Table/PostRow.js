@@ -9,7 +9,7 @@ export default function PostRow({ post, i, handleDelete }) {
       <td>{post.postTier.name}</td>
       <td>{post.postCategory.name}</td>
       <td>
-        <a href={`/read/${post.slug}`} target="new" className="btn btn-sm">
+        <a href={`/read/${post.slug}`} target="_blank" className="btn btn-sm">
           <i className="text-primary bi bi-eye-fill"></i>
         </a>
         <NavLink to={`/admin/posts/${post.postID}/edit`} className="btn btn-sm">

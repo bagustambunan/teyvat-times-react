@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import Pagination from "../../../Pagination";
 import TableController from "./TableController";
 import PostRow from "./PostRow";
+import Post from "../../../../models/Post";
 
 export default function PostTable() {
   const [posts, setPosts] = useState([]);
@@ -49,7 +50,27 @@ export default function PostTable() {
       .then((res) => (res.json()))
       .then((res) => {
         if (res.statusCode === 200) {
-          setPosts(res.data.posts);
+          const fetchedPosts = res.data.posts.map((item) => {
+            const post = new Post(
+              item.postID,
+              item.postTier,
+              item.postCategory,
+              item.title,
+              item.content,
+              item.slug,
+              item.summary,
+              item.imgThumbnail,
+              item.imgContent,
+              item.createdBy,
+              item.updatedBy,
+              item.createdAt,
+              item.updatedAt,
+              item.totalLike,
+              item.totalShare,
+            );
+            return post;
+          });
+          setPosts(fetchedPosts);
           setPagination({ ...pagination, totalPage: res.data.totalPage });
         }
         if (res.statusCode !== 200) {

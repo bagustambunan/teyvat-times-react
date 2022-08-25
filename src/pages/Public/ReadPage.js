@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import PostDetail from '../../components/Public/Read/PostDetail';
+import Post from '../../models/Post';
 
 export default function ReadPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,6 +11,7 @@ export default function ReadPage() {
     isLiked: 0,
     isShared: 0,
   });
+  const [postActivities, setPostActivities] = useState('');
 
   const getToken = () => localStorage.getItem("token");
 
@@ -24,7 +26,24 @@ export default function ReadPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          setPost(res.data);
+          const fetchedPost = new Post(
+            res.data.postID,
+            res.data.postTier,
+            res.data.postCategory,
+            res.data.title,
+            res.data.content,
+            res.data.slug,
+            res.data.summary,
+            res.data.imgThumbnail,
+            res.data.imgContent,
+            res.data.createdBy,
+            res.data.updatedBy,
+            res.data.createdAt,
+            res.data.updatedAt,
+            res.data.totalLike,
+            res.data.totalShare,
+          );
+          setPost(fetchedPost);
           setIsLoading(false);
           fetchMyActivity(res.data.postID);
         }
