@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-export default function Menu() {
+export default function Header() {
   const usePathName = () => {
     const location = useLocation();
     return location.pathname;

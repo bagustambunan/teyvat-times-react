@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ToastContainer } from "react-toastify";
 import { Outlet } from 'react-router-dom';
-import Menu from './Menu'
+import Header from '../../components/Public/Header';
 
 export default function PublicLayout() {
 
@@ -25,7 +25,7 @@ export default function PublicLayout() {
         draggable
         pauseOnHover
       />
-      <Menu />
+      <Header />
       <div className="container pt-5 pb-5">
         <Outlet />
       </div>

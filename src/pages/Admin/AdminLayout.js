@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import Menu from "./Menu";
+import Sidebar from "../../components/Admin/Sidebar";
 
 export default function AdminLayout() {
   const getToken = () => localStorage.getItem("token");
@@ -38,7 +38,7 @@ export default function AdminLayout() {
       <div className="vh-100 d-flex">
         <aside>
           <div className="admin-menu-side"></div>
-          <Menu />
+          <Sidebar />
         </aside>
         <main className="px-5 w-100">
           <Outlet />

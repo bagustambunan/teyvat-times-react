@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Menu() {
+export default function Sidebar() {
   return (
     <div className="d-flex flex-column p-3 bg-light h-100 admin-menu">
       <NavLink
@@ -77,5 +77,5 @@ export default function Menu() {
 
       </ul>
     </div>
-  );
+  )
 }
