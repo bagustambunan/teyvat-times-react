@@ -4,10 +4,6 @@ import CategoryBox from "../CategoryBox";
 import TierBox from "../TierBox";
 
 export default function PostCard({ post }) {
-  const parseDate = (date) => {
-    const d = new Date(date);
-    return `${d.toDateString()} ${d.toLocaleTimeString()}`;
-  }
   return (
     <div className="col-12 col-md-6">
       <div className="card mb-3">
@@ -21,7 +17,7 @@ export default function PostCard({ post }) {
             <h5 className="card-title">{post.title}</h5>
           </NavLink>
 
-          <p className="fst-italic text-muted small">{parseDate(post.createdAt)}</p>
+          <p className="fst-italic text-muted small">{post.getCreatedAt()}</p>
           <p className="card-text">{post.summary}</p>
           <div>
             <TierBox tier={post.postTier} />

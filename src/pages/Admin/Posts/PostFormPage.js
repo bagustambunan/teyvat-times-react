@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import PostForm from '../../../components/Admin/Post/PostForm'
 import TitleSection from '../../../components/Admin/TitleSection'
+import Post from '../../../models/Post';
 
 export default function PostFormPage() {
   const [mode, setMode] = useState('New');
@@ -56,13 +57,30 @@ export default function PostFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
+          const fetchedPost = new Post(
+            res.data.postID,
+            res.data.postTier,
+            res.data.postCategory,
+            res.data.title,
+            res.data.content,
+            res.data.slug,
+            res.data.summary,
+            res.data.imgThumbnail,
+            res.data.imgContent,
+            res.data.createdBy,
+            res.data.updatedBy,
+            res.data.createdAt,
+            res.data.updatedAt,
+            res.data.totalLike,
+            res.data.totalShare,
+          );
           setForm({
-            postID: res.data.postID,
-            title: res.data.title,
-            content: res.data.content,
-            summary: res.data.summary,
-            tier: res.data.postTier.postTierID,
-            category: res.data.postCategory.postCategoryID,
+            postID: fetchedPost.postID,
+            title: fetchedPost.title,
+            content: fetchedPost.content,
+            summary: fetchedPost.summary,
+            tier: fetchedPost.postTier.postTierID,
+            category: fetchedPost.postCategory.postCategoryID,
           });
         }
         if (res.statusCode !== 200) {

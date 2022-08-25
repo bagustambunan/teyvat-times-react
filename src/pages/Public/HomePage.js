@@ -3,6 +3,7 @@ import Carousel from '../../components/Public/Carousel';
 import PostsSection from '../../components/Public/PostsSection';
 import SearchSection from '../../components/Public/SearchSection';
 import TrendingSection from '../../components/Public/TrendingSection';
+import Post from '../../models/Post';
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -12,7 +13,7 @@ export default function HomePage() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 2,
+    limit: 1,
     page: 1,
   });
   const [pagination, setPagination] = useState({
@@ -43,7 +44,27 @@ export default function HomePage() {
       .then((res) => (res.json()))
       .then((res) => {
         if (res.statusCode === 200) {
-          setPosts(res.data.posts);
+          const fetchedPosts = res.data.posts.map((item) => {
+            const post = new Post(
+              item.postID,
+              item.postTier,
+              item.postCategory,
+              item.title,
+              item.content,
+              item.slug,
+              item.summary,
+              item.imgThumbnail,
+              item.imgContent,
+              item.createdBy,
+              item.updatedBy,
+              item.createdAt,
+              item.updatedAt,
+              item.totalLike,
+              item.totalShare,
+            );
+            return post;
+          });
+          setPosts(fetchedPosts);
           setPagination({ ...pagination, totalPage: res.data.totalPage });
         }
         if (res.statusCode !== 200) {
