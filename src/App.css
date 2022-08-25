@@ -25,7 +25,7 @@
   min-height: 100vh;
 }
 
-.card > img {
+.post-card-img {
   max-height: 10rem;
   object-fit: cover;
 }
@@ -69,6 +69,7 @@ section > h5 {
 }
 .pagination > li:hover {
   background-color: aliceblue;
+  cursor: pointer;
 }
 .pagination > li > a {
   color: rgb(99, 99, 99);
@@ -83,4 +84,17 @@ section > h5 {
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
   background-color: rgb(152, 181, 207);
+}
+
+.read-img > img {
+  max-height: 30rem;
+}
+
+.link {
+  color: rgb(47, 90, 119);
+  text-decoration: none;
+}
+
+.my-btn:hover {
+  background-color: rgb(211, 211, 211);
 }

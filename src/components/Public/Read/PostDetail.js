@@ -5,7 +5,6 @@ import Like from './Like';
 import Share from './Share';
 
 export default function PostDetail({ post, myActivity, changeLike, changeShare }) {
-  console.log(post);
   return (
     <section>
       <div className="mb-3">

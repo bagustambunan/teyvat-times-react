@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Carousel from '../../components/Public/Carousel';
 import PostsSection from '../../components/Public/PostsSection';
 import SearchSection from '../../components/Public/SearchSection';
@@ -20,22 +21,31 @@ export default function HomePage() {
     currentPage: 1,
     totalPage: 5,
   });
+
   const changePage = (page) => {
     setPagination({ ...pagination, currentPage: page });
     setForm({ ...form, page: page });
   };
   useEffect(() => {
+    resetPage();
     fetchPosts();
-  },[form.page]);
+  },[form.category, form.tier, form.sortOrder, form.page]);
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
     setForm({ ...form, [name]: value });
   };
+  const handleSubmit = () => {
+    fetchPosts();
+  };
+  const resetPage = () => {
+    setPagination({ ...pagination, currentPage: 1 });
+    setForm({ ...form, page: 1 });
+  };
 
   const getToken = () => localStorage.getItem('token');
   const fetchPosts = () => {
-    fetch(`http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
+    fetch(`http://localhost:8080/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${getToken()}`,
@@ -88,7 +98,7 @@ export default function HomePage() {
       </main>
 
       <aside className="col-12 col-md-3 bg-white p-3 rounded border">
-        <SearchSection form={form} handleChange={handleChange} />
+        <SearchSection form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
         <TrendingSection />
       </aside>
       
