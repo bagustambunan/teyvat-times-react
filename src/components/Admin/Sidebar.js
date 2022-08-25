@@ -22,7 +22,7 @@ export default function Sidebar() {
             <ul className="btn-toggle-nav list-unstyled small">
               <li><NavLink to="/admin/dashboard" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Dashboard</NavLink></li>
               <li><NavLink to="/" target="_blank" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Main blog</NavLink></li>
-              <li><NavLink to="/admin/profile" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Profile</NavLink></li>
+              <li><NavLink to="/profile" target="_blank" className="nav-link link-dark rounded"><i className="bi bi-chevron-right me-2"></i>Profile</NavLink></li>
             </ul>
           </div>
         </li>
