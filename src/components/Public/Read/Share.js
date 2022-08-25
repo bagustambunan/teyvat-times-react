@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Share({ isShared, changeShare }) {
+export default function Share({ isShared, changeShare, totalShare }) {
   return (
     <button
       type="button"
@@ -12,7 +12,7 @@ export default function Share({ isShared, changeShare }) {
       ) : (
       <i className="bi bi-share"></i>
       )}
-      12
+      {totalShare}
     </button>
   )
 }

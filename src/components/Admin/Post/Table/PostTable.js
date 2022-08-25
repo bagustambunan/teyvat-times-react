@@ -22,7 +22,7 @@ export default function PostTable() {
 
   const changePage = (page) => {
     setPagination({ ...pagination, currentPage: page });
-    setForm({ ...form, page: page, });
+    setForm({ ...form, page: page });
   }
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Like({ isLiked, changeLike }) {
+export default function Like({ isLiked, changeLike, totalLike }) {
   return (
     <button
       type="button"
@@ -12,7 +12,7 @@ export default function Like({ isLiked, changeLike }) {
       ) : (
       <i className="bi bi-heart"></i>
       )}
-      12
+      {totalLike}
     </button>
   );
 }

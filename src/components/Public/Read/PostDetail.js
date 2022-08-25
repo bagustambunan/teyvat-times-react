@@ -5,6 +5,7 @@ import Like from './Like';
 import Share from './Share';
 
 export default function PostDetail({ post, myActivity, changeLike, changeShare }) {
+  console.log(post);
   const parseDate = (date) => {
     const d = new Date(date);
     return `${d.toDateString()} ${d.toLocaleTimeString()}`;
@@ -18,7 +19,7 @@ export default function PostDetail({ post, myActivity, changeLike, changeShare }
       
       <div>
         <h2>{post.title}</h2>
-        <p className="text-muted small">Written by {post.createdBy.name} at {parseDate(post.createdAt)}</p>
+        <p className="fst-italic text-muted small">Written by {post.createdBy.name} at {parseDate(post.createdAt)}</p>
       </div>
       
       <div className="read-img">
@@ -30,8 +31,8 @@ export default function PostDetail({ post, myActivity, changeLike, changeShare }
       </div>
 
       <div className="d-flex gap-3">
-        <Like isLiked={myActivity.isLiked} changeLike={changeLike} />
-        <Share isShared={myActivity.isShared} changeShare={changeShare} />
+        <Like isLiked={myActivity.isLiked} changeLike={changeLike} totalLike={post.totalLike} />
+        <Share isShared={myActivity.isShared} changeShare={changeShare} totalShare={post.totalShare} />
       </div>
 
     </section>
