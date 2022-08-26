@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Carousel from '../../components/Public/Carousel';
 import PostsSection from '../../components/Public/PostsSection';
 import SearchSection from '../../components/Public/SearchSection';
 import TrendingSection from '../../components/Public/TrendingSection';
 import Post from '../../models/Post';
+import { selectToken } from '../../store/tokenSlice';
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -43,12 +45,12 @@ export default function HomePage() {
     setForm({ ...form, page: 1 });
   };
 
-  const getToken = () => localStorage.getItem('token');
+  const token = useSelector(selectToken);
   const fetchPosts = () => {
     fetch(`http://localhost:8080/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => (res.json()))

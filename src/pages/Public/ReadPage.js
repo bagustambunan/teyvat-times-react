@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import PostDetail from '../../components/Public/Read/PostDetail';
 import Post from '../../models/Post';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../store/tokenSlice';
 
 export default function ReadPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,16 +13,15 @@ export default function ReadPage() {
     isLiked: 0,
     isShared: 0,
   });
-  const [postActivities, setPostActivities] = useState('');
 
-  const getToken = () => localStorage.getItem("token");
+  const token = useSelector(selectToken);
 
   const fetchPost = (slug) => {
     setIsLoading(true);
     fetch("http://localhost:8080/pub/posts/slug/"+slug, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -60,7 +61,7 @@ export default function ReadPage() {
     fetch("http://localhost:8080/pub/posts/"+postID+"/activities", {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -88,7 +89,7 @@ export default function ReadPage() {
     fetch("http://localhost:8080/pub/posts/"+post.postID+"/activities", {
       method: "POST",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })

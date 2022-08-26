@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import CategoryForm from '../../../components/Admin/Category/CategoryForm'
 import TitleSection from '../../../components/Admin/TitleSection'
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function CategoryFormPage() {
   const navigate = useNavigate();
@@ -19,14 +21,14 @@ export default function CategoryFormPage() {
     setForm({ ...form, [name]: value });
   };
 
-  const getToken = () => localStorage.getItem('token');
+  const token = useSelector(selectToken);
 
   // BEST EXAMPLE UNTUK FETCH AND HANDLE
   const fetchCategory = (categoryID) => {
     fetch("http://localhost:8080/categories/"+categoryID, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -56,7 +58,7 @@ export default function CategoryFormPage() {
     fetch("http://localhost:8080/categories/", {
       method: "POST",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })
@@ -64,7 +66,7 @@ export default function CategoryFormPage() {
       .then((res) => {
         if (res.statusCode === 201) {
           toast.success("Category created successfully");
-          navigate("/");
+          navigate("/admin/categories");
         }
         if (res.statusCode !== 201) {
           toast.error(`Error: ${res.message}`);
@@ -84,7 +86,7 @@ export default function CategoryFormPage() {
     fetch("http://localhost:8080/categories/"+form.postCategoryID, {
       method: "PUT",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })

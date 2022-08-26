@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 import TierRow from "./TierRow";
+import { selectToken } from "../../../store/tokenSlice";
 
 export default function TierTable() {
   const [tiers, setTiers] = useState([]);
 
-  const getToken = () => localStorage.getItem("token");
+  const token = useSelector(selectToken);
   const fetchTiers = () => {
     fetch("http://localhost:8080/pub/tiers", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

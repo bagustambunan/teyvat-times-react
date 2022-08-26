@@ -14,20 +14,20 @@ export default class Auth {
     this.token = token;
   }
   setUser(user) {
-    this.setUser = user;
+    this.user = user;
   }
   
   authorizeInternal() {
-    if (this.user.roleID !== 1) {
-      return false;
+    if (this.user.role.roleID === 1) {
+      return true;
     }
-    return true;
+    return false;
   }
   authorizePublic() {
-    if (this.token !== '') {
-      return false
+    if (this.user.role.roleID === 1 || this.user.role.roleID === 2) {
+      return true;
     }
-    return true;
+    return false;
   }
 
 }

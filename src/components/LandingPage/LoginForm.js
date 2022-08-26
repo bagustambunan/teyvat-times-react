@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {
-  setToken
-} from '../../store/tokenSlice';
+import { setToken } from '../../store/tokenSlice';
 import SubmitButton from '../Form/SubmitButton';
 
 export default function LoginForm({ checkToken }) {

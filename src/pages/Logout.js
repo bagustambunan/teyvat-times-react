@@ -8,5 +8,5 @@ export default function Logout() {
   const removeToken = () => {
     localStorage.removeItem('token');
   };
-  return <Navigate to='/welcome'/>;
+  window.location.href = "/welcome";
 }

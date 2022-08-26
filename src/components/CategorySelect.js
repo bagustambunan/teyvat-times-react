@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { selectToken } from "../store/tokenSlice";
 
 export default function CategorySelect({
   showDefault = true,
@@ -7,13 +9,12 @@ export default function CategorySelect({
   handleChange,
 }) {
   const [categories, setCategories] = useState([]);
-
-  const getToken = () => localStorage.getItem("token");
+  const token = useSelector(selectToken);
   const fetchCategories = () => {
     fetch("http://localhost:8080/pub/categories", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${getToken()}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import PostForm from '../../../components/Admin/Post/PostForm'
 import TitleSection from '../../../components/Admin/TitleSection'
 import Post from '../../../models/Post';
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function PostFormPage() {
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ export default function PostFormPage() {
     category: '0',
   });
 
-  const getToken = () => localStorage.getItem("token");
+  const token = useSelector(selectToken);
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
@@ -52,7 +54,7 @@ export default function PostFormPage() {
     fetch("http://localhost:8080/posts/"+postID, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -105,7 +107,7 @@ export default function PostFormPage() {
     fetch("http://localhost:8080/posts/", {
       method: "POST",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })
@@ -136,7 +138,7 @@ export default function PostFormPage() {
     fetch("http://localhost:8080/posts/"+form.postID, {
       method: "PUT",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })

@@ -5,6 +5,8 @@ import TableController from "./TableController";
 import PostRow from "./PostRow";
 import Post from "../../../../models/Post";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectToken } from "../../../../store/tokenSlice";
 
 export default function PostTable() {
   const navigate = useNavigate();
@@ -41,12 +43,12 @@ export default function PostTable() {
     fetchPosts();
   };
 
-  const getToken = () => localStorage.getItem('token');
+  const token = useSelector(selectToken);
   const fetchPosts = () => {
     fetch(`http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => (res.json()))
@@ -88,7 +90,7 @@ export default function PostTable() {
     fetch("http://localhost:8080/posts/"+postID, {
       method: "DELETE",
       headers: {
-        'Authorization': `Bearer ${getToken()}`,
+        'Authorization': `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
