@@ -20,7 +20,9 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
           id="title"
           name="title"
           value={form.title}
-          onChange={(e) => { handleChange(e); }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
       </div>
       <div className="mb-3">
@@ -33,7 +35,9 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
           id="content"
           name="content"
           value={form.content}
-          onChange={(e) => { handleChange(e); }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
       </div>
       <div className="mb-3">
@@ -46,7 +50,9 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
           id="summary"
           name="summary"
           value={form.summary}
-          onChange={(e) => { handleChange(e); }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
       </div>
 
@@ -54,14 +60,22 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
         <label htmlFor="tier" className="form-label">
           Tier
         </label>
-        <TierSelect showDefault={false} value={form.tier} handleChange={handleChange} />
+        <TierSelect
+          showDefault={false}
+          value={form.tier}
+          handleChange={handleChange}
+        />
       </div>
 
       <div className="mb-3">
         <label htmlFor="category" className="form-label">
           Category
         </label>
-        <CategorySelect showDefault={false} value={form.category} handleChange={handleChange} />
+        <CategorySelect
+          showDefault={false}
+          value={form.category}
+          handleChange={handleChange}
+        />
       </div>
 
       <SubmitIcon text="Save" icon="bi-save" />

@@ -44,7 +44,11 @@ export default function CategoryTable() {
       </thead>
       <tbody>
         {categories.map((category, index) => (
-          <CategoryRow key={category.postCategoryID} category={category} i={index + 1} />
+          <CategoryRow
+            key={category.postCategoryID}
+            category={category}
+            i={index + 1}
+          />
         ))}
       </tbody>
     </table>

@@ -14,7 +14,9 @@ export default function SearchForm({ value, handleChange, handleSubmit }) {
           placeholder="Search..."
           name="s"
           value={value}
-          onChange={(e) => { handleChange(e); }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
         <button type="submit" className="btn btn-outline-secondary">
           <i className="bi bi-search" />

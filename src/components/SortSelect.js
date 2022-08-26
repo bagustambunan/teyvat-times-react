@@ -6,7 +6,9 @@ export default function SortSelect({ value, handleChange }) {
       className="form-select"
       name="sortOrder"
       value={value}
-      onChange={(e) => { handleChange(e); }}
+      onChange={(e) => {
+        handleChange(e);
+      }}
     >
       <option value="desc">Newest</option>
       <option value="asc">Oldest</option>

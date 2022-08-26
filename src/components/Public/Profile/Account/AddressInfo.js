@@ -6,7 +6,9 @@ export default function AddressInfo({ address }) {
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
         <h5>Address</h5>
-        <div><ButtonEdit /></div>
+        <div>
+          <ButtonEdit />
+        </div>
       </div>
       <table className="table">
         <tbody>

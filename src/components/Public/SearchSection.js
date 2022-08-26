@@ -19,9 +19,12 @@ export default function SearchSection({ form, handleChange, handleSubmit }) {
       </div>
 
       <div>
-        <SearchForm value={form.s} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <SearchForm
+          value={form.s}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       </div>
-
     </section>
   );
 }

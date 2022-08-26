@@ -125,7 +125,11 @@ export default function CategoryFormPage() {
   return (
     <>
       <TitleSection title={`${mode} Category`} icon="bi-newspaper" />
-      <CategoryForm form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <CategoryForm
+        form={form}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 }

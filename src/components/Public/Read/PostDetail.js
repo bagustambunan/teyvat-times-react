@@ -5,7 +5,10 @@ import Like from './Like';
 import Share from './Share';
 
 export default function PostDetail({
-  post, myActivity, changeLike, changeShare,
+  post,
+  myActivity,
+  changeLike,
+  changeShare,
 }) {
   return (
     <section>
@@ -34,10 +37,17 @@ export default function PostDetail({
       </div>
 
       <div className="d-flex gap-3">
-        <Like isLiked={myActivity.isLiked} changeLike={changeLike} totalLike={post.totalLike} />
-        <Share isShared={myActivity.isShared} changeShare={changeShare} totalShare={post.totalShare} />
+        <Like
+          isLiked={myActivity.isLiked}
+          changeLike={changeLike}
+          totalLike={post.totalLike}
+        />
+        <Share
+          isShared={myActivity.isShared}
+          changeShare={changeShare}
+          totalShare={post.totalShare}
+        />
       </div>
-
     </section>
   );
 }

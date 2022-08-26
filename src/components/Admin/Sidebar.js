@@ -12,28 +12,44 @@ export default function Sidebar() {
       </NavLink>
       <hr />
       <ul className="nav nav-pills flex-column">
-
         <li className="nav-item">
-          <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          <button
+            type="button"
+            className="btn btn-toggle align-items-center rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#home-collapse"
+            aria-expanded="false"
+          >
             <i className="bi bi-house me-2" />
             Dashboard
           </button>
           <div className="collapse" id="home-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
               <li>
-                <NavLink to="/admin/dashboard" className="nav-link link-dark rounded">
+                <NavLink
+                  to="/admin/dashboard"
+                  className="nav-link link-dark rounded"
+                >
                   <i className="bi bi-chevron-right me-2" />
                   Dashboard
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" target="_blank" className="nav-link link-dark rounded">
+                <NavLink
+                  to="/"
+                  target="_blank"
+                  className="nav-link link-dark rounded"
+                >
                   <i className="bi bi-chevron-right me-2" />
                   Main blog
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/profile" target="_blank" className="nav-link link-dark rounded">
+                <NavLink
+                  to="/profile"
+                  target="_blank"
+                  className="nav-link link-dark rounded"
+                >
                   <i className="bi bi-chevron-right me-2" />
                   Profile
                 </NavLink>
@@ -43,26 +59,41 @@ export default function Sidebar() {
         </li>
 
         <li className="nav-item">
-          <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#post-collapse" aria-expanded="false">
+          <button
+            type="button"
+            className="btn btn-toggle align-items-center rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#post-collapse"
+            aria-expanded="false"
+          >
             <i className="bi bi-newspaper me-2" />
             Posts
           </button>
           <div className="collapse" id="post-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
               <li>
-                <NavLink to="/admin/posts" className="nav-link link-dark rounded">
+                <NavLink
+                  to="/admin/posts"
+                  className="nav-link link-dark rounded"
+                >
                   <i className="bi bi-chevron-right me-2" />
                   All posts
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/admin/tiers" className="nav-link link-dark rounded">
+                <NavLink
+                  to="/admin/tiers"
+                  className="nav-link link-dark rounded"
+                >
                   <i className="bi bi-chevron-right me-2" />
                   Tiers
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/admin/categories" className="nav-link link-dark rounded">
+                <NavLink
+                  to="/admin/categories"
+                  className="nav-link link-dark rounded"
+                >
                   <i className="bi bi-chevron-right me-2" />
                   Categories
                 </NavLink>
@@ -72,7 +103,13 @@ export default function Sidebar() {
         </li>
 
         <li className="nav-item">
-          <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#subscription-collapse" aria-expanded="false">
+          <button
+            type="button"
+            className="btn btn-toggle align-items-center rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#subscription-collapse"
+            aria-expanded="false"
+          >
             <i className="bi bi-card-list me-2" />
             Subscriptions
           </button>
@@ -101,7 +138,13 @@ export default function Sidebar() {
         </li>
 
         <li className="nav-item">
-          <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#gift-collapse" aria-expanded="false">
+          <button
+            type="button"
+            className="btn btn-toggle align-items-center rounded collapsed"
+            data-bs-toggle="collapse"
+            data-bs-target="#gift-collapse"
+            aria-expanded="false"
+          >
             <i className="bi bi-gift me-2" />
             Gifts
           </button>
@@ -129,7 +172,6 @@ export default function Sidebar() {
             Logout
           </NavLink>
         </li>
-
       </ul>
     </div>
   );

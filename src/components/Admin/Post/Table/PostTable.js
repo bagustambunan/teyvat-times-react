@@ -10,6 +10,9 @@ import { selectToken } from '../../../../store/tokenSlice';
 
 export default function PostTable() {
   const navigate = useNavigate();
+
+  const token = useSelector(selectToken);
+
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({
     s: '',
@@ -30,28 +33,17 @@ export default function PostTable() {
     setForm({ ...form, page });
   };
 
-  useEffect(() => {
-    fetchPosts();
-  }, [form.page]);
-
-  const handleChange = (e) => {
-    const { name } = e.currentTarget;
-    const { value } = e.currentTarget;
-    setForm({ ...form, [name]: value });
-  };
-  const handleSubmit = () => {
-    fetchPosts();
-  };
-
-  const token = useSelector(selectToken);
   const fetchPosts = () => {
-    fetch(`http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
+    fetch(
+      `http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
-      .then((res) => (res.json()))
+    )
+      .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
           const fetchedPosts = res.data.posts.map((item) => {
@@ -112,6 +104,18 @@ export default function PostTable() {
       deletePost(post.postID);
     }
   };
+  useEffect(() => {
+    fetchPosts();
+  }, [form.page]);
+
+  const handleChange = (e) => {
+    const { name } = e.currentTarget;
+    const { value } = e.currentTarget;
+    setForm({ ...form, [name]: value });
+  };
+  const handleSubmit = () => {
+    fetchPosts();
+  };
 
   useEffect(() => {
     fetchPosts();
@@ -119,7 +123,11 @@ export default function PostTable() {
 
   return (
     <>
-      <TableController form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <TableController
+        form={form}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
       <table className="table table-striped w-100">
         <thead>
           <tr>
@@ -132,7 +140,12 @@ export default function PostTable() {
         </thead>
         <tbody>
           {posts.map((post, index) => (
-            <PostRow key={post.postID} post={post} i={index + 1} handleDelete={handleDelete} />
+            <PostRow
+              key={post.postID}
+              post={post}
+              i={index + 1}
+              handleDelete={handleDelete}
+            />
           ))}
         </tbody>
       </table>

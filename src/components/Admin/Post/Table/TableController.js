@@ -7,7 +7,6 @@ import TierSelect from '../../../TierSelect';
 export default function TableController({ form, handleChange, handleSubmit }) {
   return (
     <section className="row my-3">
-
       <div className="col-12 col-md-6 row row-cols-1 row-cols-md-3">
         <div className="col">
           <TierSelect value={form.tier} handleChange={handleChange} />
@@ -23,9 +22,12 @@ export default function TableController({ form, handleChange, handleSubmit }) {
       </div>
 
       <div className="col-12 col-md-6">
-        <SearchForm value={form.s} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <SearchForm
+          value={form.s}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
       </div>
-
     </section>
   );
 }

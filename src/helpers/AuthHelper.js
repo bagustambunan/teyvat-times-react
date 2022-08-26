@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+// eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -9,37 +10,23 @@ export default function AuthHelper(auth, role, setLoadingFalse) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const checkValidToken = () => {
-    // if auth token is not valid
-    if (auth.getToken() === undefined) {
-      const token = localStorage.getItem('token');
-      // if local storage token is valid
-      if (token !== null) {
-        auth.setToken(token);
-        dispatch(setToken(token));
-        checkValidToken();
-      } else {
-        window.location.href = '/logout';
-      }
-    } else {
-      checkUndefinedUser();
-    }
-  };
-
-  const checkUndefinedUser = () => {
-    if (auth.getUser() === undefined) {
-      fetchUser();
-    }
-  };
-
   const getUserId = () => {
-    try {
-      jwt_decode(auth.getToken());
-    } catch (err) {
-      console.log(err);
-    } finally {
-      const decoded = jwt_decode(auth.getToken());
-      return decoded.user.userID;
+    const decoded = jwt_decode(auth.getToken());
+    return decoded.user.userID;
+  };
+
+  const checkAuthorization = () => {
+    if (role === 'internal') {
+      if (auth.authorizeInternal()) {
+        setLoadingFalse();
+      } else {
+        navigate('/');
+      }
+    }
+    if (role === 'public') {
+      if (auth.authorizePublic()) {
+        setLoadingFalse();
+      }
     }
   };
 
@@ -66,18 +53,26 @@ export default function AuthHelper(auth, role, setLoadingFalse) {
       });
   };
 
-  const checkAuthorization = () => {
-    if (role === 'internal') {
-      if (auth.authorizeInternal()) {
-        setLoadingFalse();
-      } else {
-        navigate('/');
-      }
+  const checkUndefinedUser = () => {
+    if (auth.getUser() === undefined) {
+      fetchUser();
     }
-    if (role === 'public') {
-      if (auth.authorizePublic()) {
-        setLoadingFalse();
+  };
+
+  const checkValidToken = () => {
+    // if auth token is not valid
+    if (auth.getToken() === undefined) {
+      const token = localStorage.getItem('token');
+      // if local storage token is valid
+      if (token !== null) {
+        auth.setToken(token);
+        dispatch(setToken(token));
+        checkValidToken();
+      } else {
+        window.location.href = '/logout';
       }
+    } else {
+      checkUndefinedUser();
     }
   };
 

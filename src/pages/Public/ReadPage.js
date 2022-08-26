@@ -16,6 +16,32 @@ export default function ReadPage() {
 
   const token = useSelector(selectToken);
 
+  const fetchMyActivity = (postID) => {
+    setIsLoading(true);
+    fetch(`http://localhost:8080/pub/posts/${postID}/activities`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          setMyActivity({
+            isLiked: res.data.isLiked,
+            isShared: res.data.isShared,
+          });
+          setIsLoading(false);
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
   const fetchPost = (slug) => {
     setIsLoading(true);
     fetch(`http://localhost:8080/pub/posts/slug/${slug}`, {
@@ -56,31 +82,7 @@ export default function ReadPage() {
         toast.error(`Error: ${err.message}`);
       });
   };
-  const fetchMyActivity = (postID) => {
-    setIsLoading(true);
-    fetch(`http://localhost:8080/pub/posts/${postID}/activities`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.statusCode === 200) {
-          setMyActivity({
-            isLiked: res.data.isLiked,
-            isShared: res.data.isShared,
-          });
-          setIsLoading(false);
-        }
-        if (res.statusCode !== 200) {
-          toast.error(`Error: ${res.message}`);
-        }
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`);
-      });
-  };
+
   const updateMyActivity = () => {
     const dataToPost = {
       isLiked: myActivity.isLiked,
@@ -108,7 +110,10 @@ export default function ReadPage() {
     setMyActivity({ ...myActivity, isLiked: myActivity.isLiked === 0 ? 1 : 0 });
   };
   const changeShare = () => {
-    setMyActivity({ ...myActivity, isShared: myActivity.isShared === 0 ? 1 : 0 });
+    setMyActivity({
+      ...myActivity,
+      isShared: myActivity.isShared === 0 ? 1 : 0,
+    });
   };
   useEffect(() => {
     if (!isLoading) {
@@ -129,8 +134,12 @@ export default function ReadPage() {
 
   return (
     <div className="container bg-white py-5 border rounded">
-      <PostDetail post={post} myActivity={myActivity} changeLike={changeLike} changeShare={changeShare} />
+      <PostDetail
+        post={post}
+        myActivity={myActivity}
+        changeLike={changeLike}
+        changeShare={changeShare}
+      />
     </div>
-
   );
 }

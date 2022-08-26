@@ -19,14 +19,11 @@ export default function ReferralDashboard() {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => (res.json()))
+      .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
           const fetchedReferrals = res.data.map((item) => {
-            const referral = new Referral(
-              item.userID,
-              item.name,
-            );
+            const referral = new Referral(item.userID, item.name);
             return referral;
           });
           setReferrals(fetchedReferrals);
@@ -46,7 +43,5 @@ export default function ReferralDashboard() {
   if (isLoading) {
     return 'Loading...';
   }
-  return (
-    <ReferralInfo referrals={referrals} />
-  );
+  return <ReferralInfo referrals={referrals} />;
 }

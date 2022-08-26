@@ -40,10 +40,16 @@ export default function CategorySelect({
       className="form-select"
       name="category"
       value={value}
-      onChange={(e) => { handleChange(e); }}
+      onChange={(e) => {
+        handleChange(e);
+      }}
       required
     >
-      {showDefault ? <option value="0">All categories</option> : <option value="0">-- Select category --</option>}
+      {showDefault ? (
+        <option value="0">All categories</option>
+      ) : (
+        <option value="0">-- Select category --</option>
+      )}
       {categories.map((category) => (
         <option key={category.postCategoryID} value={category.postCategoryID}>
           {category.name}

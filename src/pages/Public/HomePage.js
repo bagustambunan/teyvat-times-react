@@ -28,18 +28,6 @@ export default function HomePage() {
     setPagination({ ...pagination, currentPage: page });
     setForm({ ...form, page });
   };
-  useEffect(() => {
-    resetPage();
-    fetchPosts();
-  }, [form.category, form.tier, form.sortOrder, form.page]);
-  const handleChange = (e) => {
-    const { name } = e.currentTarget;
-    const { value } = e.currentTarget;
-    setForm({ ...form, [name]: value });
-  };
-  const handleSubmit = () => {
-    fetchPosts();
-  };
   const resetPage = () => {
     setPagination({ ...pagination, currentPage: 1 });
     setForm({ ...form, page: 1 });
@@ -47,13 +35,16 @@ export default function HomePage() {
 
   const token = useSelector(selectToken);
   const fetchPosts = () => {
-    fetch(`http://localhost:8080/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
+    fetch(
+      `http://localhost:8080/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    })
-      .then((res) => (res.json()))
+    )
+      .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
           const fetchedPosts = res.data.posts.map((item) => {
@@ -90,20 +81,38 @@ export default function HomePage() {
   useEffect(() => {
     fetchPosts();
   }, []);
+  useEffect(() => {
+    resetPage();
+    fetchPosts();
+  }, [form.category, form.tier, form.sortOrder, form.page]);
+  const handleChange = (e) => {
+    const { name } = e.currentTarget;
+    const { value } = e.currentTarget;
+    setForm({ ...form, [name]: value });
+  };
+  const handleSubmit = () => {
+    fetchPosts();
+  };
 
   return (
     <div className="row">
-
       <main className="col-12 col-md-9">
         <Carousel />
-        <PostsSection posts={posts} pagination={pagination} changePage={changePage} />
+        <PostsSection
+          posts={posts}
+          pagination={pagination}
+          changePage={changePage}
+        />
       </main>
 
       <aside className="col-12 col-md-3 bg-white p-3 rounded border">
-        <SearchSection form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+        <SearchSection
+          form={form}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+        />
         <TrendingSection />
       </aside>
-
     </div>
   );
 }

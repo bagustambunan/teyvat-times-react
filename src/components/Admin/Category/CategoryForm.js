@@ -18,7 +18,9 @@ export default function CategoryForm({ form, handleChange, handleSubmit }) {
           id="name"
           name="name"
           value={form.name}
-          onChange={(e) => { handleChange(e); }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
       </div>
 
@@ -32,7 +34,9 @@ export default function CategoryForm({ form, handleChange, handleSubmit }) {
           id="color"
           name="color"
           value={form.color}
-          onChange={(e) => { handleChange(e); }}
+          onChange={(e) => {
+            handleChange(e);
+          }}
         />
       </div>
       <SubmitIcon text="Save" icon="bi-save" />

@@ -5,7 +5,6 @@ export default function Sidebar() {
   return (
     <div className="d-flex flex-column p-3 border-end border-2">
       <ul className="nav nav-pills flex-column">
-
         <li className="nav-item">
           <NavLink to="/profile/account" className="nav-link link-dark">
             <i className="bi bi-person me-2" />
@@ -47,7 +46,6 @@ export default function Sidebar() {
             Logout
           </NavLink>
         </li>
-
       </ul>
     </div>
   );

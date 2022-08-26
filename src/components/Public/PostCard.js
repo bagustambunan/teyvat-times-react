@@ -7,9 +7,12 @@ export default function PostCard({ post }) {
   return (
     <div className="col-12 col-md-6">
       <div className="card mb-3">
-
         <NavLink to={`/read/${post.slug}`}>
-          <img src={post.imgThumbnail.url} className="card-img-top post-card-img" alt="..." />
+          <img
+            src={post.imgThumbnail.url}
+            className="card-img-top post-card-img"
+            alt="..."
+          />
         </NavLink>
 
         <div className="card-body">
@@ -23,7 +26,6 @@ export default function PostCard({ post }) {
             <TierBox tier={post.postTier} />
             <CategoryBox category={post.postCategory} />
           </div>
-
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
+// eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from '../components/LandingPage/LoginForm';
-
 import 'react-toastify/dist/ReactToastify.css';
 import RegisterForm from '../components/LandingPage/RegisterForm';
-import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage({ mode }) {
   const navigate = useNavigate();
@@ -40,17 +40,10 @@ export default function LandingPage({ mode }) {
       />
 
       <div className="layout-main d-flex justify-content-center align-items-center">
+        {mode === 'login' ? <LoginForm checkToken={checkToken} /> : ''}
 
-        {mode === 'login' ? (
-          <LoginForm checkToken={checkToken} />
-        ) : ('')}
-
-        {mode === 'register' ? (
-          <RegisterForm checkToken={checkToken} />
-        ) : ('')}
-
+        {mode === 'register' ? <RegisterForm checkToken={checkToken} /> : ''}
       </div>
-
     </>
   );
 }

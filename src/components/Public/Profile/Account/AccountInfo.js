@@ -6,7 +6,9 @@ export default function AccountInfo({ user }) {
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
         <h5>General Information</h5>
-        <div><ButtonEdit /></div>
+        <div>
+          <ButtonEdit />
+        </div>
       </div>
 
       <table className="table">

@@ -70,7 +70,9 @@ export default function LoginForm({ checkToken }) {
             placeholder="name@mail.com"
             name="email"
             value={form.email}
-            onChange={(e) => { handleChange(e); }}
+            onChange={(e) => {
+              handleChange(e);
+            }}
           />
         </div>
         <div className="mb-3">
@@ -83,14 +85,18 @@ export default function LoginForm({ checkToken }) {
             placeholder="Password"
             name="password"
             value={form.password}
-            onChange={(e) => { handleChange(e); }}
+            onChange={(e) => {
+              handleChange(e);
+            }}
           />
         </div>
         <div className="mb-3">
           <SubmitButton text="Login" />
         </div>
         <div className="mb-3 text-center">
-          <NavLink className="link" to="/signup">Create new account</NavLink>
+          <NavLink className="link" to="/signup">
+            Create new account
+          </NavLink>
         </div>
       </form>
     </div>

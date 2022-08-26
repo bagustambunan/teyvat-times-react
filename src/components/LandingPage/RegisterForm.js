@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SubmitButton from '../Form/SubmitButton';
 
-export default function RegisterForm({ checkToken }) {
+export default function RegisterForm() {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
@@ -115,7 +115,6 @@ export default function RegisterForm({ checkToken }) {
     <div className="card p-4 col-12 col-md-6 shadow">
       <h4 className="mb-5 text-center">Create New Account</h4>
       <form onSubmit={handleSubmit} className="row">
-
         <div className="row">
           <div className="col">
             <div className="mb-3">
@@ -128,7 +127,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Your name"
                 name="name"
                 value={form.name}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -142,7 +143,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="name@mail.com"
                 name="email"
                 value={form.email}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -156,7 +159,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Username"
                 name="username"
                 value={form.username}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -170,7 +175,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Password"
                 name="password"
                 value={form.password}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
             <div className="mb-3">
@@ -183,7 +190,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Confirmation Password"
                 name="passwordConfirm"
                 value={form.passwordConfirm}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -197,7 +206,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Phone number"
                 name="phone"
                 value={form.phone}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -211,7 +222,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Referral Code"
                 name="referrerCode"
                 value={form.referrerCode}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
           </div>
@@ -227,7 +240,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Street Name"
                 name="street"
                 value={form.street}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -241,7 +256,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="City"
                 name="city"
                 value={form.city}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -255,7 +272,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="State"
                 name="state"
                 value={form.state}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -269,7 +288,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Country"
                 name="country"
                 value={form.country}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
 
@@ -283,7 +304,9 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Postal Code"
                 name="postalCode"
                 value={form.postalCode}
-                onChange={(e) => { handleChange(e); }}
+                onChange={(e) => {
+                  handleChange(e);
+                }}
               />
             </div>
           </div>
@@ -294,9 +317,10 @@ export default function RegisterForm({ checkToken }) {
         </div>
 
         <div className="mb-3 text-center">
-          <NavLink className="link" to="/welcome">Login to your account</NavLink>
+          <NavLink className="link" to="/welcome">
+            Login to your account
+          </NavLink>
         </div>
-
       </form>
     </div>
   );

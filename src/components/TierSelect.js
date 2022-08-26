@@ -41,10 +41,16 @@ export default function TierSelect({
       className="form-select"
       name="tier"
       value={value}
-      onChange={(e) => { handleChange(e); }}
+      onChange={(e) => {
+        handleChange(e);
+      }}
       required
     >
-      {showDefault ? <option value="0">All tiers</option> : <option value="0">-- Select tier --</option>}
+      {showDefault ? (
+        <option value="0">All tiers</option>
+      ) : (
+        <option value="0">-- Select tier --</option>
+      )}
       {tiers.map((tier) => (
         <option key={tier.postTierID} value={tier.postTierID}>
           {tier.name}

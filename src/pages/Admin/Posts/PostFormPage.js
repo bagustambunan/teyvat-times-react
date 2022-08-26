@@ -179,7 +179,11 @@ export default function PostFormPage() {
   return (
     <>
       <TitleSection title={`${mode} Post`} icon="bi-newspaper" />
-      <PostForm form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <PostForm
+        form={form}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </>
   );
 }

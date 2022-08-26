@@ -2,12 +2,8 @@ import React from 'react';
 
 export default function Pagination({ pagination, changePage }) {
   const pages = [];
-  let showPages = [];
-  for (let i = 1; i <= pagination.totalPage; i++) {
+  for (let i = 1; i <= pagination.totalPage; i += 1) {
     pages.push(i);
-  }
-  if (pagination.totalPage > 3) {
-    showPages = pages.slice(pagination.currentPage - 1, 3);
   }
   return (
     <div className="">
@@ -20,7 +16,9 @@ export default function Pagination({ pagination, changePage }) {
       <li><a href="#">&gt;</a></li>
       <li><a href="#">&gt;&gt;</a></li> */}
         {pages.map((item) => (
-          <li key={item} onClick={() => changePage(item)}>{item}</li>
+          <li key={item} onClick={() => changePage(item)}>
+            {item}
+          </li>
         ))}
       </ul>
     </div>
