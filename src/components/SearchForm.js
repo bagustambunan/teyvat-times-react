@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function SearchForm({ value, handleChange, handleSubmit }) {
   const submitForm = (e) => {
@@ -17,7 +17,7 @@ export default function SearchForm({ value, handleChange, handleSubmit }) {
           onChange={(e) => { handleChange(e); }}
         />
         <button type="submit" className="btn btn-outline-secondary">
-          <i className="bi bi-search"></i>
+          <i className="bi bi-search" />
         </button>
       </div>
     </form>

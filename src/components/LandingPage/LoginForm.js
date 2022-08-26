@@ -8,8 +8,8 @@ import SubmitButton from '../Form/SubmitButton';
 export default function LoginForm({ checkToken }) {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    email: "jean@mail.com",
-    password: "jean123",
+    email: 'jean@mail.com',
+    password: 'jean123',
   });
   const handleChange = (e) => {
     const { name } = e.currentTarget;
@@ -17,10 +17,10 @@ export default function LoginForm({ checkToken }) {
     setForm({ ...form, [name]: value });
   };
   const isFormValid = () => {
-    if (form.email === "") {
+    if (form.email === '') {
       return false;
     }
-    if (form.password === "") {
+    if (form.password === '') {
       return false;
     }
     return true;
@@ -31,8 +31,8 @@ export default function LoginForm({ checkToken }) {
       password: form.password,
     };
 
-    fetch("http://localhost:8080/sign-in", {
-      method: "POST",
+    fetch('http://localhost:8080/sign-in', {
+      method: 'POST',
       body: JSON.stringify(dataToPost),
     })
       .then((res) => res.json())
@@ -42,7 +42,7 @@ export default function LoginForm({ checkToken }) {
           checkToken();
         }
         if (res.statusCode !== 200) {
-          toast.warn("Wrong email or password");
+          toast.warn('Wrong email or password');
         }
       })
       .catch((err) => {

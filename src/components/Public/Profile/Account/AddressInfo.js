@@ -1,5 +1,5 @@
-import React from 'react'
-import ButtonEdit from '../../../ButtonEdit'
+import React from 'react';
+import ButtonEdit from '../../../ButtonEdit';
 
 export default function AddressInfo({ address }) {
   return (
@@ -33,5 +33,5 @@ export default function AddressInfo({ address }) {
         </tbody>
       </table>
     </div>
-  )
+  );
 }

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import PostForm from '../../../components/Admin/Post/PostForm'
-import TitleSection from '../../../components/Admin/TitleSection'
+import PostForm from '../../../components/Admin/Post/PostForm';
+import TitleSection from '../../../components/Admin/TitleSection';
 import Post from '../../../models/Post';
 import { selectToken } from '../../../store/tokenSlice';
 
@@ -48,13 +48,13 @@ export default function PostFormPage() {
       return false;
     }
     return true;
-  }
+  };
 
   const fetchPost = (postID) => {
-    fetch("http://localhost:8080/posts/"+postID, {
-      method: "GET",
+    fetch(`http://localhost:8080/posts/${postID}`, {
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -104,18 +104,18 @@ export default function PostFormPage() {
       summary: form.summary,
     };
 
-    fetch("http://localhost:8080/posts/", {
-      method: "POST",
+    fetch('http://localhost:8080/posts/', {
+      method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          toast.success("Post created successfully");
-          navigate("/admin/posts");
+          toast.success('Post created successfully');
+          navigate('/admin/posts');
         }
         if (res.statusCode !== 201) {
           toast.error(`Error: ${res.message}`);
@@ -135,10 +135,10 @@ export default function PostFormPage() {
       summary: form.summary,
     };
 
-    fetch("http://localhost:8080/posts/"+form.postID, {
-      method: "PUT",
+    fetch(`http://localhost:8080/posts/${form.postID}`, {
+      method: 'PUT',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })
@@ -146,7 +146,7 @@ export default function PostFormPage() {
       .then((res) => {
         if (res.statusCode === 200) {
           toast.success('Post edited successfully');
-          navigate("/admin/posts");
+          navigate('/admin/posts');
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -172,14 +172,14 @@ export default function PostFormPage() {
   useEffect(() => {
     if (params.postID !== undefined) {
       fetchPost(params.postID);
-      setMode('Edit')
+      setMode('Edit');
     }
-  },[]);
+  }, []);
 
   return (
     <>
-      <TitleSection title={`${mode} Post`} icon="bi-newspaper"/>
-      <PostForm form={form} handleChange={handleChange} handleSubmit={handleSubmit}/>
+      <TitleSection title={`${mode} Post`} icon="bi-newspaper" />
+      <PostForm form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
     </>
-  )
+  );
 }

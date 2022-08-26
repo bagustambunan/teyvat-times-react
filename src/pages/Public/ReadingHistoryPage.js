@@ -6,7 +6,7 @@ export default function ReadingHistoryPage() {
     <div className="row">
 
       <PostsSection />
-      
+
     </div>
-  )
+  );
 }

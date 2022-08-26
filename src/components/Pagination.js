@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Pagination({ pagination, changePage }) {
   const pages = [];
@@ -7,7 +7,7 @@ export default function Pagination({ pagination, changePage }) {
     pages.push(i);
   }
   if (pagination.totalPage > 3) {
-    showPages = pages.slice(pagination.currentPage-1, 3);
+    showPages = pages.slice(pagination.currentPage - 1, 3);
   }
   return (
     <div className="">

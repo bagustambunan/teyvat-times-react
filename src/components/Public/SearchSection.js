@@ -1,8 +1,8 @@
-import React from "react";
-import SearchForm from "../SearchForm";
-import TierSelect from "../TierSelect";
-import CategorySelect from "../CategorySelect";
-import SortSelect from "../SortSelect";
+import React from 'react';
+import SearchForm from '../SearchForm';
+import TierSelect from '../TierSelect';
+import CategorySelect from '../CategorySelect';
+import SortSelect from '../SortSelect';
 
 export default function SearchSection({ form, handleChange, handleSubmit }) {
   return (
@@ -21,7 +21,7 @@ export default function SearchSection({ form, handleChange, handleSubmit }) {
       <div>
         <SearchForm value={form.s} handleChange={handleChange} handleSubmit={handleSubmit} />
       </div>
-      
+
     </section>
   );
 }

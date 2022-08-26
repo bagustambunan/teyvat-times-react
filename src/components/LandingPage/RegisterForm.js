@@ -6,18 +6,18 @@ import SubmitButton from '../Form/SubmitButton';
 export default function RegisterForm({ checkToken }) {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    username: "",
-    password: "",
-    passwordConfirm: "",
-    phone: "",
-    street: "",
-    city: "",
-    state: "",
-    country: "",
-    postalCode: "",
-    referrerCode: "",
+    name: '',
+    email: '',
+    username: '',
+    password: '',
+    passwordConfirm: '',
+    phone: '',
+    street: '',
+    city: '',
+    state: '',
+    country: '',
+    postalCode: '',
+    referrerCode: '',
   });
   const handleChange = (e) => {
     const { name } = e.currentTarget;
@@ -25,48 +25,48 @@ export default function RegisterForm({ checkToken }) {
     setForm({ ...form, [name]: value });
   };
   const isFormValid = () => {
-    if (form.name === "") {
-      toast.warn("Field name is required");
+    if (form.name === '') {
+      toast.warn('Field name is required');
       return false;
     }
-    if (form.email === "") {
-      toast.warn("Field email is required");
+    if (form.email === '') {
+      toast.warn('Field email is required');
       return false;
     }
-    if (form.username === "") {
-      toast.warn("Field username is required");
+    if (form.username === '') {
+      toast.warn('Field username is required');
       return false;
     }
-    if (form.password === "") {
-      toast.warn("Field password is required");
+    if (form.password === '') {
+      toast.warn('Field password is required');
       return false;
     }
     if (form.passwordConfirm !== form.password) {
       toast.warn("Confirmation password doesn't match");
       return false;
     }
-    if (form.phone === "") {
-      toast.warn("Field phone is required");
+    if (form.phone === '') {
+      toast.warn('Field phone is required');
       return false;
     }
-    if (form.street === "") {
-      toast.warn("Field street is required");
+    if (form.street === '') {
+      toast.warn('Field street is required');
       return false;
     }
-    if (form.city === "") {
-      toast.warn("Field city is required");
+    if (form.city === '') {
+      toast.warn('Field city is required');
       return false;
     }
-    if (form.state === "") {
-      toast.warn("Field state is required");
+    if (form.state === '') {
+      toast.warn('Field state is required');
       return false;
     }
-    if (form.country === "") {
-      toast.warn("Field country is required");
+    if (form.country === '') {
+      toast.warn('Field country is required');
       return false;
     }
-    if (form.postalCode === "") {
-      toast.warn("Field postalCode is required");
+    if (form.postalCode === '') {
+      toast.warn('Field postalCode is required');
       return false;
     }
     return true;
@@ -86,15 +86,15 @@ export default function RegisterForm({ checkToken }) {
       referrerCode: form.referrerCode,
     };
 
-    fetch("http://localhost:8080/sign-up", {
-      method: "POST",
+    fetch('http://localhost:8080/sign-up', {
+      method: 'POST',
       body: JSON.stringify(dataToPost),
     })
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
           toast.success('Sign up success. You can login to your account');
-          navigate("/welcome");
+          navigate('/welcome');
         }
         if (res.statusCode !== 201) {
           toast.error(res.message);

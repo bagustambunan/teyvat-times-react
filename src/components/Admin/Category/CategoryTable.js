@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import CategoryRow from "./CategoryRow";
-import { selectToken } from "../../../store/tokenSlice";
+import CategoryRow from './CategoryRow';
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function CategoryTable() {
   const [categories, setCategories] = useState([]);
 
   const token = useSelector(selectToken);
   const fetchCategories = () => {
-    fetch("http://localhost:8080/pub/categories", {
-      method: "GET",
+    fetch('http://localhost:8080/pub/categories', {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },

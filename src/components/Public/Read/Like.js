@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Like({ isLiked, changeLike, totalLike }) {
   return (
@@ -8,9 +8,9 @@ export default function Like({ isLiked, changeLike, totalLike }) {
       onClick={() => changeLike()}
     >
       {isLiked === 1 ? (
-      <i className="bi bi-heart-fill text-danger"></i>
+        <i className="bi bi-heart-fill text-danger" />
       ) : (
-      <i className="bi bi-heart"></i>
+        <i className="bi bi-heart" />
       )}
       {totalLike}
     </button>

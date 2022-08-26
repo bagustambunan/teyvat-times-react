@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function ReferralRow({ referral, i }) {
   return (
@@ -7,5 +7,5 @@ export default function ReferralRow({ referral, i }) {
       <td>{referral.name}</td>
       <td>-</td>
     </tr>
-  )
+  );
 }

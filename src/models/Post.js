@@ -42,5 +42,4 @@ export default class Post {
     const d = new Date(this.updatedAt);
     return `${d.toDateString()} ${d.toLocaleTimeString()}`;
   }
-
 }

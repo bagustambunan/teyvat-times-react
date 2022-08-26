@@ -1,5 +1,5 @@
 export default class User {
-  constructor (
+  constructor(
     userID,
     role,
     username,

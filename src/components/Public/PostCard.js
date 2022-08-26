@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import CategoryBox from "../CategoryBox";
-import TierBox from "../TierBox";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import CategoryBox from '../CategoryBox';
+import TierBox from '../TierBox';
 
 export default function PostCard({ post }) {
   return (
@@ -23,7 +23,7 @@ export default function PostCard({ post }) {
             <TierBox tier={post.postTier} />
             <CategoryBox category={post.postCategory} />
           </div>
-          
+
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { selectToken } from "../store/tokenSlice";
+import { selectToken } from '../store/tokenSlice';
 
 export default function TierSelect({
   showDefault = true,
@@ -12,8 +12,8 @@ export default function TierSelect({
 
   const token = useSelector(selectToken);
   const fetchTiers = () => {
-    fetch("http://localhost:8080/pub/tiers", {
-      method: "GET",
+    fetch('http://localhost:8080/pub/tiers', {
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },

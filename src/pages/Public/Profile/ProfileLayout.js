@@ -1,6 +1,6 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Sidebar from '../../../components/Public/Sidebar'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from '../../../components/Public/Sidebar';
 
 export default function ProfileLayout() {
   return (
@@ -14,5 +14,5 @@ export default function ProfileLayout() {
         </div>
       </div>
     </div>
-  )
+  );
 }

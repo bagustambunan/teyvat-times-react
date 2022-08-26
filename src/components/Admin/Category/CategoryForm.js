@@ -1,5 +1,5 @@
-import React from 'react'
-import SubmitIcon from "../../SubmitIcon";
+import React from 'react';
+import SubmitIcon from '../../SubmitIcon';
 
 export default function CategoryForm({ form, handleChange, handleSubmit }) {
   const submitForm = (e) => {
@@ -35,7 +35,7 @@ export default function CategoryForm({ form, handleChange, handleSubmit }) {
           onChange={(e) => { handleChange(e); }}
         />
       </div>
-      <SubmitIcon text="Save" icon="bi-save"/>
+      <SubmitIcon text="Save" icon="bi-save" />
     </form>
-  )
+  );
 }

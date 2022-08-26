@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import ReferralInfo from '../../../components/Public/Profile/Referral/ReferralInfo'
+import ReferralInfo from '../../../components/Public/Profile/Referral/ReferralInfo';
 import Referral from '../../../models/Referral';
 import { selectToken } from '../../../store/tokenSlice';
 import { selectUser } from '../../../store/userSlice';
@@ -14,9 +14,9 @@ export default function ReferralDashboard() {
   const fetchReferrals = () => {
     setIsLoading(true);
     fetch(`http://localhost:8080/pub/users/${user.userID}/downlines`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => (res.json()))
@@ -42,11 +42,11 @@ export default function ReferralDashboard() {
   };
   useEffect(() => {
     fetchReferrals();
-  },[]);
+  }, []);
   if (isLoading) {
-    return "Loading..."
+    return 'Loading...';
   }
   return (
-    <ReferralInfo referrals={referrals}/>
-  )
+    <ReferralInfo referrals={referrals} />
+  );
 }

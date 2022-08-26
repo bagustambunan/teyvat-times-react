@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import ReferralRow from './ReferralRow';
 
 export default function ReferralInfo({ referrals }) {
@@ -7,7 +7,7 @@ export default function ReferralInfo({ referrals }) {
       <div className="d-flex justify-content-between align-items-center">
         <h5>My Referrals</h5>
       </div>
-      
+
       <table className="table">
         <thead>
           <tr>
@@ -18,10 +18,10 @@ export default function ReferralInfo({ referrals }) {
         </thead>
         <tbody>
           {referrals.map((referral, i) => (
-            <ReferralRow referral={referral} i={i+1} key={referral.userID} />
+            <ReferralRow referral={referral} i={i + 1} key={referral.userID} />
           ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

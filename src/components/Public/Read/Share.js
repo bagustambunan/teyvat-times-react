@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function Share({ isShared, changeShare, totalShare }) {
   return (
@@ -8,11 +8,11 @@ export default function Share({ isShared, changeShare, totalShare }) {
       onClick={() => changeShare()}
     >
       {isShared === 1 ? (
-      <i className="bi bi-share-fill text-primary"></i>
+        <i className="bi bi-share-fill text-primary" />
       ) : (
-      <i className="bi bi-share"></i>
+        <i className="bi bi-share" />
       )}
       {totalShare}
     </button>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import CategorySelect from "../../CategorySelect";
-import SubmitIcon from "../../SubmitIcon";
-import TierSelect from "../../TierSelect";
+import React from 'react';
+import CategorySelect from '../../CategorySelect';
+import SubmitIcon from '../../SubmitIcon';
+import TierSelect from '../../TierSelect';
 
 export default function PostForm({ form, handleChange, handleSubmit }) {
   const submitForm = (e) => {
@@ -34,7 +34,7 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
           name="content"
           value={form.content}
           onChange={(e) => { handleChange(e); }}
-        ></textarea>
+        />
       </div>
       <div className="mb-3">
         <label htmlFor="summary" className="form-label">
@@ -47,7 +47,7 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
           name="summary"
           value={form.summary}
           onChange={(e) => { handleChange(e); }}
-        ></textarea>
+        />
       </div>
 
       <div className="mb-3">
@@ -64,7 +64,7 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
         <CategorySelect showDefault={false} value={form.category} handleChange={handleChange} />
       </div>
 
-      <SubmitIcon text="Save" icon="bi-save"/>
+      <SubmitIcon text="Save" icon="bi-save" />
     </form>
   );
 }

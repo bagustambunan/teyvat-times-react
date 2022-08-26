@@ -26,12 +26,12 @@ export default function HomePage() {
 
   const changePage = (page) => {
     setPagination({ ...pagination, currentPage: page });
-    setForm({ ...form, page: page });
+    setForm({ ...form, page });
   };
   useEffect(() => {
     resetPage();
     fetchPosts();
-  },[form.category, form.tier, form.sortOrder, form.page]);
+  }, [form.category, form.tier, form.sortOrder, form.page]);
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
@@ -48,9 +48,9 @@ export default function HomePage() {
   const token = useSelector(selectToken);
   const fetchPosts = () => {
     fetch(`http://localhost:8080/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => (res.json()))
@@ -89,7 +89,7 @@ export default function HomePage() {
   };
   useEffect(() => {
     fetchPosts();
-  },[]);
+  }, []);
 
   return (
     <div className="row">
@@ -103,7 +103,7 @@ export default function HomePage() {
         <SearchSection form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
         <TrendingSection />
       </aside>
-      
+
     </div>
-  )
+  );
 }

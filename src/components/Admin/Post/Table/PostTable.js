@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import Pagination from "../../../Pagination";
-import TableController from "./TableController";
-import PostRow from "./PostRow";
-import Post from "../../../../models/Post";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectToken } from "../../../../store/tokenSlice";
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Pagination from '../../../Pagination';
+import TableController from './TableController';
+import PostRow from './PostRow';
+import Post from '../../../../models/Post';
+import { selectToken } from '../../../../store/tokenSlice';
 
 export default function PostTable() {
   const navigate = useNavigate();
@@ -27,12 +27,12 @@ export default function PostTable() {
 
   const changePage = (page) => {
     setPagination({ ...pagination, currentPage: page });
-    setForm({ ...form, page: page });
-  }
+    setForm({ ...form, page });
+  };
 
   useEffect(() => {
     fetchPosts();
-  },[form.page]);
+  }, [form.page]);
 
   const handleChange = (e) => {
     const { name } = e.currentTarget;
@@ -46,9 +46,9 @@ export default function PostTable() {
   const token = useSelector(selectToken);
   const fetchPosts = () => {
     fetch(`http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => (res.json()))
@@ -87,17 +87,17 @@ export default function PostTable() {
   };
 
   const deletePost = (postID) => {
-    fetch("http://localhost:8080/posts/"+postID, {
-      method: "DELETE",
+    fetch(`http://localhost:8080/posts/${postID}`, {
+      method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
           toast.success('Post deleted successfully');
-          navigate("/admin/posts");
+          navigate('/admin/posts');
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -111,11 +111,11 @@ export default function PostTable() {
     if (confirm(`Delete this post?\n\n${post.title}`) === true) {
       deletePost(post.postID);
     }
-  }
+  };
 
   useEffect(() => {
     fetchPosts();
-  },[])
+  }, []);
 
   return (
     <>
@@ -132,11 +132,11 @@ export default function PostTable() {
         </thead>
         <tbody>
           {posts.map((post, index) => (
-            <PostRow key={post.postID} post={post} i={index+1} handleDelete={handleDelete} />
+            <PostRow key={post.postID} post={post} i={index + 1} handleDelete={handleDelete} />
           ))}
         </tbody>
       </table>
-      <Pagination pagination={pagination} changePage={changePage}/>
+      <Pagination pagination={pagination} changePage={changePage} />
     </>
   );
 }

@@ -48,13 +48,13 @@ function App() {
         <Route path="/admin/posts" element={<PostDashboard />} />
         <Route path="/admin/posts/new" element={<PostFormPage />} />
         <Route path="/admin/posts/:postID/edit" element={<PostFormPage />} />
-        
+
         <Route path="/admin/tiers" element={<TierDashboard />} />
 
         <Route path="/admin/categories" element={<CategoryDashboard />} />
         <Route path="/admin/categories/new" element={<CategoryFormPage />} />
         <Route path="/admin/categories/:categoryID/edit" element={<CategoryFormPage />} />
-      
+
       </Route>
 
       <Route path="*" element={<h1>404 Not Found!</h1>} />

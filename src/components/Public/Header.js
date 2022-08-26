@@ -1,5 +1,5 @@
-import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export default function Header() {
   const usePathName = () => {
@@ -31,7 +31,7 @@ export default function Header() {
               <li className="nav-item">
                 <NavLink
                   to="/"
-                  className={`nav-link ${pathName === "/" ? "active" : ""}`}
+                  className={`nav-link ${pathName === '/' ? 'active' : ''}`}
                 >
                   Home
                 </NavLink>
@@ -40,7 +40,7 @@ export default function Header() {
                 <NavLink
                   to="/subscription"
                   className={`nav-link ${
-                    pathName === "/subscription" ? "active" : ""
+                    pathName === '/subscription' ? 'active' : ''
                   }`}
                 >
                   Subscription
@@ -50,7 +50,7 @@ export default function Header() {
                 <NavLink
                   to="/history"
                   className={`nav-link ${
-                    pathName === "/history" ? "active" : ""
+                    pathName === '/history' ? 'active' : ''
                   }`}
                 >
                   Reading history
@@ -60,7 +60,7 @@ export default function Header() {
                 <NavLink
                   to="/profile"
                   className={`nav-link ${
-                    pathName === "/profile" ? "active" : ""
+                    pathName === '/profile' ? 'active' : ''
                   }`}
                 >
                   Profile

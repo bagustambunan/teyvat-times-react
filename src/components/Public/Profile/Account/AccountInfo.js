@@ -1,5 +1,5 @@
-import React from "react";
-import ButtonEdit from "../../../ButtonEdit";
+import React from 'react';
+import ButtonEdit from '../../../ButtonEdit';
 
 export default function AccountInfo({ user }) {
   return (
@@ -8,7 +8,7 @@ export default function AccountInfo({ user }) {
         <h5>General Information</h5>
         <div><ButtonEdit /></div>
       </div>
-      
+
       <table className="table">
         <tbody>
           <tr>

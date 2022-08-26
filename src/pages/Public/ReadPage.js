@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import PostDetail from '../../components/Public/Read/PostDetail';
 import Post from '../../models/Post';
-import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/tokenSlice';
 
 export default function ReadPage() {
@@ -18,10 +18,10 @@ export default function ReadPage() {
 
   const fetchPost = (slug) => {
     setIsLoading(true);
-    fetch("http://localhost:8080/pub/posts/slug/"+slug, {
-      method: "GET",
+    fetch(`http://localhost:8080/pub/posts/slug/${slug}`, {
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -58,10 +58,10 @@ export default function ReadPage() {
   };
   const fetchMyActivity = (postID) => {
     setIsLoading(true);
-    fetch("http://localhost:8080/pub/posts/"+postID+"/activities", {
-      method: "GET",
+    fetch(`http://localhost:8080/pub/posts/${postID}/activities`, {
+      method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -70,7 +70,7 @@ export default function ReadPage() {
           setMyActivity({
             isLiked: res.data.isLiked,
             isShared: res.data.isShared,
-          })
+          });
           setIsLoading(false);
         }
         if (res.statusCode !== 200) {
@@ -86,10 +86,10 @@ export default function ReadPage() {
       isLiked: myActivity.isLiked,
       isShared: myActivity.isShared,
     };
-    fetch("http://localhost:8080/pub/posts/"+post.postID+"/activities", {
-      method: "POST",
+    fetch(`http://localhost:8080/pub/posts/${post.postID}/activities`, {
+      method: 'POST',
       headers: {
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(dataToPost),
     })
@@ -106,31 +106,31 @@ export default function ReadPage() {
 
   const changeLike = () => {
     setMyActivity({ ...myActivity, isLiked: myActivity.isLiked === 0 ? 1 : 0 });
-  }
+  };
   const changeShare = () => {
     setMyActivity({ ...myActivity, isShared: myActivity.isShared === 0 ? 1 : 0 });
-  }
+  };
   useEffect(() => {
     if (!isLoading) {
       updateMyActivity();
     }
-  },[myActivity])
+  }, [myActivity]);
 
   const params = useParams();
   useEffect(() => {
     if (params.slug !== undefined) {
       fetchPost(params.slug);
     }
-  },[]);
+  }, []);
 
   if (isLoading) {
-    return "Loading..."
+    return 'Loading...';
   }
 
   return (
     <div className="container bg-white py-5 border rounded">
       <PostDetail post={post} myActivity={myActivity} changeLike={changeLike} changeShare={changeShare} />
     </div>
-    
+
   );
 }
