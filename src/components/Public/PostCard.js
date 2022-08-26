@@ -9,7 +9,7 @@ export default function PostCard({ post }) {
       <div className="card mb-3">
 
         <NavLink to={`/read/${post.slug}`}>
-          <img src="default.png" className="card-img-top post-card-img" alt="..." />
+          <img src={post.imgThumbnail.url} className="card-img-top post-card-img" alt="..." />
         </NavLink>
 
         <div className="card-body">

@@ -18,7 +18,7 @@ export default function PostDetail({ post, myActivity, changeLike, changeShare }
       </div>
       
       <div className="read-img">
-        <img src="../default.png" className="img-fluid" alt="..." />
+        <img src={post.imgContent.url} className="img-fluid" alt="..." />
       </div>
 
       <div>
