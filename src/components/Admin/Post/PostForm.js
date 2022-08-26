@@ -11,7 +11,7 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
   return (
     <form onSubmit={submitForm}>
       <div className="mb-3">
-        <label for="title" className="form-label">
+        <label htmlFor="title" className="form-label">
           Title
         </label>
         <input
@@ -24,7 +24,7 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
         />
       </div>
       <div className="mb-3">
-        <label for="content" className="form-label">
+        <label htmlFor="content" className="form-label">
           Content
         </label>
         <textarea
@@ -37,7 +37,7 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
         ></textarea>
       </div>
       <div className="mb-3">
-        <label for="summary" className="form-label">
+        <label htmlFor="summary" className="form-label">
           Summary
         </label>
         <textarea
@@ -51,14 +51,14 @@ export default function PostForm({ form, handleChange, handleSubmit }) {
       </div>
 
       <div className="mb-3">
-        <label for="tier" className="form-label">
+        <label htmlFor="tier" className="form-label">
           Tier
         </label>
         <TierSelect showDefault={false} value={form.tier} handleChange={handleChange} />
       </div>
 
       <div className="mb-3">
-        <label for="category" className="form-label">
+        <label htmlFor="category" className="form-label">
           Category
         </label>
         <CategorySelect showDefault={false} value={form.category} handleChange={handleChange} />

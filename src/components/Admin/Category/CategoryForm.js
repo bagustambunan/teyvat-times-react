@@ -9,7 +9,7 @@ export default function CategoryForm({ form, handleChange, handleSubmit }) {
   return (
     <form onSubmit={submitForm}>
       <div className="mb-3">
-        <label for="name" className="form-label">
+        <label htmlFor="name" className="form-label">
           Category Name
         </label>
         <input
@@ -23,7 +23,7 @@ export default function CategoryForm({ form, handleChange, handleSubmit }) {
       </div>
 
       <div className="mb-3">
-        <label for="color" className="form-label">
+        <label htmlFor="color" className="form-label">
           Color
         </label>
         <input
