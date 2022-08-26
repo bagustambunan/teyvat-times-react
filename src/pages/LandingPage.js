@@ -5,17 +5,19 @@ import LoginForm from "../components/LandingPage/LoginForm";
 
 import 'react-toastify/dist/ReactToastify.css';
 import RegisterForm from "../components/LandingPage/RegisterForm";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage({ mode }) {
+  const navigate = useNavigate();
   const getToken = () => localStorage.getItem("token");
   const checkToken = () => {
     if (getToken() !== null) {
       const decoded = jwt_decode(getToken());
       if (decoded.user.roleID === 1) {
-        window.location.href = "/admin";
+        navigate("/admin");
       }
       if (decoded.user.roleID !== 1) {
-        window.location.href = "/";
+        navigate("/");
       }
     }
   }

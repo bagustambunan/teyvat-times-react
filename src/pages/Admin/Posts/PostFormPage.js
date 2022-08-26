@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import PostForm from '../../../components/Admin/Post/PostForm'
 import TitleSection from '../../../components/Admin/TitleSection'
 import Post from '../../../models/Post';
 
 export default function PostFormPage() {
+  const navigate = useNavigate();
   const [mode, setMode] = useState('New');
   const [form, setForm] = useState({
     postID: '',
@@ -111,8 +112,8 @@ export default function PostFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          alert('Post added successfully');
-          window.location.href = "/admin/posts";
+          toast.success("Post added successfully");
+          navigate("/admin/posts");
         }
         if (res.statusCode !== 201) {
           toast.error(`Error: ${res.message}`);
@@ -142,8 +143,8 @@ export default function PostFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          alert('Post edited successfully');
-          window.location.href = "/admin/posts";
+          toast.success('Post edited successfully');
+          navigate("/admin/posts");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);

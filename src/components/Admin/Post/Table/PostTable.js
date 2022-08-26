@@ -4,8 +4,10 @@ import Pagination from "../../../Pagination";
 import TableController from "./TableController";
 import PostRow from "./PostRow";
 import Post from "../../../../models/Post";
+import { useNavigate } from "react-router-dom";
 
 export default function PostTable() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({
     s: '',
@@ -92,8 +94,8 @@ export default function PostTable() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          alert('Post deleted successfully');
-          // window.location.href = "/admin";
+          toast.success('Post deleted successfully');
+          navigate("/admin/posts");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);

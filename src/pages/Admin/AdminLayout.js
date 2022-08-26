@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Sidebar from "../../components/Admin/Sidebar";
 
 export default function AdminLayout() {
+  const navigate = useNavigate();
   const getToken = () => localStorage.getItem("token");
   useEffect(() => {
     if (getToken() !== null) {
       const decodedToken = jwt_decode(getToken());
       if (decodedToken.user.roleID !== 1) {
-        window.location.href = "/";
+        navigate("/");
       }
       checkValidToken(decodedToken);
     } else {
-      window.location.href = "/logout";
+      navigate("/logout");
     }
   }, []);
 

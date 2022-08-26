@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import CategoryForm from '../../../components/Admin/Category/CategoryForm'
 import TitleSection from '../../../components/Admin/TitleSection'
 
 export default function CategoryFormPage() {
+  const navigate = useNavigate();
   const [mode, setMode] = useState('New');
   const [form, setForm] = useState({
     postCategoryID: '',
@@ -62,8 +63,8 @@ export default function CategoryFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          alert('Category added successfully');
-          window.location.href = "/admin/categories";
+          toast.success("Category added successfully");
+          navigate("/");
         }
         if (res.statusCode !== 201) {
           toast.error(`Error: ${res.message}`);
@@ -90,8 +91,8 @@ export default function CategoryFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          alert('Category edited successfully');
-          window.location.href = "/admin/categories";
+          toast.success("Category edited successfully");
+          navigate("/admin/categories");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);

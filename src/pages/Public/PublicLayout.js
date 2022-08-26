@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { ToastContainer } from "react-toastify";
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Header from '../../components/Public/Header';
 
 export default function PublicLayout() {
-
+  const navigate = useNavigate();
   const getToken = () => localStorage.getItem('token');
   useEffect(() => {
     if (getToken() === null) {
-      window.location.href = "/logout";
+      navigate("/logout");
     }
   },[]);
 

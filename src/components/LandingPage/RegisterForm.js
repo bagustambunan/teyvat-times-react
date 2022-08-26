@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SubmitButton from '../Form/SubmitButton';
 
 export default function RegisterForm({ checkToken }) {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -53,8 +54,8 @@ export default function RegisterForm({ checkToken }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          console.log(res);
-          alert('Sign up success');
+          toast.success('Sign up success. You can login to your account');
+          navigate("/welcome");
         }
         if (res.statusCode !== 201) {
           toast.error(res.message);
@@ -235,8 +236,6 @@ export default function RegisterForm({ checkToken }) {
             </div>
           </div>
         </div>
-
-        
 
         <div className="mb-3">
           <SubmitButton text="Sign Up" />
