@@ -63,7 +63,7 @@ export default function CategoryFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          toast.success("Category added successfully");
+          toast.success("Category created successfully");
           navigate("/");
         }
         if (res.statusCode !== 201) {

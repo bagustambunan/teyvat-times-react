@@ -112,7 +112,7 @@ export default function PostFormPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          toast.success("Post added successfully");
+          toast.success("Post created successfully");
           navigate("/admin/posts");
         }
         if (res.statusCode !== 201) {
