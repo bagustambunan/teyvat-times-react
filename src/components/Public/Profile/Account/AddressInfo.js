@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import ButtonEdit from '../../../ButtonEdit'
 
 export default function AddressInfo({ address }) {
@@ -7,9 +6,7 @@ export default function AddressInfo({ address }) {
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
         <h5>Address</h5>
-        <NavLink to="/profile/account/edit/address">
-          <ButtonEdit />
-        </NavLink>
+        <div><ButtonEdit /></div>
       </div>
       <table className="table">
         <tbody>

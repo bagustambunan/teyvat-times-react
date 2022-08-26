@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
 import AccountInfo from '../../../components/Public/Profile/Account/AccountInfo'
 import AddressInfo from '../../../components/Public/Profile/Account/AddressInfo';
+import PicInfo from '../../../components/Public/Profile/Account/PicInfo';
+import ButtonIcon from '../../../components/ButtonIcon';
 
 export default function AccountDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,8 +51,10 @@ export default function AccountDashboard() {
 
   return (
     <div className="p-3">
+      <PicInfo image={user.profilePic}/>
       <AccountInfo user={user} />
       <AddressInfo address={user.address} />
+      <ButtonIcon text="Change password" icon="bi-pencil" />
     </div>
   )
 }
