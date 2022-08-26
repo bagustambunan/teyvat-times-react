@@ -10,6 +10,7 @@ export default function RegisterForm({ checkToken }) {
     email: "",
     username: "",
     password: "",
+    passwordConfirm: "",
     phone: "",
     street: "",
     city: "",
@@ -24,10 +25,48 @@ export default function RegisterForm({ checkToken }) {
     setForm({ ...form, [name]: value });
   };
   const isFormValid = () => {
+    if (form.name === "") {
+      toast.warn("Field name is required");
+      return false;
+    }
     if (form.email === "") {
+      toast.warn("Field email is required");
+      return false;
+    }
+    if (form.username === "") {
+      toast.warn("Field username is required");
       return false;
     }
     if (form.password === "") {
+      toast.warn("Field password is required");
+      return false;
+    }
+    if (form.passwordConfirm !== form.password) {
+      toast.warn("Confirmation password doesn't match");
+      return false;
+    }
+    if (form.phone === "") {
+      toast.warn("Field phone is required");
+      return false;
+    }
+    if (form.street === "") {
+      toast.warn("Field street is required");
+      return false;
+    }
+    if (form.city === "") {
+      toast.warn("Field city is required");
+      return false;
+    }
+    if (form.state === "") {
+      toast.warn("Field state is required");
+      return false;
+    }
+    if (form.country === "") {
+      toast.warn("Field country is required");
+      return false;
+    }
+    if (form.postalCode === "") {
+      toast.warn("Field postalCode is required");
       return false;
     }
     return true;
@@ -131,6 +170,19 @@ export default function RegisterForm({ checkToken }) {
                 placeholder="Password"
                 name="password"
                 value={form.password}
+                onChange={(e) => { handleChange(e); }}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="passwordConfirm" className="form-label">
+                Confirmation Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Confirmation Password"
+                name="passwordConfirm"
+                value={form.passwordConfirm}
                 onChange={(e) => { handleChange(e); }}
               />
             </div>
