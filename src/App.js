@@ -15,6 +15,7 @@ import CategoryFormPage from './pages/Admin/Posts/CategoryFormPage';
 import ReadPage from './pages/Public/ReadPage';
 import ProfileLayout from './pages/Public/Profile/ProfileLayout';
 import AccountDashboard from './pages/Public/Profile/AccountDashboard';
+import ReferralDashboard from './pages/Public/Profile/ReferralDashboard';
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           <Route path="/profile/account" element={<AccountDashboard />} />
           <Route path="/profile/mysubscription" element={<AccountDashboard />} />
           <Route path="/profile/myvoucher" element={<AccountDashboard />} />
-          <Route path="/profile/myreferral" element={<AccountDashboard />} />
+          <Route path="/profile/myreferral" element={<ReferralDashboard />} />
           <Route path="/profile/mygift" element={<AccountDashboard />} />
         </Route>
       </Route>

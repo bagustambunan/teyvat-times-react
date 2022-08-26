@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import jwt_decode from "jwt-decode";
+import { toast } from 'react-toastify';
 import AccountInfo from '../../../components/Public/Profile/Account/AccountInfo'
 import AddressInfo from '../../../components/Public/Profile/Account/AddressInfo';
 import PicInfo from '../../../components/Public/Profile/Account/PicInfo';
