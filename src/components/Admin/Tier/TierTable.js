@@ -42,7 +42,7 @@ export default function TierTable() {
       </thead>
       <tbody>
         {tiers.map((tier, index) => (
-          <TierRow key={tier.tierID} tier={tier} i={index + 1} />
+          <TierRow key={tier.postTierID} tier={tier} i={index + 1} />
         ))}
       </tbody>
     </table>
