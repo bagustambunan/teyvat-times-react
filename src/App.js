@@ -16,6 +16,7 @@ import ReadPage from './pages/Public/ReadPage';
 import ProfileLayout from './pages/Public/Profile/ProfileLayout';
 import AccountDashboard from './pages/Public/Profile/AccountDashboard';
 import ReferralDashboard from './pages/Public/Profile/ReferralDashboard';
+import AdminDashboard from './pages/Admin/AdminDashboard';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function App() {
       <Route path="/admin" element={<AdminLayout />}>
 
         <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
-        <Route path="/admin/dashboard" element={<PostDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
 
         <Route path="/admin/posts" element={<PostDashboard />} />
         <Route path="/admin/posts/new" element={<PostFormPage />} />

@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {
+  setToken
+} from '../../store/tokenSlice';
 import SubmitButton from '../Form/SubmitButton';
 
 export default function LoginForm({ checkToken }) {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     email: "jean@mail.com",
     password: "jean123",
@@ -35,7 +40,7 @@ export default function LoginForm({ checkToken }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          setToken(res.data.token);
+          dispatch(setToken(res.data.token));
           checkToken();
         }
         if (res.statusCode !== 200) {
@@ -45,9 +50,6 @@ export default function LoginForm({ checkToken }) {
       .catch((err) => {
         toast.error(`Error: ${err.message}`);
       });
-  };
-  const setToken = (token) => {
-    localStorage.setItem('token',token);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
