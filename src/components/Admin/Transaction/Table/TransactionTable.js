@@ -88,6 +88,7 @@ export default function TransactionTable() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
+            <th scope="col">User</th>
             <th scope="col">Subscription</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
