@@ -13,6 +13,13 @@ export default function Sidebar() {
         </li>
 
         <li className="nav-item">
+          <NavLink to="/profile/mytransaction" className="nav-link link-dark">
+            <i className="bi bi-credit-card me-2" />
+            My Transaction
+          </NavLink>
+        </li>
+
+        <li className="nav-item">
           <NavLink to="/profile/mysubscription" className="nav-link link-dark">
             <i className="bi bi-card-list me-2" />
             My Subscription

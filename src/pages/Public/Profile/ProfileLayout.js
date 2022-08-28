@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Sidebar from '../../../components/Public/Sidebar';
+import Sidebar from '../../../components/Public/Profile/Sidebar';
 
 export default function ProfileLayout() {
   return (
