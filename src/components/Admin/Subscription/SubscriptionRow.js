@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { ParseCurrency } from '../../../helpers/Parser'
 
 export default function SubscriptionRow({ subscription, i }) {

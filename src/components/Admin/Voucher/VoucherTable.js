@@ -2,7 +2,6 @@ import React from 'react'
 import VoucherRow from './VoucherRow'
 
 export default function VoucherTable({ vouchers }) {
-  console.log(vouchers);
   return (
     <table className="table table-striped w-100 my-3">
       <thead>

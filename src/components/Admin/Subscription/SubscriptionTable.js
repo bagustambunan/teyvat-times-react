@@ -2,7 +2,6 @@ import React from 'react'
 import SubscriptionRow from './SubscriptionRow'
 
 export default function SubscriptionTable({ subscriptions }) {
-  console.log(subscriptions);
   return (
     <table className="table table-striped w-100 my-3">
       <thead>

@@ -49,7 +49,7 @@ export default function GiftDashboard() {
   }
   return (
     <>
-      <TitleSection title="Gifts" icon="bi-newspaper" />
+      <TitleSection title="Gifts" icon="bi-gift" />
       <GiftTable gifts={gifts} />
     </>
   )

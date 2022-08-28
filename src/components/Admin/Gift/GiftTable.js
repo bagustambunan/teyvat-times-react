@@ -2,7 +2,6 @@ import React from 'react'
 import GiftRow from './GiftRow'
 
 export default function GiftTable({ gifts }) {
-  console.log(gifts);
   return (
     <table className="table table-striped w-100 my-3">
       <thead>
