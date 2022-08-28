@@ -21,9 +21,11 @@ export default function PostDetail({
         <h2>{post.title}</h2>
         <p className="fst-italic text-muted small">
           Written by
+          {' '}
           {post.createdBy.name}
           {' '}
           at
+          {' '}
           {post.getCreatedAt()}
         </p>
       </div>

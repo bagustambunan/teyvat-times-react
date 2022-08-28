@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <nav className="navbar navbar-expand-lg bg-white shadow-sm p-4">
       <div className="container">
-        <a className="fs-4 navbar-brand fw-bold" href="/home">
+        <a className="fs-4 navbar-brand fw-bold" href="/">
           Teyvat News
         </a>
         <button

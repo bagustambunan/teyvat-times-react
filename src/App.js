@@ -19,6 +19,7 @@ import MyReferralDashboard from './pages/Public/Profile/MyReferralDashboard';
 import AdminDashboard from './pages/Admin/AdminDashboard';
 import SubscriptionPage from './pages/Public/Subscription/SubscriptionPage';
 import PurchasePage from './pages/Public/Subscription/PurchasePage';
+import MyTransactionDashboard from './pages/Public/Profile/MyTransactionDashboard';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/profile" element={<ProfileLayout />}>
           <Route path="/profile" element={<Navigate to="/profile/account" />} />
           <Route path="/profile/account" element={<MyAccountDashboard />} />
+          <Route path="/profile/mytransaction" element={<MyTransactionDashboard />} />
           <Route path="/profile/mysubscription" element={<MyAccountDashboard />} />
           <Route path="/profile/myvoucher" element={<MyAccountDashboard />} />
           <Route path="/profile/myreferral" element={<MyReferralDashboard />} />
