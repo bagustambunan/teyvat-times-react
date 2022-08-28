@@ -16,7 +16,7 @@ export default function HomePage() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 1,
+    limit: 2,
     page: 1,
   });
   const [pagination, setPagination] = useState({
@@ -27,10 +27,6 @@ export default function HomePage() {
   const changePage = (page) => {
     setPagination({ ...pagination, currentPage: page });
     setForm({ ...form, page });
-  };
-  const resetPage = () => {
-    setPagination({ ...pagination, currentPage: 1 });
-    setForm({ ...form, page: 1 });
   };
 
   const token = useSelector(selectToken);
@@ -80,11 +76,7 @@ export default function HomePage() {
   };
   useEffect(() => {
     fetchPosts();
-  }, []);
-  useEffect(() => {
-    resetPage();
-    fetchPosts();
-  }, [form.category, form.tier, form.sortOrder, form.page]);
+  }, [form.page]);
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
@@ -93,6 +85,9 @@ export default function HomePage() {
   const handleSubmit = () => {
     fetchPosts();
   };
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
     <div className="row">

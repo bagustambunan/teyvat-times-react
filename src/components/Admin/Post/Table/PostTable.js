@@ -10,9 +10,7 @@ import { selectToken } from '../../../../store/tokenSlice';
 
 export default function PostTable() {
   const navigate = useNavigate();
-
   const token = useSelector(selectToken);
-
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({
     s: '',
@@ -107,7 +105,6 @@ export default function PostTable() {
   useEffect(() => {
     fetchPosts();
   }, [form.page]);
-
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
@@ -116,7 +113,6 @@ export default function PostTable() {
   const handleSubmit = () => {
     fetchPosts();
   };
-
   useEffect(() => {
     fetchPosts();
   }, []);
