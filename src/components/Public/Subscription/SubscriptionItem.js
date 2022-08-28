@@ -1,6 +1,6 @@
 import React from "react";
 import Mora from "../../../components/Mora";
-import ButtonIcon from "../../ButtonIcon";
+import LinkIcon from "../../../components/LinkIcon";
 import ParseCurrency from "../../../helpers/Parser"
 
 export default function SubscriptionItem({ subscription }) {
@@ -32,7 +32,7 @@ export default function SubscriptionItem({ subscription }) {
           </div>
 
           <div className="text-center">
-            <ButtonIcon text="Buy" icon="bi-cart" />
+            <LinkIcon link={`/purchase/${subscription.subscriptionID}`} text="Buy" icon="bi-cart" />
           </div>
         </div>
       </div>

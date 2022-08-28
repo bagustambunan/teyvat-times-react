@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { selectToken } from '../../store/tokenSlice';
-import SubscriptionWrapper from '../../components/Public/Subscription/SubscriptionWrapper'
+import { selectToken } from '../../../store/tokenSlice';
+import SubscriptionWrapper from '../../../components/Public/Subscription/SubscriptionWrapper'
 
 export default function SubscriptionPage() {
   const [isLoading, setIsLoading] = useState(true);

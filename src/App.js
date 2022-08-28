@@ -17,7 +17,8 @@ import ProfileLayout from './pages/Public/Profile/ProfileLayout';
 import MyAccountDashboard from './pages/Public/Profile/MyAccountDashboard';
 import MyReferralDashboard from './pages/Public/Profile/MyReferralDashboard';
 import AdminDashboard from './pages/Admin/AdminDashboard';
-import SubscriptionPage from './pages/Public/SubscriptionPage';
+import SubscriptionPage from './pages/Public/Subscription/SubscriptionPage';
+import PurchasePage from './pages/Public/Subscription/PurchasePage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/read/:slug" element={<ReadPage />} />
         <Route path="/history" element={<ReadingHistoryPage />} />
         <Route path="/subscription" element={<SubscriptionPage />} />
+        <Route path="/purchase/:subscriptionID" element={<PurchasePage />} />
 
         <Route path="/profile" element={<ProfileLayout />}>
           <Route path="/profile" element={<Navigate to="/profile/account" />} />
