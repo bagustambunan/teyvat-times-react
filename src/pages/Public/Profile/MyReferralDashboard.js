@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import ReferralInfo from '../../../components/Public/Profile/Referral/ReferralInfo';
+import ReferralInfo from '../../../components/Public/Profile/MyReferral/ReferralInfo';
 import Referral from '../../../models/Referral';
 import { selectToken } from '../../../store/tokenSlice';
 import { selectUser } from '../../../store/userSlice';

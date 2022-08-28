@@ -14,9 +14,10 @@ import ReadingHistoryPage from './pages/Public/ReadingHistoryPage';
 import CategoryFormPage from './pages/Admin/Posts/CategoryFormPage';
 import ReadPage from './pages/Public/ReadPage';
 import ProfileLayout from './pages/Public/Profile/ProfileLayout';
-import AccountDashboard from './pages/Public/Profile/AccountDashboard';
-import ReferralDashboard from './pages/Public/Profile/ReferralDashboard';
+import MyAccountDashboard from './pages/Public/Profile/MyAccountDashboard';
+import MyReferralDashboard from './pages/Public/Profile/MyReferralDashboard';
 import AdminDashboard from './pages/Admin/AdminDashboard';
+// import SubscriptionPage from './pages/Public/SubscriptionPage';
 
 function App() {
   return (
@@ -29,14 +30,15 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/read/:slug" element={<ReadPage />} />
         <Route path="/history" element={<ReadingHistoryPage />} />
+        {/* <Route path="/subscription" element={<SubscriptionPage />} /> */}
 
         <Route path="/profile" element={<ProfileLayout />}>
           <Route path="/profile" element={<Navigate to="/profile/account" />} />
-          <Route path="/profile/account" element={<AccountDashboard />} />
-          <Route path="/profile/mysubscription" element={<AccountDashboard />} />
-          <Route path="/profile/myvoucher" element={<AccountDashboard />} />
-          <Route path="/profile/myreferral" element={<ReferralDashboard />} />
-          <Route path="/profile/mygift" element={<AccountDashboard />} />
+          <Route path="/profile/account" element={<MyAccountDashboard />} />
+          <Route path="/profile/mysubscription" element={<MyAccountDashboard />} />
+          <Route path="/profile/myvoucher" element={<MyAccountDashboard />} />
+          <Route path="/profile/myreferral" element={<MyReferralDashboard />} />
+          <Route path="/profile/mygift" element={<MyAccountDashboard />} />
         </Route>
       </Route>
 

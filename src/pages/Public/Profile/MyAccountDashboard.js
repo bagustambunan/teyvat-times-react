@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import AccountInfo from '../../../components/Public/Profile/Account/AccountInfo';
-import AddressInfo from '../../../components/Public/Profile/Account/AddressInfo';
-import PicInfo from '../../../components/Public/Profile/Account/PicInfo';
+import AccountInfo from '../../../components/Public/Profile/MyAccount/AccountInfo';
+import AddressInfo from '../../../components/Public/Profile/MyAccount/AddressInfo';
+import PicInfo from '../../../components/Public/Profile/MyAccount/PicInfo';
 import ButtonIcon from '../../../components/ButtonIcon';
 import { selectUser } from '../../../store/userSlice';
 
