@@ -48,6 +48,40 @@ export default function PurchaseDetail({ subscription, newSubscriptionDate }) {
     e.preventDefault();
     fetchUserVoucher(form.code);
   };
+
+
+  const saveTransaction = () => {
+    let dataToPost = {
+      subscriptionID: subscription.subscriptionID,
+    };
+    if (userVoucher.voucher.amount !== 0) {
+      dataToPost = {
+        subscriptionID: subscription.subscriptionID,
+	      userVoucherID: userVoucher.userVoucherID,
+      }
+    }
+
+    fetch('http://localhost:8080/pub/transactions/', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(dataToPost),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 201) {
+          toast.success('Transaction made successfully');
+        }
+        if (res.statusCode !== 201) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
   return (
     <div className="bg-white border rounded p-5">
       <h4 className="mb-3">Purchase Detail</h4>
@@ -105,7 +139,6 @@ export default function PurchaseDetail({ subscription, newSubscriptionDate }) {
                 </tr>
               ) : ("")
             }
-            
           </tbody>
         </table>
       </div>
@@ -114,10 +147,21 @@ export default function PurchaseDetail({ subscription, newSubscriptionDate }) {
         <div className="d-flex flex-column">
           <strong>Total</strong>
           <span className="text-primary">
-            {ParseCurrency(subscription.price - userVoucher.voucher.amount)}
+            {
+              subscription.price - userVoucher.voucher.amount > 0 ? (
+                ParseCurrency(subscription.price - userVoucher.voucher.amount)
+              ) : (ParseCurrency(0))
+            }
           </span>
         </div>
-        <ButtonIcon text="Continue to payment" icon="bi-credit-card" />
+        <button
+          onClick={() => {saveTransaction()}}
+          type="button"
+          className="btn btn-primary"
+        >
+          <i className={`bi bi-credit-card me-2`} />
+          Continue to payment
+        </button>
       </div>
     </div>
   );
