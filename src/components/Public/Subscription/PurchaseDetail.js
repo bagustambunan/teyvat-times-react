@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Mora from "../../../components/Mora";
-import ParseCurrency from "../../../helpers/Parser";
+import { ParseCurrency } from "../../../helpers/Parser";
 import ButtonIcon from "../../../components/ButtonIcon";
 import { selectToken } from "../../../store/tokenSlice";
 

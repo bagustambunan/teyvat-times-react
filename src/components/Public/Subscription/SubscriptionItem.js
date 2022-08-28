@@ -1,7 +1,7 @@
 import React from "react";
 import Mora from "../../../components/Mora";
 import LinkIcon from "../../../components/LinkIcon";
-import ParseCurrency from "../../../helpers/Parser"
+import { ParseCurrency } from "../../../helpers/Parser"
 
 export default function SubscriptionItem({ subscription }) {
   return (

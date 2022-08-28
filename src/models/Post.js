@@ -1,3 +1,5 @@
+import { ParseDate } from "../helpers/Parser";
+
 export default class Post {
   constructor(
     postID,
@@ -34,12 +36,10 @@ export default class Post {
   }
 
   getCreatedAt() {
-    const d = new Date(this.createdAt);
-    return `${d.toDateString()} ${d.toLocaleTimeString()}`;
+    return ParseDate(this.createdAt);
   }
 
   getUpdatedAt() {
-    const d = new Date(this.updatedAt);
-    return `${d.toDateString()} ${d.toLocaleTimeString()}`;
+    return ParseDate(this.updatedAt);
   }
 }
