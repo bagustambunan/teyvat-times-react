@@ -17,7 +17,7 @@ export default function PublicLayout() {
   const user = useSelector(selectUser);
   const auth = new Auth(token, user);
   AuthHelper(auth, 'public', setLoadingFalse);
-  if (isLoading) return 'Loading redux...';
+  if (isLoading) return 'Loading layout...';
 
   return (
     <div className="layout-main">

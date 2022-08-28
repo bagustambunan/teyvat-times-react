@@ -45,7 +45,8 @@ export default function AuthHelper(auth, role, setLoadingFalse) {
           checkAuthorization();
         }
         if (res.statusCode !== 200) {
-          toast.error(`Error: ${res.message}`);
+          // toast.error(`Error: ${res.message}`);
+          navigate('/logout');
         }
       })
       .catch((err) => {

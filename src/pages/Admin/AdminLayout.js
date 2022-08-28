@@ -17,7 +17,7 @@ export default function AdminLayout() {
   const user = useSelector(selectUser);
   const auth = new Auth(token, user);
   AuthHelper(auth, 'internal', setLoadingFalse);
-  if (isLoading) return 'Loading redux...';
+  if (isLoading) return 'Loading layout...';
 
   return (
     <>
