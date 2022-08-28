@@ -24,6 +24,7 @@ import SubscriptionDashboard from './pages/Admin/Subscriptions/SubscriptionDashb
 import TransactionDashboard from './pages/Admin/Subscriptions/TransactionDashboard';
 import VoucherDashboard from './pages/Admin/Subscriptions/VoucherDashboard';
 import GiftDashboard from './pages/Admin/Gifts/GiftDashboard';
+import TransactionDetailPage from './pages/Admin/Subscriptions/TransactionDetailPage';
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
 
         <Route path="/admin/subscriptions" element={<SubscriptionDashboard />} />
         <Route path="/admin/transactions" element={<TransactionDashboard />} />
+        <Route path="/admin/transactions/:transactionID" element={<TransactionDetailPage />} />
         <Route path="/admin/vouchers" element={<VoucherDashboard />} />
 
         <Route path="/admin/gifts" element={<GiftDashboard />} />

@@ -1,0 +1,66 @@
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import TitleSection from '../../../components/Admin/TitleSection';
+import TransactionDetail from '../../../components/Admin/Transaction/TransactionDetail';
+import Transaction from '../../../models/Transaction';
+import { selectToken } from '../../../store/tokenSlice';
+
+export default function TransactionDetailPage() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [transaction, setTransaction] = useState('');
+  const token = useSelector(selectToken);
+
+  const fetchTransaction = (transactionID) => {
+    setIsLoading(true);
+    fetch('http://localhost:8080/pub/transactions/'+transactionID, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          setTransaction(
+            new Transaction(
+              res.data.transactionID,
+              res.data.user,
+              res.data.subscription,
+              res.data.status,
+              res.data.grossTotal,
+              res.data.netTotal,
+              res.data.userVoucher,
+              res.data.createdAt,
+            )
+          );
+          setIsLoading(false);
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
+  const params = useParams();
+  useEffect(() => {
+    if (params.transactionID !== undefined) {
+      fetchTransaction(params.transactionID);
+    }
+  }, []);
+
+  if (isLoading) {
+    return 'Loading...';
+  }
+
+  return (
+    <>
+      <TitleSection title="Transaction Detail" icon="bi-credit-card" />
+      <TransactionDetail transaction={transaction} />
+    </>
+  )
+}
