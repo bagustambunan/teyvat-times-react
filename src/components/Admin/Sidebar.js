@@ -116,19 +116,19 @@ export default function Sidebar() {
           <div className="collapse" id="subscription-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
               <li>
-                <NavLink to="/" className="nav-link link-dark rounded">
+                <NavLink to="/admin/subscriptions" className="nav-link link-dark rounded">
                   <i className="bi bi-chevron-right me-2" />
                   Subscriptions
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="nav-link link-dark rounded">
+                <NavLink to="/admin/transactions" className="nav-link link-dark rounded">
                   <i className="bi bi-chevron-right me-2" />
                   Transactions
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="nav-link link-dark rounded">
+                <NavLink to="/admin/vouchers" className="nav-link link-dark rounded">
                   <i className="bi bi-chevron-right me-2" />
                   Vouchers
                 </NavLink>
@@ -151,7 +151,7 @@ export default function Sidebar() {
           <div className="collapse" id="gift-collapse">
             <ul className="btn-toggle-nav list-unstyled small">
               <li>
-                <NavLink to="/" className="nav-link link-dark rounded">
+                <NavLink to="/admin/gifts" className="nav-link link-dark rounded">
                   <i className="bi bi-chevron-right me-2" />
                   Gifts
                 </NavLink>
