@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Mora from "../../../components/Mora";
 import { ParseCurrency } from "../../../helpers/Parser";
-import ButtonIcon from "../../../components/ButtonIcon";
 import { selectToken } from "../../../store/tokenSlice";
 
-export default function PurchaseDetail({ subscription, newSubscriptionDate }) {
+export default function PurchaseDetail({ subscription }) {
   const token = useSelector(selectToken);
   const noVoucher = {
     voucher: {
@@ -90,12 +89,8 @@ export default function PurchaseDetail({ subscription, newSubscriptionDate }) {
         <table className="table">
           <tbody>
             <tr>
-              <th scope="row">Subscription start</th>
-              <td>{newSubscriptionDate.dateStart}</td>
-            </tr>
-            <tr>
-              <th scope="row">Subscription ended</th>
-              <td>{newSubscriptionDate.dateEnded}</td>
+              <th scope="row">Subscription duration</th>
+              <td>+1 month</td>
             </tr>
             <tr>
               <th scope="row">Amount of mora you will get</th>

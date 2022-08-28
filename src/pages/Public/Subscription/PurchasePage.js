@@ -8,7 +8,6 @@ import { selectToken } from '../../../store/tokenSlice';
 export default function PurchasePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [subscription, setSubscription] = useState('');
-  const [newSubscriptionDate, setNewSubscriptionDate] = useState('');
   const token = useSelector(selectToken);
 
   const fetchSubscription = (subscriptionID) => {
@@ -23,29 +22,6 @@ export default function PurchasePage() {
       .then((res) => {
         if (res.statusCode === 200) {
           setSubscription(res.data);
-          fetchNewSubscriptionDate();
-        }
-        if (res.statusCode !== 200) {
-          toast.error(`Error: ${res.message}`);
-        }
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`);
-      });
-  };
-
-  const fetchNewSubscriptionDate = () => {
-    setIsLoading(true);
-    fetch('http://localhost:8080/pub/user_subscriptions/date/new', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.statusCode === 200) {
-          setNewSubscriptionDate(res.data)
           setIsLoading(false);
         }
         if (res.statusCode !== 200) {
@@ -67,6 +43,6 @@ export default function PurchasePage() {
     return 'Loading...';
   }
   return (
-    <PurchaseDetail subscription={subscription} newSubscriptionDate={newSubscriptionDate} />
+    <PurchaseDetail subscription={subscription} />
   )
 }
