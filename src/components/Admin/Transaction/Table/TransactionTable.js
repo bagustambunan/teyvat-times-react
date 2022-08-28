@@ -29,7 +29,7 @@ export default function TransactionTable() {
 
   const fetchTransactions = () => {
     fetch(
-      `http://localhost:8080/pub/transactions/`,
+      `http://localhost:8080/transactions?status=${form.status}&limit=${form.limit}&page=${form.page}`,
       {
         method: 'GET',
         headers: {
@@ -67,7 +67,7 @@ export default function TransactionTable() {
 
   useEffect(() => {
     fetchTransactions();
-  }, [form.page]);
+  }, [form]);
   const handleChange = (e) => {
     const { name } = e.currentTarget;
     const { value } = e.currentTarget;
@@ -79,10 +79,10 @@ export default function TransactionTable() {
 
   return (
     <>
-      {/* <TableController
+      <TableController
         form={form}
         handleChange={handleChange}
-      /> */}
+      />
       <table className="table table-striped w-100">
         <thead>
           <tr>
