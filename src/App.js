@@ -20,7 +20,7 @@ import AdminDashboard from './pages/Admin/AdminDashboard';
 import SubscriptionPage from './pages/Public/Subscription/SubscriptionPage';
 import PurchasePage from './pages/Public/Subscription/PurchasePage';
 import MyTransactionDashboard from './pages/Public/Profile/MyTransactionDashboard';
-// import SubscriptionDashboard from './pages/Admin/Subscriptions/SubscriptionDashboard';
+import SubscriptionDashboard from './pages/Admin/Subscriptions/SubscriptionDashboard';
 // import TransactionDashboard from './pages/Admin/Subscriptions/TransactionDashboard';
 // import VoucherDashboard from './pages/Admin/Subscriptions/VoucherDashboard';
 import GiftDashboard from './pages/Admin/Gifts/GiftDashboard';
@@ -65,8 +65,8 @@ function App() {
         <Route path="/admin/categories/new" element={<CategoryFormPage />} />
         <Route path="/admin/categories/:categoryID/edit" element={<CategoryFormPage />} />
 
-        {/* <Route path="/admin/subscriptions" element={<SubscriptionDashboard />} />
-        <Route path="/admin/transactions" element={<TransactionDashboard />} />
+        <Route path="/admin/subscriptions" element={<SubscriptionDashboard />} />
+        {/* <Route path="/admin/transactions" element={<TransactionDashboard />} />
         <Route path="/admin/vouchers" element={<VoucherDashboard />} /> */}
 
         <Route path="/admin/gifts" element={<GiftDashboard />} />
