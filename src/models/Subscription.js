@@ -3,11 +3,11 @@ export default class Subscription {
     subscriptionID,
     name,
     price,
-    coinsAmount,
+    moraAmount,
   ) {
     this.subscriptionID = subscriptionID;
     this.name = name;
     this.price = price;
-    this.coinsAmount = coinsAmount;
+    this.moraAmount = moraAmount;
   }
 }

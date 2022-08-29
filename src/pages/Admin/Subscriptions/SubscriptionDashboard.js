@@ -26,7 +26,7 @@ export default function SubscriptionDashboard() {
               item.subscriptionID,
               item.name,
               item.price,
-              item.coinsAmount,
+              item.moraAmount,
             )
             return subscription;
           });

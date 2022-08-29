@@ -9,7 +9,7 @@ export default function SubscriptionTable({ subscriptions }) {
           <th scope="col">#</th>
           <th scope="col">Subscription</th>
           <th scope="col">Price</th>
-          <th scope="col">Coins Amount</th>
+          <th scope="col">Mora Amount</th>
         </tr>
       </thead>
       <tbody>

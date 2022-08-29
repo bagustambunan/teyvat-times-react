@@ -12,7 +12,7 @@ export default function TierRow({ tier, i }) {
           {tier.name}
         </span>
       </td>
-      <td>{tier.coinsRequired}</td>
+      <td>{tier.moraRequired}</td>
     </tr>
   );
 }

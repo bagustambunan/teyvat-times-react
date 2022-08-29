@@ -20,7 +20,7 @@ export default function SubscriptionItem({ subscription }) {
                 <tr>
                   <th scope="row">Mora</th>
                   <td>
-                    <Mora amount={subscription.coinsAmount} />
+                    <Mora amount={subscription.moraAmount} />
                   </td>
                 </tr>
                 <tr>

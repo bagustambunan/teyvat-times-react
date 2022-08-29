@@ -98,7 +98,7 @@ export default function PurchaseDetail({ subscription }) {
             <tr>
               <th scope="row">Amount of mora you will get</th>
               <td>
-                <Mora amount={subscription.coinsAmount} />
+                <Mora amount={subscription.moraAmount} />
               </td>
             </tr>
             <tr>

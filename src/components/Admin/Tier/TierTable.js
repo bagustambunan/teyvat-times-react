@@ -39,7 +39,7 @@ export default function TierTable() {
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th scope="col">Coins Required</th>
+          <th scope="col">Mora Required</th>
         </tr>
       </thead>
       <tbody>

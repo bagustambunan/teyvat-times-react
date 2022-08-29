@@ -16,7 +16,7 @@ export default function PostCard({ post }) {
         </NavLink>
 
         <div className="card-body">
-          <NavLink to={`/read/${post.slug}`}>
+          <NavLink to={`/read/${post.slug}`} className="link">
             <h5 className="card-title">{post.title}</h5>
           </NavLink>
 

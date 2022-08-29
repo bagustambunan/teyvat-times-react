@@ -12,7 +12,7 @@ export default function SubscriptionRow({ subscription, i }) {
         {ParseCurrency(subscription.price)}
       </td>
       <td>
-        {subscription.coinsAmount}
+        {subscription.moraAmount}
       </td>
     </tr>
   )
