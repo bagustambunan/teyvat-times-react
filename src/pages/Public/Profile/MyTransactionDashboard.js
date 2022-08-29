@@ -8,10 +8,22 @@ import { selectToken } from '../../../store/tokenSlice';
 export default function MyTransactionDashboard() {
   const [isLoading, setIsLoading] = useState(true);
   const [transactions, setTransactions] = useState([]);
+  const [form, setForm] = useState({
+    limit: 10,
+    page: 1,
+  });
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    totalPage: 1,
+  });
+  const changePage = (page) => {
+    setPagination({ ...pagination, currentPage: page });
+    setForm({ ...form, page });
+  };
   const token = useSelector(selectToken);
   const fetchTransactions = () => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/transactions`, {
+    fetch(`http://localhost:8080/pub/transactions?limit=${form.limit}&page=${form.page}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -34,6 +46,7 @@ export default function MyTransactionDashboard() {
             return transaction;
           });
           setTransactions(fetchedTransactions);
+          setPagination({ ...pagination, totalPage: res.data.totalPage });
           setIsLoading(false);
         }
         if (res.statusCode !== 200) {
@@ -46,13 +59,16 @@ export default function MyTransactionDashboard() {
   };
   useEffect(() => {
     fetchTransactions();
+  }, [form]);
+  useEffect(() => {
+    fetchTransactions();
   }, []);
   if (isLoading) {
     return 'Loading...';
   }
   return (
     <div className="my-3">
-      <TransactionHistory transactions={transactions} />
+      <TransactionHistory transactions={transactions} pagination={pagination} changePage={changePage} />
     </div>
   )
 }

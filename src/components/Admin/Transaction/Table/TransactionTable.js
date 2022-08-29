@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Pagination from '../../../Pagination';
 import TableController from './TableController';
@@ -9,7 +8,6 @@ import Transaction from '../../../../models/Transaction';
 import { selectToken } from '../../../../store/tokenSlice';
 
 export default function TransactionTable() {
-  const navigate = useNavigate();
   const token = useSelector(selectToken);
   const [transactions, setTransactions] = useState([]);
   const [form, setForm] = useState({

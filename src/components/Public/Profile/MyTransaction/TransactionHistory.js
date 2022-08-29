@@ -1,8 +1,9 @@
 import React from "react";
+import Pagination from "../../../Pagination";
 import QrModal from "./QrModal";
 import TransactionRow from "./TransactionRow";
 
-export default function TransactionHistory({ transactions }) {
+export default function TransactionHistory({ transactions, pagination, changePage }) {
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
@@ -31,6 +32,7 @@ export default function TransactionHistory({ transactions }) {
               ))}
             </tbody>
           </table>
+          <Pagination pagination={pagination} changePage={changePage} />
           <QrModal />
         </>
       ) : (
