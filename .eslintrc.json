@@ -17,7 +17,7 @@
     "plugins": [
         "react"
     ],
-    "ignorePatterns": ["reportWebVitals.js", "index.js", "*.test.js"],
+    "ignorePatterns": ["reportWebVitals.js", "index.js", "*.test.js", "test-*", "*.js"],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "jsx-a11y/label-has-associated-control": 0,
