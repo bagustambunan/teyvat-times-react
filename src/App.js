@@ -26,6 +26,7 @@ import VoucherDashboard from './pages/Admin/Subscriptions/VoucherDashboard';
 import GiftDashboard from './pages/Admin/Gifts/GiftDashboard';
 import TransactionDetailPage from './pages/Admin/Subscriptions/TransactionDetailPage';
 import PaymentPage from './pages/PaymentPage';
+import MyTransactionDetailPage from './pages/Public/Profile/MyTransactionDetailPage';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/profile" element={<Navigate to="/profile/account" />} />
           <Route path="/profile/account" element={<MyAccountDashboard />} />
           <Route path="/profile/mytransaction" element={<MyTransactionDashboard />} />
+          <Route path="/profile/mytransaction/:transactionID" element={<MyTransactionDetailPage />} />
           <Route path="/profile/mysubscription" element={<MyAccountDashboard />} />
           <Route path="/profile/myvoucher" element={<MyAccountDashboard />} />
           <Route path="/profile/myreferral" element={<MyReferralDashboard />} />

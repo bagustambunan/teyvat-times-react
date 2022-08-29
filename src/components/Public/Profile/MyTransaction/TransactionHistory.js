@@ -1,6 +1,5 @@
 import React from "react";
 import Pagination from "../../../Pagination";
-import QrModal from "./QrModal";
 import TransactionRow from "./TransactionRow";
 
 export default function TransactionHistory({ transactions, pagination, changePage }) {
@@ -33,7 +32,6 @@ export default function TransactionHistory({ transactions, pagination, changePag
             </tbody>
           </table>
           <Pagination pagination={pagination} changePage={changePage} />
-          <QrModal />
         </>
       ) : (
         ""

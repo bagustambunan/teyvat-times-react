@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import Mora from "../../../components/Mora";
 import { ParseCurrency } from "../../../helpers/Parser";
 import { selectToken } from "../../../store/tokenSlice";
 
 export default function PurchaseDetail({ subscription }) {
+  const navigate = useNavigate();
   const token = useSelector(selectToken);
   const noVoucher = {
     voucher: {
@@ -70,7 +72,9 @@ export default function PurchaseDetail({ subscription }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
+          console.log(res.data);
           toast.success('Transaction made successfully');
+          navigate(`/profile/mytransaction/${res.data.transactionID}`);
         }
         if (res.statusCode !== 201) {
           toast.error(`Error: ${res.message}`);
