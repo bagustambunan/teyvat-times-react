@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PostDetail from '../../components/Public/Read/PostDetail';
 import Post from '../../models/Post';
 import { selectToken } from '../../store/tokenSlice';
 
 export default function ReadPage() {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [post, setPost] = useState('');
   const [myActivity, setMyActivity] = useState({
@@ -44,7 +45,7 @@ export default function ReadPage() {
 
   const fetchPost = (slug) => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/posts/slug/${slug}`, {
+    fetch(`http://localhost:8080/pub/posts/read/${slug}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -75,7 +76,7 @@ export default function ReadPage() {
           fetchMyActivity(res.data.postID);
         }
         if (res.statusCode !== 200) {
-          toast.error(`Error: ${res.message}`);
+          navigate(`/unlock/${slug}`);
         }
       })
       .catch((err) => {

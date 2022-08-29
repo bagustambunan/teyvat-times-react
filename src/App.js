@@ -27,6 +27,7 @@ import GiftDashboard from './pages/Admin/Gifts/GiftDashboard';
 import TransactionDetailPage from './pages/Admin/Subscriptions/TransactionDetailPage';
 import PaymentPage from './pages/PaymentPage';
 import MyTransactionDetailPage from './pages/Public/Profile/MyTransactionDetailPage';
+import UnlockPage from './pages/Public/UnlockPage';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Route path="/" element={<PublicLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/read/:slug" element={<ReadPage />} />
+        <Route path="/unlock/:slug" element={<UnlockPage />} />
         <Route path="/history" element={<ReadingHistoryPage />} />
         <Route path="/subscription" element={<SubscriptionPage />} />
         <Route path="/purchase/:subscriptionID" element={<PurchasePage />} />
