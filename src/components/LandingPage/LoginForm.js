@@ -8,8 +8,8 @@ import SubmitButton from '../Form/SubmitButton';
 export default function LoginForm({ checkToken }) {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    email: 'jean@mail.com',
-    password: 'jean123',
+    email: '',
+    password: '',
   });
   const handleChange = (e) => {
     const { name } = e.currentTarget;

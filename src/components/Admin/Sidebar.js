@@ -3,12 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
-    <div className="d-flex flex-column p-3 bg-light h-100 admin-menu">
+    <div className="d-flex flex-column p-3 h-100 admin-menu">
       <NavLink
         to="/admin"
         className="fs-4 d-flex link-dark text-decoration-none"
       >
-        Admin Nemesis
+        Celestia
       </NavLink>
       <hr />
       <ul className="nav nav-pills flex-column">
@@ -157,7 +157,7 @@ export default function Sidebar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/" className="nav-link link-dark rounded">
+                <NavLink to="/admin/gift-claims" className="nav-link link-dark rounded">
                   <i className="bi bi-chevron-right me-2" />
                   Gift claims
                 </NavLink>

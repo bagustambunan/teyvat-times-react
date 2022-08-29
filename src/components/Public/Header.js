@@ -11,7 +11,7 @@ export default function Header() {
     <nav className="navbar navbar-expand-lg bg-white shadow-sm p-4">
       <div className="container">
         <a className="fs-4 navbar-brand fw-bold" href="/">
-          Teyvat News
+          Teyvat Times
         </a>
         <button
           className="navbar-toggler"

@@ -11,6 +11,11 @@
 .admin-menu {
   position: fixed;
   width: 18rem;
+  background-color: #f7f4ef;
+}
+
+.navbar-brand {
+  color: #389d6f;
 }
 
 .admin-menu-user {
@@ -20,7 +25,8 @@
 
 .layout-main {
   /* background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(247,192,88,1) 100%); */
-  background-color: rgb(166, 181, 196);
+  /* background-color: #389d6f; */
+  background: url("../public/bg.jpg");
   height: 100%;
   min-height: 100vh;
 }
@@ -58,7 +64,7 @@
 
 section > h5 {
   padding: 0.5rem 0rem 0.5rem 1rem;
-  border-left: 0.5rem solid rgb(166, 181, 196);
+  border-left: 0.5rem solid #389d6f;
   margin-bottom: 1rem;
 }
 
@@ -70,7 +76,7 @@ section > h5 {
 }
 .pagination > span {
   padding: 0.75rem;
-  border: 1px solid rgb(166, 181, 196);
+  border: 1px solid #389d6f;
   background-color: white;
 }
 .pagination > span:hover {
@@ -78,7 +84,7 @@ section > h5 {
   cursor: pointer;
 }
 .pagination > .active {
-  background-color: rgb(166, 181, 196);
+  background-color: #389d6f;
 }
 .pagination > span > a {
   color: rgb(99, 99, 99);
@@ -92,7 +98,7 @@ section > h5 {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color: rgb(152, 181, 207);
+  background-color: #47af7e;
 }
 
 .read-img > img {

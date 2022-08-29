@@ -18,7 +18,7 @@ export default function PostTable() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 2,
+    limit: 10,
     page: 1,
   });
   const [pagination, setPagination] = useState({
