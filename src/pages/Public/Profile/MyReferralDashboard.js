@@ -22,11 +22,13 @@ export default function ReferralDashboard() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          const fetchedReferrals = res.data.map((item) => {
-            const referral = new Referral(item.userID, item.name);
-            return referral;
-          });
-          setReferrals(fetchedReferrals);
+          if (res.data !== null) {
+            const fetchedReferrals = res.data.map((item) => {
+              const referral = new Referral(item.userID, item.name);
+              return referral;
+            });
+            setReferrals(fetchedReferrals);
+          }
           setIsLoading(false);
         }
         if (res.statusCode !== 200) {
@@ -43,5 +45,9 @@ export default function ReferralDashboard() {
   if (isLoading) {
     return 'Loading...';
   }
-  return <ReferralInfo referrals={referrals} />;
+  return (
+    <div className="my-3">
+       <ReferralInfo referrals={referrals} />
+    </div>
+  )
 }

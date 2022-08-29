@@ -72,7 +72,6 @@ export default function PurchaseDetail({ subscription }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 201) {
-          console.log(res.data);
           toast.success('Transaction made successfully');
           navigate(`/profile/mytransaction/${res.data.transactionID}`);
         }

@@ -54,7 +54,8 @@ export default function UnlockPage() {
           navigate(`/read/${params.slug}`);
         }
         if (res.statusCode !== 200) {
-          toast.error(`Error: ${res.message}`);
+          toast.error(`${res.message}`);
+          navigate(`/subscription`);
         }
       })
       .catch((err) => {

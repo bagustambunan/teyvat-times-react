@@ -6,7 +6,6 @@ import { ParseCurrency, ParseDate } from "../../../helpers/Parser";
 import { selectToken } from "../../../store/tokenSlice";
 
 export default function TransactionDetail({ transaction }) {
-  console.log(transaction);
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const approveTransaction = (transactionID) => {

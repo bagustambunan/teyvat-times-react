@@ -26,7 +26,8 @@ export default function PaymentPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("Payment success");
+          alert("Payment success");
+          window.close();
         }
         else if (res.statusCode === 400) {
           toast.error(`Error: ${res.message}`);
@@ -50,7 +51,6 @@ export default function PaymentPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     sendPayment();
-    console.log(form);
   };
 
   return (

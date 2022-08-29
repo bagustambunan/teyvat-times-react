@@ -7,7 +7,6 @@ import { selectToken } from "../../../../store/tokenSlice";
 import QrModal from './QrModal'
 
 export default function TransactionDetail({ transaction }) {
-  console.log(transaction);
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   return (
