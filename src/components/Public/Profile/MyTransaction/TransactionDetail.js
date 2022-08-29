@@ -12,7 +12,7 @@ export default function TransactionDetail({ transaction }) {
   const navigate = useNavigate();
   return (
     <div>
-      <QrModal />
+      <QrModal transaction={transaction} />
       <div className="d-flex justify-content-between align-items-center">
         <h5>Transaction Detail</h5>
       </div>
@@ -43,11 +43,11 @@ export default function TransactionDetail({ transaction }) {
       {transaction.status.transactionStatusID === 1 ? (
           <button
             type="button"
-            className="btn btn-primary btn-sm"
+            className="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#qrModal"
           >
-            <i className="bi bi-qr-code-scan me-2"></i>Show QR
+            <i className="bi bi-credit-card me-2"></i>Continue to payment
           </button>
         ) : (
           ""

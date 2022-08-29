@@ -158,8 +158,8 @@ export default function PurchaseDetail({ subscription }) {
           type="button"
           className="btn btn-primary"
         >
-          <i className={`bi bi-credit-card me-2`} />
-          Continue to payment
+          <i className={`bi bi-box-arrow-in-up-right me-2`} />
+          Process transaction
         </button>
       </div>
     </div>

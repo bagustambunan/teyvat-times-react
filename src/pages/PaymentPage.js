@@ -28,7 +28,7 @@ export default function PaymentPage() {
         if (res.statusCode === 200) {
           toast.success("Payment success");
         }
-        if (res.statusCode === 400) {
+        else if (res.statusCode === 400) {
           toast.error(`Error: ${res.message}`);
         }
         else {

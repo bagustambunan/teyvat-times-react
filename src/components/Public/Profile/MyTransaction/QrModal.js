@@ -1,7 +1,9 @@
 import { QRCodeSVG } from "qrcode.react";
 import React from "react";
+import LinkIcon from "../../../LinkIcon";
 
-export default function QrModal() {
+export default function QrModal({ transaction }) {
+  const link = `/payment/${transaction.transactionID}`;
   return (
     <>
       <div
@@ -15,7 +17,7 @@ export default function QrModal() {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="qrModalLabel">
-                QR
+                Payment
               </h5>
               <button
                 type="button"
@@ -25,8 +27,15 @@ export default function QrModal() {
               ></button>
             </div>
             <div className="modal-body">
-              <div className="d-flex align-items-center justify-content-center">
-                <QRCodeSVG value="Test" size="200" />
+              <div className="d-flex align-items-center justify-content-center flex-column gap-3">
+                <div>
+                  <QRCodeSVG value={link} size="200" />
+                </div>
+                <div>
+                  <a href={link} target="_blank">
+                    Or click here
+                  </a>
+                </div>
               </div>
             </div>
             <div className="modal-footer">
