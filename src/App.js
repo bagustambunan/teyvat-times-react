@@ -25,6 +25,7 @@ import TransactionDashboard from './pages/Admin/Subscriptions/TransactionDashboa
 import VoucherDashboard from './pages/Admin/Subscriptions/VoucherDashboard';
 import GiftDashboard from './pages/Admin/Gifts/GiftDashboard';
 import TransactionDetailPage from './pages/Admin/Subscriptions/TransactionDetailPage';
+import PaymentPage from './pages/PaymentPage';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
       <Route path="/welcome" element={<LandingPage mode="login" />} />
       <Route path="/signup" element={<LandingPage mode="register" />} />
       <Route path="/logout" element={<Logout />} />
+
+      <Route path="/payment/:transactionID" element={<PaymentPage />} />
 
       <Route path="/" element={<PublicLayout />}>
         <Route path="/" element={<HomePage />} />
