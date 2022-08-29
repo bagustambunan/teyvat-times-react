@@ -51,6 +51,8 @@ export default function MyTransactionDashboard() {
     return 'Loading...';
   }
   return (
-    <TransactionHistory transactions={transactions} />
+    <div className="my-3">
+      <TransactionHistory transactions={transactions} />
+    </div>
   )
 }

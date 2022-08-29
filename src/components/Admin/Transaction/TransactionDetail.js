@@ -10,8 +10,8 @@ export default function TransactionDetail({ transaction }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const approveTransaction = (transactionID) => {
-    fetch('http://localhost:8080/transactions/'+transactionID+'/approve', {
-      method: 'POST',
+    fetch("http://localhost:8080/transactions/" + transactionID + "/approve", {
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -19,8 +19,8 @@ export default function TransactionDetail({ transaction }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success('Transaction approved');
-          navigate('/admin/transactions');
+          toast.success("Transaction approved");
+          navigate("/admin/transactions");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -31,18 +31,17 @@ export default function TransactionDetail({ transaction }) {
       });
   };
   const rejectTransaction = (transactionID) => {
-    fetch('http://localhost:8080/transactions/'+transactionID+'/reject', {
-      method: 'POST',
+    fetch("http://localhost:8080/transactions/" + transactionID + "/reject", {
+      method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(dataToPost),
     })
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success('Transaction rejected');
-          navigate('/admin/transactions');
+          toast.success("Transaction rejected");
+          navigate("/admin/transactions");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -84,9 +83,21 @@ export default function TransactionDetail({ transaction }) {
         </tbody>
       </table>
       {transaction.status.transactionStatusID === 2 ? (
-        <div>
-          <button onClick={() => approveTransaction(transaction.transactionID)} type="button">Approve</button>
-          <button onClick={() => rejectTransaction(transaction.transactionID)} type="button">Reject</button>
+        <div className="d-flex gap-3">
+          <button
+            onClick={() => approveTransaction(transaction.transactionID)}
+            type="button"
+            className="btn btn-success"
+          >
+            <i className="bi bi-check-circle me-2"></i>Approve
+          </button>
+          <button
+            onClick={() => rejectTransaction(transaction.transactionID)}
+            type="button"
+            className="btn btn-danger"
+          >
+            <i className="bi bi-x-circle me-2"></i>Reject
+          </button>
         </div>
       ) : (
         ""
