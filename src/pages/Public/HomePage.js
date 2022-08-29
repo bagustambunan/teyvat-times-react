@@ -16,7 +16,7 @@ export default function HomePage() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 2,
+    limit: 10,
     page: 1,
   });
   const [pagination, setPagination] = useState({
@@ -92,7 +92,7 @@ export default function HomePage() {
   return (
     <div className="row">
       <main className="col-12 col-md-9">
-        <Carousel />
+        {/* <Carousel /> */}
         <PostsSection
           posts={posts}
           pagination={pagination}
