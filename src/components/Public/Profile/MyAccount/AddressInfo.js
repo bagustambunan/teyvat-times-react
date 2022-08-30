@@ -1,11 +1,12 @@
 import React from 'react';
 import ButtonEdit from '../../../ButtonEdit';
+import TitleSection from '../TitleSection';
 
 export default function AddressInfo({ address }) {
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
-        <h5>Address</h5>
+        <TitleSection text="Address" />
         <div>
           <ButtonEdit />
         </div>

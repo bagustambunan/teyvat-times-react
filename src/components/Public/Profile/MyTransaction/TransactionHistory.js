@@ -1,12 +1,13 @@
 import React from 'react';
 import Pagination from '../../../Pagination';
+import TitleSection from '../TitleSection';
 import TransactionRow from './TransactionRow';
 
 export default function TransactionHistory({ transactions, pagination, changePage }) {
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
-        <h5>My Transaction History</h5>
+        <TitleSection text="My Transaction History" />
       </div>
 
       {transactions.length > 0 ? (

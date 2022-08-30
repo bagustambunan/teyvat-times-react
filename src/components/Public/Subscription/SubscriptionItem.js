@@ -5,7 +5,7 @@ import { ParseCurrency } from '../../../helpers/Parser';
 
 export default function SubscriptionItem({ subscription }) {
   return (
-    <div className="col-12 col-md-4">
+    <div className="col-12 col-md-3">
       <div className="card">
         <div className="card-body">
           <h5 className="card-title my-3 text-center">{subscription.name}</h5>

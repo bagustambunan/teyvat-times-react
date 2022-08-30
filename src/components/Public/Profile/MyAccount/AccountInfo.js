@@ -1,12 +1,13 @@
 import React from 'react';
 import ButtonEdit from '../../../ButtonEdit';
 import Mora from '../../../Mora';
+import TitleSection from '../TitleSection';
 
 export default function AccountInfo({ user }) {
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
-        <h5>General Information</h5>
+        <TitleSection text="General Information" />
         <div>
           <ButtonEdit />
         </div>

@@ -1,13 +1,11 @@
 import React from 'react';
+import TitleSection from '../TitleSection';
 import ReferralRow from './ReferralRow';
 
 export default function ReferralInfo({ referrals }) {
   return (
     <div className="mb-5">
-      <div className="d-flex justify-content-between align-items-center">
-        <h5>My Referrals</h5>
-      </div>
-
+      <TitleSection text="My Referrals" />
       {
         referrals.length > 0 ? (
           <table className="table">

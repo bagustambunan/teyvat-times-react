@@ -98,7 +98,7 @@ export default function MySubscriptionDashboard() {
     return 'Loading...';
   }
   return (
-    <div className="my-3">
+    <div className="">
       <UserSubscriptionInfo activeSub={activeSub} />
       <UserSubscriptionHistory
         userSubscriptions={mySubs}

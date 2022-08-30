@@ -84,7 +84,7 @@ section > h5 {
   cursor: pointer;
 }
 .pagination > .active {
-  background-color: #389d6f;
+  background-color: #51af85;
 }
 .pagination > span > a {
   color: rgb(99, 99, 99);

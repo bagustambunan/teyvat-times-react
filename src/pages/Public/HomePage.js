@@ -100,13 +100,15 @@ export default function HomePage() {
         />
       </main>
 
-      <aside className="col-12 col-md-3 bg-white p-3 rounded border">
-        <SearchSection
-          form={form}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-        />
-        <TrendingSection />
+      <aside className="col-12 col-md-3">
+        <div className="bg-white p-4 rounded shadow border">
+          <SearchSection
+            form={form}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+          <TrendingSection />
+        </div>
       </aside>
     </div>
   );

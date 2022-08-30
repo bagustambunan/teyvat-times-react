@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
-    <div className="d-flex flex-column p-3 border-end border-2">
+    <div className="d-flex flex-column p-3">
       <ul className="nav nav-pills flex-column">
         <li className="nav-item">
           <NavLink to="/profile/account" className="nav-link link-dark">

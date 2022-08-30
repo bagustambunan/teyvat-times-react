@@ -9,7 +9,7 @@ import { selectUser } from '../../../store/userSlice';
 export default function AccountDashboard() {
   const user = useSelector(selectUser);
   return (
-    <div className="p-3">
+    <div className="">
       <PicInfo image={user.profilePic} />
       <AccountInfo user={user} />
       <AddressInfo address={user.address} />

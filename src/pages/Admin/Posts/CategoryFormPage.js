@@ -24,7 +24,6 @@ export default function CategoryFormPage() {
 
   const token = useSelector(selectToken);
 
-  // BEST EXAMPLE UNTUK FETCH AND HANDLE
   const fetchCategory = (categoryID) => {
     fetch(`${apiUrl}/categories/${categoryID}`, {
       method: 'GET',

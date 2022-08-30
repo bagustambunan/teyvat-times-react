@@ -85,7 +85,7 @@ export default function PurchaseDetail({ subscription }) {
   };
 
   return (
-    <div className="bg-white border rounded p-5">
+    <div className="bg-white border rounded p-4 shadow">
       <h4 className="mb-3">Purchase Detail</h4>
 
       <div className="my-5">

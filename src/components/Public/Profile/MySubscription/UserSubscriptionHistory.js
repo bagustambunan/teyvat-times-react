@@ -1,12 +1,13 @@
 import React from 'react';
 import Pagination from '../../../Pagination';
+import TitleSection from '../TitleSection';
 import UserSubscriptionRow from './UserSubscriptionRow';
 
 export default function UserSubscriptionHistory({ userSubscriptions, pagination, changePage }) {
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
-        <h5>My Subscription History</h5>
+        <TitleSection text="My Subscription History" />
       </div>
 
       {userSubscriptions.length > 0 ? (

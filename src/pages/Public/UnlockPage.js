@@ -68,7 +68,7 @@ export default function UnlockPage() {
     return 'Loading...';
   }
   return (
-    <div className="container bg-white py-5 border rounded">
+    <div className="container bg-white p-4 border rounded shadow">
       <Unlock post={post} />
       <div className="d-flex align-items-center justify-content-between border rounded bg-light p-3">
         <div className="d-flex flex-column">

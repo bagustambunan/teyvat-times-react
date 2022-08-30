@@ -62,10 +62,8 @@ export default function AuthHelper(auth, role, setLoadingFalse) {
   };
 
   const checkValidToken = () => {
-    // if auth token is not valid
     if (auth.getToken() === undefined) {
       const token = localStorage.getItem('token');
-      // if local storage token is valid
       if (token !== null) {
         auth.setToken(token);
         dispatch(setToken(token));

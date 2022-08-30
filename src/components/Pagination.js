@@ -8,14 +8,13 @@ export default function Pagination({ pagination, changePage }) {
   return (
     <div className="pagination">
       {pages.map((item) => (
-        <button
-          type="button"
+        <span
           key={item}
           onClick={() => changePage(item)}
           className={`${item === pagination.currentPage ? 'active' : ''}`}
         >
           {item}
-        </button>
+        </span>
       ))}
     </div>
   );

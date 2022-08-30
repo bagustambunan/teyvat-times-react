@@ -47,7 +47,7 @@ export default function ReferralDashboard() {
     return 'Loading...';
   }
   return (
-    <div className="my-3">
+    <div className="">
       <ReferralInfo referrals={referrals} />
     </div>
   );

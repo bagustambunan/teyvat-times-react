@@ -3,9 +3,9 @@ import SubscriptionItem from './SubscriptionItem';
 
 export default function SubscriptionWrapper({ subscriptions }) {
   return (
-    <div className="bg-white border rounded p-5">
-      <h4 className="mb-3">Buy subscription</h4>
-      <div className="d-flex">
+    <div className="bg-white border rounded p-4 shadow">
+      <h4 className="mb-3 text-center">Buy subscription</h4>
+      <div className="d-flex justify-content-around">
         {subscriptions.map((subscription) => (
           <SubscriptionItem subscription={subscription} key={subscription.subscriptionID} />
         ))}

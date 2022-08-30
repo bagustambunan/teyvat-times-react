@@ -58,7 +58,7 @@ export default function MyTransactionDetailPage() {
   }
 
   return (
-    <div className="my-3">
+    <div className="">
       <TransactionDetail transaction={transaction} />
     </div>
   );

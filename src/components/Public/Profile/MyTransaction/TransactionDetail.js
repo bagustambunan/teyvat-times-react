@@ -1,5 +1,6 @@
 import React from 'react';
 import { ParseCurrency, ParseDateTime } from '../../../../helpers/Parser';
+import TitleSection from '../TitleSection';
 import QrModal from './QrModal';
 
 export default function TransactionDetail({ transaction }) {
@@ -7,7 +8,7 @@ export default function TransactionDetail({ transaction }) {
     <div>
       <QrModal transaction={transaction} />
       <div className="d-flex justify-content-between align-items-center">
-        <h5>Transaction Detail</h5>
+        <TitleSection text="Transaction Detail" />
       </div>
       <table className="table">
         <tbody>
