@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ParseDate } from '../../../../helpers/Parser';
+import { ParseDateTime } from '../../../../helpers/Parser';
 
 export default function TransactionRow({ transaction, i, handleDelete }) {
   return (
     <tr>
       <th scope="row">{i}</th>
-      <td>{ParseDate(transaction.createdAt)}</td>
+      <td>{ParseDateTime(transaction.createdAt)}</td>
       <td>{transaction.user.name}</td>
       <td>{transaction.subscription.name}</td>
       <td>{transaction.status.name}</td>

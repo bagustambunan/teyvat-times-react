@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ParseCurrency, ParseDate } from "../../../helpers/Parser";
+import { ParseCurrency, ParseDateTime } from "../../../helpers/Parser";
 import { apiUrl } from "../../../helpers/values";
 import { selectToken } from "../../../store/tokenSlice";
 
@@ -58,7 +58,7 @@ export default function TransactionDetail({ transaction }) {
         <tbody>
           <tr>
             <th scope="row">Date</th>
-            <td>{ParseDate(transaction.createdAt)}</td>
+            <td>{ParseDateTime(transaction.createdAt)}</td>
           </tr>
           <tr>
             <th scope="row">Status</th>

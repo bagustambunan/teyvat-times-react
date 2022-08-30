@@ -1,7 +1,7 @@
 import React from "react";
 import CategoryBox from "../CategoryBox";
 import TierBox from "../TierBox";
-import { ParseDate } from "../../helpers/Parser";
+import { ParseDateTime } from "../../helpers/Parser";
 
 export default function PostHorizontalCard({ post }) {
   return (
@@ -24,7 +24,7 @@ export default function PostHorizontalCard({ post }) {
             <p className="card-text">{post.summary}</p>
             <p className="card-text">
               <small className="text-muted">
-                Written by {post.createdBy.name} at {ParseDate(post.createdAt)}
+                Written by {post.createdBy.name} at {ParseDateTime(post.createdAt)}
               </small>
             </p>
           </div>

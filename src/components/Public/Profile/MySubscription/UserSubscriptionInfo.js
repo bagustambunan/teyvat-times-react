@@ -13,7 +13,7 @@ export default function UserSubscriptionInfo({ activeSub }) {
         </div>
       ) : (
         <div class="alert alert-primary" role="alert">
-          {activeSub.getDateEnded()}
+          Active until {activeSub.getDateEnded()}
         </div>
       )}
     </div>

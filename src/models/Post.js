@@ -1,4 +1,4 @@
-import { ParseDate } from "../helpers/Parser";
+import { ParseDateTime } from "../helpers/Parser";
 
 export default class Post {
   constructor(
@@ -36,10 +36,10 @@ export default class Post {
   }
 
   getCreatedAt() {
-    return ParseDate(this.createdAt);
+    return ParseDateTime(this.createdAt);
   }
 
   getUpdatedAt() {
-    return ParseDate(this.updatedAt);
+    return ParseDateTime(this.updatedAt);
   }
 }
