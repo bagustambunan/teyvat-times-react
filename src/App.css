@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+.border-red {
+  border: 1px solid red;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.admin-menu-side {
+  width: 18rem;
+  z-index: 1000;
+  background-color: red;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.admin-menu {
+  position: fixed;
+  width: 18rem;
+  background-color: #f7f4ef;
 }
 
-.App-header {
-  background-color: #282c34;
+.navbar-brand {
+  color: #389d6f;
+}
+
+.admin-menu-user {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.layout-main {
+  /* background: linear-gradient(45deg, rgba(255,255,255,1) 0%, rgba(247,192,88,1) 100%); */
+  /* background-color: #389d6f; */
+  background: url("../public/bg.jpg");
+  height: 100%;
   min-height: 100vh;
+}
+
+.post-card-img {
+  max-height: 10rem;
+  object-fit: cover;
+}
+
+.post-card-horizontal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-black-transparent {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.carousel-item > img {
+  max-height: 25rem;
+  object-fit: cover;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.post-mini-card > img {
+  object-fit: cover;
+  height: 5rem;
+  width: 5rem;
+  /* border: 1px solid red; */
+}
+
+section > h5 {
+  padding: 0.5rem 0rem 0.5rem 1rem;
+  border-left: 0.5rem solid #389d6f;
+  margin-bottom: 1rem;
+}
+
+.pagination {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.pagination > span {
+  padding: 0.75rem;
+  border: 1px solid #389d6f;
+  background-color: white;
+}
+.pagination > span:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+.pagination > .active {
+  background-color: #389d6f;
+}
+.pagination > span > a {
+  color: rgb(99, 99, 99);
+  text-decoration: none;
+}
+.pagination > span:first-child {
+  border-radius: 1rem 0px 0px 1rem;
+}
+.pagination > span:last-child {
+  border-radius:  0px 1rem 1rem 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: #47af7e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.read-img > img {
+  max-height: 30rem;
+}
+
+.link {
+  color: rgb(47, 90, 119);
+  text-decoration: none;
+}
+
+.my-btn:hover {
+  background-color: rgb(211, 211, 211);
 }
