@@ -8,11 +8,11 @@ export default function UserSubscriptionInfo({ activeSub }) {
       </div>
 
       {activeSub === null ? (
-        <div class="alert alert-secondary" role="alert">
+        <div className="alert alert-secondary" role="alert">
           You have no active subscription
         </div>
       ) : (
-        <div class="alert alert-primary" role="alert">
+        <div className="alert alert-primary" role="alert">
           Active until {activeSub.getDateEnded()}
         </div>
       )}

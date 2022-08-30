@@ -76,7 +76,7 @@ export default function UnlockPage() {
           <Mora amount={post.postTier.moraRequired} />
         </div>
         <button onClick={() => saveUnlock(post.postID)} type="button" className="btn btn-primary">
-          <i class="bi bi-unlock me-3"></i>
+          <i className="bi bi-unlock me-3"></i>
           Unlock
         </button>
       </div>

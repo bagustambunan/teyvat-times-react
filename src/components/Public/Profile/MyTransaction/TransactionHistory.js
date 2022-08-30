@@ -34,7 +34,9 @@ export default function TransactionHistory({ transactions, pagination, changePag
           <Pagination pagination={pagination} changePage={changePage} />
         </>
       ) : (
-        ""
+        <div className="alert alert-secondary" role="alert">
+          No data
+        </div>
       )}
     </div>
   );

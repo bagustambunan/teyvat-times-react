@@ -10,20 +10,24 @@ export default function ReferralInfo({ referrals }) {
 
       {
         referrals.length > 0 ? (
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Spent amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {referrals.map((referral, i) => (
-              <ReferralRow referral={referral} i={i + 1} key={referral.userID} />
-            ))}
-          </tbody>
-        </table>) : ""
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Spent amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {referrals.map((referral, i) => (
+                <ReferralRow referral={referral} i={i + 1} key={referral.userID} />
+              ))}
+            </tbody>
+          </table>) : (
+          <div className="alert alert-secondary" role="alert">
+            No data
+          </div>
+        )
       }
 
     </div>
