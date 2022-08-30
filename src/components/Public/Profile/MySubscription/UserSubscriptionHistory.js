@@ -3,7 +3,6 @@ import Pagination from "../../../Pagination";
 import UserSubscriptionRow from './UserSubscriptionRow';
 
 export default function UserSubscriptionHistory({ userSubscriptions, pagination, changePage }) {
-  console.log(userSubscriptions);
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">
