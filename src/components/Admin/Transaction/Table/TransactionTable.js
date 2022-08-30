@@ -6,6 +6,7 @@ import TableController from './TableController';
 import TransactionRow from './TransactionRow';
 import Transaction from '../../../../models/Transaction';
 import { selectToken } from '../../../../store/tokenSlice';
+import { apiUrl } from '../../../../helpers/values';
 
 export default function TransactionTable() {
   const token = useSelector(selectToken);
@@ -27,7 +28,7 @@ export default function TransactionTable() {
 
   const fetchTransactions = () => {
     fetch(
-      `http://localhost:8080/transactions?status=${form.status}&limit=${form.limit}&page=${form.page}`,
+      `${apiUrl}/transactions?status=${form.status}&limit=${form.limit}&page=${form.page}`,
       {
         method: 'GET',
         headers: {

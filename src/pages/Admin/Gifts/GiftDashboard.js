@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import GiftTable from '../../../components/Admin/Gift/GiftTable';
 import TitleSection from '../../../components/Admin/TitleSection';
+import { apiUrl } from '../../../helpers/values';
 import Gift from '../../../models/Gift';
 import { selectToken } from '../../../store/tokenSlice'
 
@@ -12,7 +13,7 @@ export default function GiftDashboard() {
   const token = useSelector(selectToken);
   const fetchGifts = () => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/gifts`, {
+    fetch(`${apiUrl}/pub/gifts`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

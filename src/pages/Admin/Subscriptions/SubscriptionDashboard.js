@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import SubscriptionTable from '../../../components/Admin/Subscription/SubscriptionTable';
 import TitleSection from '../../../components/Admin/TitleSection';
+import { apiUrl } from '../../../helpers/values';
 import Subscription from '../../../models/Subscription';
 import { selectToken } from '../../../store/tokenSlice'
 
@@ -12,7 +13,7 @@ export default function SubscriptionDashboard() {
   const token = useSelector(selectToken);
   const fetchSubscriptions = () => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/subscriptions`, {
+    fetch(`${apiUrl}/pub/subscriptions`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

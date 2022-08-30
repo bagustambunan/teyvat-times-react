@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { apiUrl } from '../../helpers/values';
 import SubmitButton from '../Form/SubmitButton';
 
 export default function RegisterForm() {
@@ -86,7 +87,7 @@ export default function RegisterForm() {
       referrerCode: form.referrerCode,
     };
 
-    fetch('http://localhost:8080/sign-up', {
+    fetch(`${apiUrl}/sign-up`, {
       method: 'POST',
       body: JSON.stringify(dataToPost),
     })

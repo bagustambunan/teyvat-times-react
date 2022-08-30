@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PurchaseDetail from '../../../components/Public/Subscription/PurchaseDetail';
+import { apiUrl } from '../../../helpers/values';
 import { selectToken } from '../../../store/tokenSlice';
 
 export default function PurchasePage() {
@@ -12,7 +13,7 @@ export default function PurchasePage() {
 
   const fetchSubscription = (subscriptionID) => {
     setIsLoading(true);
-    fetch('http://localhost:8080/pub/subscriptions/'+subscriptionID, {
+    fetch(`${apiUrl}/pub/subscriptions/${subscriptionID}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

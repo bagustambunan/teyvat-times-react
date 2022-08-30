@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectToken } from '../../store/tokenSlice';
 import Unlock from '../../components/Public/Read/Unlock';
 import Mora from '../../components/Mora';
+import { apiUrl } from '../../helpers/values';
 
 export default function UnlockPage() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function UnlockPage() {
   const token = useSelector(selectToken);
   const fetchPost = (slug) => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/posts/overview/${slug}`, {
+    fetch(`${apiUrl}/pub/posts/overview/${slug}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -41,7 +42,7 @@ export default function UnlockPage() {
   }, []);
 
   const saveUnlock = (postID) => {
-    fetch('http://localhost:8080/pub/posts/'+postID+'/unlocks/', {
+    fetch(`${apiUrl}/pub/posts/${postID}/unlocks/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

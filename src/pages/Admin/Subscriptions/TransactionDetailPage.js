@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import TitleSection from '../../../components/Admin/TitleSection';
 import TransactionDetail from '../../../components/Admin/Transaction/TransactionDetail';
+import { apiUrl } from '../../../helpers/values';
 import Transaction from '../../../models/Transaction';
 import { selectToken } from '../../../store/tokenSlice';
 
@@ -14,7 +15,7 @@ export default function TransactionDetailPage() {
 
   const fetchTransaction = (transactionID) => {
     setIsLoading(true);
-    fetch('http://localhost:8080/pub/transactions/'+transactionID, {
+    fetch(`${apiUrl}/pub/transactions/${transactionID}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

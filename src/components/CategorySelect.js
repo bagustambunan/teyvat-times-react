@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../store/tokenSlice';
+import { apiUrl } from '../helpers/values';
 
 export default function CategorySelect({
   showDefault = true,
@@ -11,7 +12,7 @@ export default function CategorySelect({
   const [categories, setCategories] = useState([]);
   const token = useSelector(selectToken);
   const fetchCategories = () => {
-    fetch('http://localhost:8080/pub/categories', {
+    fetch(`${apiUrl}/pub/categories`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

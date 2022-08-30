@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import TransactionHistory from '../../../components/Public/Profile/MyTransaction/TransactionHistory';
+import { apiUrl } from '../../../helpers/values';
 import Transaction from '../../../models/Transaction';
 import { selectToken } from '../../../store/tokenSlice';
 
@@ -23,7 +24,7 @@ export default function MyTransactionDashboard() {
   const token = useSelector(selectToken);
   const fetchTransactions = () => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/transactions?limit=${form.limit}&page=${form.page}`, {
+    fetch(`${apiUrl}/pub/transactions?limit=${form.limit}&page=${form.page}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

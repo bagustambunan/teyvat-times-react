@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { apiUrl } from '../../helpers/values';
 import { setToken } from '../../store/tokenSlice';
 import SubmitButton from '../Form/SubmitButton';
 
@@ -31,7 +32,7 @@ export default function LoginForm({ checkToken }) {
       password: form.password,
     };
 
-    fetch('http://localhost:8080/sign-in', {
+    fetch(`${apiUrl}/sign-in`, {
       method: 'POST',
       body: JSON.stringify(dataToPost),
     })

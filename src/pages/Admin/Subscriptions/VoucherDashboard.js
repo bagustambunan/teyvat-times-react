@@ -5,6 +5,7 @@ import VoucherTable from '../../../components/Admin/Voucher/VoucherTable';
 import TitleSection from '../../../components/Admin/TitleSection';
 import Voucher from '../../../models/Voucher';
 import { selectToken } from '../../../store/tokenSlice'
+import { apiUrl } from '../../../helpers/values';
 
 export default function VoucherDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +13,7 @@ export default function VoucherDashboard() {
   const token = useSelector(selectToken);
   const fetchVouchers = () => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/vouchers`, {
+    fetch(`${apiUrl}/vouchers`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

@@ -3,13 +3,14 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import CategoryRow from './CategoryRow';
 import { selectToken } from '../../../store/tokenSlice';
+import { apiUrl } from '../../../helpers/values';
 
 export default function CategoryTable() {
   const [categories, setCategories] = useState([]);
 
   const token = useSelector(selectToken);
   const fetchCategories = () => {
-    fetch('http://localhost:8080/pub/categories', {
+    fetch(`${apiUrl}/pub/categories`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

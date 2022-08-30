@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import Mora from "../../../components/Mora";
 import { ParseCurrency } from "../../../helpers/Parser";
+import { apiUrl } from "../../../helpers/values";
 import { selectToken } from "../../../store/tokenSlice";
 
 export default function PurchaseDetail({ subscription }) {
@@ -24,7 +25,7 @@ export default function PurchaseDetail({ subscription }) {
     setForm({ ...form, [name]: value });
   };
   const fetchUserVoucher = (code) => {
-    fetch('http://localhost:8080/pub/user_voucher/'+code, {
+    fetch(`${apiUrl}/pub/user_voucher/${code}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -62,7 +63,7 @@ export default function PurchaseDetail({ subscription }) {
       }
     }
 
-    fetch('http://localhost:8080/pub/transactions/', {
+    fetch(`${apiUrl}/pub/transactions/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

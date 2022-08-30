@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { selectToken } from '../../../store/tokenSlice';
 import SubscriptionWrapper from '../../../components/Public/Subscription/SubscriptionWrapper'
+import { apiUrl } from '../../../helpers/values';
 
 export default function SubscriptionPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +11,7 @@ export default function SubscriptionPage() {
   const token = useSelector(selectToken);
   const fetchSubscriptions = () => {
     setIsLoading(true);
-    fetch('http://localhost:8080/pub/subscriptions', {
+    fetch(`${apiUrl}/pub/subscriptions`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

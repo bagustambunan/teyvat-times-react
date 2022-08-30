@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { apiUrl } from '../helpers/values';
 import { selectToken } from '../store/tokenSlice';
 
 export default function TierSelect({
@@ -12,7 +13,7 @@ export default function TierSelect({
 
   const token = useSelector(selectToken);
   const fetchTiers = () => {
-    fetch('http://localhost:8080/pub/tiers', {
+    fetch(`${apiUrl}/pub/tiers`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,

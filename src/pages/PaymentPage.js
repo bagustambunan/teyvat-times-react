@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useParams } from "react-router-dom";
 import SubmitButton from "../components/Form/SubmitButton";
+import { apiUrl } from "../helpers/values";
 
 export default function PaymentPage() {
   const [form, setForm] = useState({
@@ -19,7 +20,7 @@ export default function PaymentPage() {
       amount: parseInt(form.amount, 10),
     };
 
-    fetch("http://localhost:8080/open/payment", {
+    fetch(`${apiUrl}/open/payment`, {
       method: "POST",
       body: JSON.stringify(dataToPost),
     })

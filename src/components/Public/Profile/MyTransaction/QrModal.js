@@ -1,9 +1,10 @@
 import { QRCodeSVG } from "qrcode.react";
 import React from "react";
+import { baseUrl } from "../../../../helpers/values";
 import LinkIcon from "../../../LinkIcon";
 
 export default function QrModal({ transaction }) {
-  const link = `/payment/${transaction.transactionID}`;
+  const link = `${baseUrl}/payment/${transaction.transactionID}`;
   return (
     <>
       <div

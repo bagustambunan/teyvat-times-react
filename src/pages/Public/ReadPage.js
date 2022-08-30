@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import PostDetail from '../../components/Public/Read/PostDetail';
 import Post from '../../models/Post';
 import { selectToken } from '../../store/tokenSlice';
+import { apiUrl } from '../../helpers/values';
 
 export default function ReadPage() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function ReadPage() {
 
   const fetchMyActivity = (postID) => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/posts/${postID}/activities`, {
+    fetch(`${apiUrl}/pub/posts/${postID}/activities`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -45,7 +46,7 @@ export default function ReadPage() {
 
   const fetchPost = (slug) => {
     setIsLoading(true);
-    fetch(`http://localhost:8080/pub/posts/read/${slug}`, {
+    fetch(`${apiUrl}/pub/posts/read/${slug}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -89,7 +90,7 @@ export default function ReadPage() {
       isLiked: myActivity.isLiked,
       isShared: myActivity.isShared,
     };
-    fetch(`http://localhost:8080/pub/posts/${post.postID}/activities`, {
+    fetch(`${apiUrl}/pub/posts/${post.postID}/activities`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,

@@ -5,6 +5,7 @@ import Carousel from '../../components/Public/Carousel';
 import PostsSection from '../../components/Public/PostsSection';
 import SearchSection from '../../components/Public/SearchSection';
 import TrendingSection from '../../components/Public/TrendingSection';
+import { apiUrl } from '../../helpers/values';
 import Post from '../../models/Post';
 import { selectToken } from '../../store/tokenSlice';
 
@@ -32,7 +33,7 @@ export default function HomePage() {
   const token = useSelector(selectToken);
   const fetchPosts = () => {
     fetch(
-      `http://localhost:8080/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
+      `${apiUrl}/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
       {
         method: 'GET',
         headers: {

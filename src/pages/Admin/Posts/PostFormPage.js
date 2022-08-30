@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import PostForm from '../../../components/Admin/Post/PostForm';
 import TitleSection from '../../../components/Admin/TitleSection';
+import { apiUrl } from '../../../helpers/values';
 import Post from '../../../models/Post';
 import { selectToken } from '../../../store/tokenSlice';
 
@@ -51,7 +52,7 @@ export default function PostFormPage() {
   };
 
   const fetchPost = (postID) => {
-    fetch(`http://localhost:8080/posts/${postID}`, {
+    fetch(`${apiUrl}/posts/${postID}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -104,7 +105,7 @@ export default function PostFormPage() {
       summary: form.summary,
     };
 
-    fetch('http://localhost:8080/posts/', {
+    fetch(`${apiUrl}/posts/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -135,7 +136,7 @@ export default function PostFormPage() {
       summary: form.summary,
     };
 
-    fetch(`http://localhost:8080/posts/${form.postID}`, {
+    fetch(`${apiUrl}/posts/${form.postID}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,

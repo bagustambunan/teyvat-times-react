@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import CategoryForm from '../../../components/Admin/Category/CategoryForm';
 import TitleSection from '../../../components/Admin/TitleSection';
+import { apiUrl } from '../../../helpers/values';
 import { selectToken } from '../../../store/tokenSlice';
 
 export default function CategoryFormPage() {
@@ -25,7 +26,7 @@ export default function CategoryFormPage() {
 
   // BEST EXAMPLE UNTUK FETCH AND HANDLE
   const fetchCategory = (categoryID) => {
-    fetch(`http://localhost:8080/categories/${categoryID}`, {
+    fetch(`${apiUrl}/categories/${categoryID}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -55,7 +56,7 @@ export default function CategoryFormPage() {
       color: form.color,
     };
 
-    fetch('http://localhost:8080/categories/', {
+    fetch(`${apiUrl}/categories/`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -83,7 +84,7 @@ export default function CategoryFormPage() {
       color: form.color,
     };
 
-    fetch(`http://localhost:8080/categories/${form.postCategoryID}`, {
+    fetch(`${apiUrl}/categories/${form.postCategoryID}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,

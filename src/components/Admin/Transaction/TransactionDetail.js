@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ParseCurrency, ParseDate } from "../../../helpers/Parser";
+import { apiUrl } from "../../../helpers/values";
 import { selectToken } from "../../../store/tokenSlice";
 
 export default function TransactionDetail({ transaction }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const approveTransaction = (transactionID) => {
-    fetch("http://localhost:8080/transactions/" + transactionID + "/approve", {
+    fetch(`${apiUrl}/transactions/${transactionID}/approve`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -30,7 +31,7 @@ export default function TransactionDetail({ transaction }) {
       });
   };
   const rejectTransaction = (transactionID) => {
-    fetch("http://localhost:8080/transactions/" + transactionID + "/reject", {
+    fetch(`${apiUrl}/transactions/${transactionID}/reject`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

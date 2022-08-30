@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { setToken } from '../store/tokenSlice';
 import { setUser } from '../store/userSlice';
+import { apiUrl } from './values';
 
 export default function AuthHelper(auth, role, setLoadingFalse) {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function AuthHelper(auth, role, setLoadingFalse) {
   };
 
   const fetchUser = () => {
-    fetch(`http://localhost:8080/pub/users/${getUserId()}`, {
+    fetch(`${apiUrl}/pub/users/${getUserId()}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${auth.getToken()}`,

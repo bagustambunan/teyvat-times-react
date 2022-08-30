@@ -7,6 +7,7 @@ import TableController from './TableController';
 import PostRow from './PostRow';
 import Post from '../../../../models/Post';
 import { selectToken } from '../../../../store/tokenSlice';
+import { apiUrl } from '../../../../helpers/values';
 
 export default function PostTable() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ export default function PostTable() {
 
   const fetchPosts = () => {
     fetch(
-      `http://localhost:8080/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
+      `${apiUrl}/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
       {
         method: 'GET',
         headers: {
@@ -77,7 +78,7 @@ export default function PostTable() {
   };
 
   const deletePost = (postID) => {
-    fetch(`http://localhost:8080/posts/${postID}`, {
+    fetch(`${apiUrl}/posts/${postID}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

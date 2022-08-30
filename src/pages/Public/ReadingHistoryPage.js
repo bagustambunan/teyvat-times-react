@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import PostsSection from '../../components/Public/PostsSection';
+import { apiUrl } from '../../helpers/values';
 import Post from '../../models/Post';
 import { selectToken } from '../../store/tokenSlice';
 
@@ -29,7 +30,7 @@ export default function ReadingHistoryPage() {
   const token = useSelector(selectToken);
   const fetchPosts = () => {
     fetch(
-      `http://localhost:8080/pub/reading-history?limit=${form.limit}&page=${form.page}`,
+      `${apiUrl}/pub/reading-history?limit=${form.limit}&page=${form.page}`,
       {
         method: 'GET',
         headers: {
