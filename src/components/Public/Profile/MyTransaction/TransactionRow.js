@@ -1,6 +1,5 @@
 import React from "react";
 import { ParseDate } from "../../../../helpers/Parser";
-import ButtonIcon from "../../../../components/ButtonIcon";
 import { NavLink } from "react-router-dom";
 
 export default function TransactionRow({ transaction, i }) {
