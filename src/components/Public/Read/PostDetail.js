@@ -30,11 +30,11 @@ export default function PostDetail({
         </p>
       </div>
 
-      <div className="read-img">
+      <div className="read-img mt-1 mb-3">
         <img src={post.imgContent.url} className="img-fluid" alt="..." />
       </div>
 
-      <div>
+      <div className="my-2">
         <p>{post.content}</p>
       </div>
 

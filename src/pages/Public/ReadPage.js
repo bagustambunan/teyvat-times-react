@@ -110,12 +110,15 @@ export default function ReadPage() {
 
   const changeLike = () => {
     setMyActivity({ ...myActivity, isLiked: myActivity.isLiked === 0 ? 1 : 0 });
+    const updatedPost = post;
+    updatedPost.totalLike += myActivity.isLiked === 0 ? 1 : -1;
+    setPost(updatedPost);
   };
   const changeShare = () => {
-    setMyActivity({
-      ...myActivity,
-      isShared: myActivity.isShared === 0 ? 1 : 0,
-    });
+    setMyActivity({ ...myActivity, isShared: myActivity.isShared === 0 ? 1 : 1 });
+    const updatedPost = post;
+    updatedPost.totalShare += myActivity.isShared === 0 ? 1 : 0;
+    setPost(updatedPost);
   };
   useEffect(() => {
     if (!isLoading) {
@@ -135,7 +138,7 @@ export default function ReadPage() {
   }
 
   return (
-    <div className="container bg-white py-5 border rounded">
+    <div className="container bg-white p-4 border rounded shadow">
       <PostDetail
         post={post}
         myActivity={myActivity}
