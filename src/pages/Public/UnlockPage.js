@@ -56,7 +56,7 @@ export default function UnlockPage() {
         }
         if (res.statusCode !== 200) {
           toast.error(`${res.message}`);
-          navigate(`/subscription`);
+          navigate('/subscription');
         }
       })
       .catch((err) => {
@@ -76,10 +76,10 @@ export default function UnlockPage() {
           <Mora amount={post.postTier.moraRequired} />
         </div>
         <button onClick={() => saveUnlock(post.postID)} type="button" className="btn btn-primary">
-          <i className="bi bi-unlock me-3"></i>
+          <i className="bi bi-unlock me-3" />
           Unlock
         </button>
       </div>
     </div>
-  )
+  );
 }

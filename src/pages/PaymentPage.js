@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import { useParams } from "react-router-dom";
-import SubmitButton from "../components/Form/SubmitButton";
-import { apiUrl } from "../helpers/values";
+/* eslint-disable no-alert */
+import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+import SubmitButton from '../components/Form/SubmitButton';
+import { apiUrl } from '../helpers/values';
 
 export default function PaymentPage() {
   const [form, setForm] = useState({
@@ -21,20 +22,18 @@ export default function PaymentPage() {
     };
 
     fetch(`${apiUrl}/open/payment`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(dataToPost),
     })
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          alert("Payment success");
+          alert('Payment success');
           window.close();
-        }
-        else if (res.statusCode === 400) {
+        } else if (res.statusCode === 400) {
           toast.error(`Error: ${res.message}`);
-        }
-        else {
-          toast.error(`Error: This payment is invalid`);
+        } else {
+          toast.error('Error: This payment is invalid');
         }
       })
       .catch((err) => {
@@ -45,7 +44,7 @@ export default function PaymentPage() {
   const params = useParams();
   useEffect(() => {
     if (params.transactionID !== undefined) {
-      setForm({ ...form, ["transactionID"]: params.transactionID });
+      setForm({ ...form, transactionID: params.transactionID });
     }
   }, []);
 
@@ -94,7 +93,7 @@ export default function PaymentPage() {
             <SubmitButton text="Process payment" />
           </form>
         </div>
-        
+
       </div>
     </>
   );

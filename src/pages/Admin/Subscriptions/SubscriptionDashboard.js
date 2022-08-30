@@ -5,7 +5,7 @@ import SubscriptionTable from '../../../components/Admin/Subscription/Subscripti
 import TitleSection from '../../../components/Admin/TitleSection';
 import { apiUrl } from '../../../helpers/values';
 import Subscription from '../../../models/Subscription';
-import { selectToken } from '../../../store/tokenSlice'
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function SubscriptionDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +28,7 @@ export default function SubscriptionDashboard() {
               item.name,
               item.price,
               item.moraAmount,
-            )
+            );
             return subscription;
           });
           setSubscriptions(fetchedSubscriptions);
@@ -53,5 +53,5 @@ export default function SubscriptionDashboard() {
       <TitleSection title="Subscriptions" icon="bi-card-list" />
       <SubscriptionTable subscriptions={subscriptions} />
     </>
-  )
+  );
 }

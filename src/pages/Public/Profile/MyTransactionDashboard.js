@@ -43,7 +43,7 @@ export default function MyTransactionDashboard() {
               item.netTotal,
               item.userVoucher,
               item.createdAt,
-            )
+            );
             return transaction;
           });
           setTransactions(fetchedTransactions);
@@ -69,7 +69,11 @@ export default function MyTransactionDashboard() {
   }
   return (
     <div className="my-3">
-      <TransactionHistory transactions={transactions} pagination={pagination} changePage={changePage} />
+      <TransactionHistory
+        transactions={transactions}
+        pagination={pagination}
+        changePage={changePage}
+      />
     </div>
-  )
+  );
 }

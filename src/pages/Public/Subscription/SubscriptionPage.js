@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { selectToken } from '../../../store/tokenSlice';
-import SubscriptionWrapper from '../../../components/Public/Subscription/SubscriptionWrapper'
+import SubscriptionWrapper from '../../../components/Public/Subscription/SubscriptionWrapper';
 import { apiUrl } from '../../../helpers/values';
 
 export default function SubscriptionPage() {

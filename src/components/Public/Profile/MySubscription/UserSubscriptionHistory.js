@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from "../../../Pagination";
+import Pagination from '../../../Pagination';
 import UserSubscriptionRow from './UserSubscriptionRow';
 
 export default function UserSubscriptionHistory({ userSubscriptions, pagination, changePage }) {
@@ -24,7 +24,7 @@ export default function UserSubscriptionHistory({ userSubscriptions, pagination,
               {userSubscriptions.map((userSub, i) => (
                 <UserSubscriptionRow
                   userSub={userSub}
-                  i={i+1}
+                  i={i + 1}
                   key={userSub.userSubscriptionID}
                 />
               ))}
@@ -38,5 +38,5 @@ export default function UserSubscriptionHistory({ userSubscriptions, pagination,
         </div>
       )}
     </div>
-  )
+  );
 }

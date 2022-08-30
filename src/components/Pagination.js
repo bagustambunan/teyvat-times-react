@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Pagination({ pagination, changePage }) {
   const pages = [];
@@ -8,13 +8,14 @@ export default function Pagination({ pagination, changePage }) {
   return (
     <div className="pagination">
       {pages.map((item) => (
-        <span
+        <button
+          type="button"
           key={item}
           onClick={() => changePage(item)}
-          className={`${item === pagination.currentPage ? "active" : ""}`}
+          className={`${item === pagination.currentPage ? 'active' : ''}`}
         >
           {item}
-        </span>
+        </button>
       ))}
     </div>
   );

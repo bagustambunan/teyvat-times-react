@@ -1,5 +1,5 @@
-import React from 'react'
-import { ParseCurrency } from '../../../helpers/Parser'
+import React from 'react';
+import { ParseCurrency } from '../../../helpers/Parser';
 
 export default function VoucherRow({ voucher, i }) {
   return (
@@ -15,5 +15,5 @@ export default function VoucherRow({ voucher, i }) {
         {voucher.code}
       </td>
     </tr>
-  )
+  );
 }

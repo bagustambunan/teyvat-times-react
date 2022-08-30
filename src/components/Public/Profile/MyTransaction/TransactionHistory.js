@@ -1,6 +1,6 @@
-import React from "react";
-import Pagination from "../../../Pagination";
-import TransactionRow from "./TransactionRow";
+import React from 'react';
+import Pagination from '../../../Pagination';
+import TransactionRow from './TransactionRow';
 
 export default function TransactionHistory({ transactions, pagination, changePage }) {
   return (

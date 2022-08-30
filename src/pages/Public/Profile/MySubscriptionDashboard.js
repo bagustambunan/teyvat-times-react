@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { apiUrl } from "../../../helpers/values";
-import { selectToken } from "../../../store/tokenSlice";
-import UserSubscription from "../../../models/UserSubscription";
-import UserSubscriptionHistory from "../../../components/Public/Profile/MySubscription/UserSubscriptionHistory";
-import UserSubscriptionInfo from "../../../components/Public/Profile/MySubscription/UserSubscriptionInfo";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { apiUrl } from '../../../helpers/values';
+import { selectToken } from '../../../store/tokenSlice';
+import UserSubscription from '../../../models/UserSubscription';
+import UserSubscriptionHistory from '../../../components/Public/Profile/MySubscription/UserSubscriptionHistory';
+import UserSubscriptionInfo from '../../../components/Public/Profile/MySubscription/UserSubscriptionInfo';
 
 export default function MySubscriptionDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,44 +24,16 @@ export default function MySubscriptionDashboard() {
     setPagination({ ...pagination, currentPage: page });
     setForm({ ...form, page });
   };
-  const fetchActiveSub = () => {
-    fetch(`${apiUrl}/pub/user-subscriptions/active`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.statusCode === 200) {
-          if (res.data !== null) {
-            setActiveSub(
-              new UserSubscription(
-                res.data.userSubscriptionID,
-                res.data.user,
-                res.data.subscription,
-                res.data.dateStart,
-                res.data.dateEnded
-              )
-            );
-          }
-        }
-        fetchMySubs();
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`);
-      });
-  };
   const fetchMySubs = () => {
     setIsLoading(true);
     fetch(
       `${apiUrl}/pub/user-subscriptions?limit=${form.limit}&page=${form.page}`,
       {
-        method: "GET",
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
         },
-      }
+      },
     )
       .then((res) => res.json())
       .then((res) => {
@@ -72,7 +44,7 @@ export default function MySubscriptionDashboard() {
               item.user,
               item.subscription,
               item.dateStart,
-              item.dateEnded
+              item.dateEnded,
             );
             return userSub;
           });
@@ -88,6 +60,34 @@ export default function MySubscriptionDashboard() {
         toast.error(`Error: ${err.message}`);
       });
   };
+  const fetchActiveSub = () => {
+    fetch(`${apiUrl}/pub/user-subscriptions/active`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          if (res.data !== null) {
+            setActiveSub(
+              new UserSubscription(
+                res.data.userSubscriptionID,
+                res.data.user,
+                res.data.subscription,
+                res.data.dateStart,
+                res.data.dateEnded,
+              ),
+            );
+          }
+        }
+        fetchMySubs();
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
   useEffect(() => {
     fetchMySubs();
   }, [form]);
@@ -95,7 +95,7 @@ export default function MySubscriptionDashboard() {
     fetchActiveSub();
   }, []);
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...';
   }
   return (
     <div className="my-3">

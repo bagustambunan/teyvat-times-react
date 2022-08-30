@@ -1,5 +1,5 @@
-import React from 'react'
-import SubscriptionRow from './SubscriptionRow'
+import React from 'react';
+import SubscriptionRow from './SubscriptionRow';
 
 export default function SubscriptionTable({ subscriptions }) {
   return (
@@ -22,5 +22,5 @@ export default function SubscriptionTable({ subscriptions }) {
         ))}
       </tbody>
     </table>
-  )
+  );
 }

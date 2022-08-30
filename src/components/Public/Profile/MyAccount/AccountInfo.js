@@ -3,7 +3,6 @@ import ButtonEdit from '../../../ButtonEdit';
 import Mora from '../../../Mora';
 
 export default function AccountInfo({ user }) {
-  console.log(user);
   return (
     <div className="mb-5">
       <div className="d-flex justify-content-between align-items-center">

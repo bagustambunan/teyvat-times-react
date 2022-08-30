@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Mora from "../../../components/Mora";
-import { ParseCurrency } from "../../../helpers/Parser";
-import { apiUrl } from "../../../helpers/values";
-import { selectToken } from "../../../store/tokenSlice";
+import Mora from '../../Mora';
+import { ParseCurrency } from '../../../helpers/Parser';
+import { apiUrl } from '../../../helpers/values';
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function PurchaseDetail({ subscription }) {
   const navigate = useNavigate();
@@ -13,11 +13,11 @@ export default function PurchaseDetail({ subscription }) {
   const noVoucher = {
     voucher: {
       amount: 0,
-    }
-  }
+    },
+  };
   const [userVoucher, setUserVoucher] = useState(noVoucher);
   const [form, setForm] = useState({
-    code: "",
+    code: '',
   });
   const handleChange = (e) => {
     const { name } = e.currentTarget;
@@ -35,11 +35,11 @@ export default function PurchaseDetail({ subscription }) {
       .then((res) => {
         if (res.statusCode === 200) {
           setUserVoucher(res.data);
-          toast.success("Voucher applied");
+          toast.success('Voucher applied');
         }
         if (res.statusCode !== 200) {
           setUserVoucher(noVoucher);
-          toast.error("Voucher not found");
+          toast.error('Voucher not found');
         }
       })
       .catch((err) => {
@@ -51,7 +51,6 @@ export default function PurchaseDetail({ subscription }) {
     fetchUserVoucher(form.code);
   };
 
-
   const saveTransaction = () => {
     let dataToPost = {
       subscriptionID: subscription.subscriptionID,
@@ -59,8 +58,8 @@ export default function PurchaseDetail({ subscription }) {
     if (userVoucher.voucher.amount !== 0) {
       dataToPost = {
         subscriptionID: subscription.subscriptionID,
-	      userVoucherID: userVoucher.userVoucherID,
-      }
+        userVoucherID: userVoucher.userVoucherID,
+      };
     }
 
     fetch(`${apiUrl}/pub/transactions/`, {
@@ -136,7 +135,7 @@ export default function PurchaseDetail({ subscription }) {
                     <span className="text-success">{ParseCurrency(userVoucher.voucher.amount)}</span>
                   </td>
                 </tr>
-              ) : ("")
+              ) : ('')
             }
           </tbody>
         </table>
@@ -154,11 +153,11 @@ export default function PurchaseDetail({ subscription }) {
           </span>
         </div>
         <button
-          onClick={() => {saveTransaction()}}
+          onClick={() => { saveTransaction(); }}
           type="button"
           className="btn btn-primary"
         >
-          <i className={`bi bi-box-arrow-in-up-right me-2`} />
+          <i className="bi bi-box-arrow-in-up-right me-2" />
           Process transaction
         </button>
       </div>

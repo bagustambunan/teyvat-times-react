@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function UserSubscriptionInfo({ activeSub }) {
   return (
@@ -13,7 +13,9 @@ export default function UserSubscriptionInfo({ activeSub }) {
         </div>
       ) : (
         <div className="alert alert-primary" role="alert">
-          Active until {activeSub.getDateEnded()}
+          Active until
+          {' '}
+          {activeSub.getDateEnded()}
         </div>
       )}
     </div>

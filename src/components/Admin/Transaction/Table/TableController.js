@@ -1,5 +1,5 @@
 import React from 'react';
-import TransactionStatusSelect from './TransactionStatusSelect'
+import TransactionStatusSelect from './TransactionStatusSelect';
 
 export default function TableController({ form, handleChange }) {
   return (
@@ -8,8 +8,7 @@ export default function TableController({ form, handleChange }) {
         <TransactionStatusSelect value={form.status} handleChange={handleChange} />
       </div>
 
-      <div className="col-12 col-md-6">
-      </div>
+      <div className="col-12 col-md-6" />
     </section>
   );
 }

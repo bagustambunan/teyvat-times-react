@@ -1,5 +1,5 @@
-import React from 'react'
-import VoucherRow from './VoucherRow'
+import React from 'react';
+import VoucherRow from './VoucherRow';
 
 export default function VoucherTable({ vouchers }) {
   return (
@@ -22,5 +22,5 @@ export default function VoucherTable({ vouchers }) {
         ))}
       </tbody>
     </table>
-  )
+  );
 }

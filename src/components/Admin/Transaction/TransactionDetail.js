@@ -1,17 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { ParseCurrency, ParseDateTime } from "../../../helpers/Parser";
-import { apiUrl } from "../../../helpers/values";
-import { selectToken } from "../../../store/tokenSlice";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { ParseCurrency, ParseDateTime } from '../../../helpers/Parser';
+import { apiUrl } from '../../../helpers/values';
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function TransactionDetail({ transaction }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const approveTransaction = (transactionID) => {
     fetch(`${apiUrl}/transactions/${transactionID}/approve`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -19,8 +19,8 @@ export default function TransactionDetail({ transaction }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("Transaction approved");
-          navigate("/admin/transactions");
+          toast.success('Transaction approved');
+          navigate('/admin/transactions');
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -32,7 +32,7 @@ export default function TransactionDetail({ transaction }) {
   };
   const rejectTransaction = (transactionID) => {
     fetch(`${apiUrl}/transactions/${transactionID}/reject`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,8 +40,8 @@ export default function TransactionDetail({ transaction }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("Transaction rejected");
-          navigate("/admin/transactions");
+          toast.success('Transaction rejected');
+          navigate('/admin/transactions');
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -89,18 +89,20 @@ export default function TransactionDetail({ transaction }) {
             type="button"
             className="btn btn-success"
           >
-            <i className="bi bi-check-circle me-2"></i>Approve
+            <i className="bi bi-check-circle me-2" />
+            Approve
           </button>
           <button
             onClick={() => rejectTransaction(transaction.transactionID)}
             type="button"
             className="btn btn-danger"
           >
-            <i className="bi bi-x-circle me-2"></i>Reject
+            <i className="bi bi-x-circle me-2" />
+            Reject
           </button>
         </div>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

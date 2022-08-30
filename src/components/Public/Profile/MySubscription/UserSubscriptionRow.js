@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export default function UserSubscriptionRow({ userSub, i }) {
   return (
@@ -8,5 +8,5 @@ export default function UserSubscriptionRow({ userSub, i }) {
       <td>{userSub.getDateStart()}</td>
       <td>{userSub.getDateEnded()}</td>
     </tr>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { ParseDateTime } from "../helpers/Parser";
+import { ParseDateTime } from '../helpers/Parser';
 
 export default class Post {
   constructor(

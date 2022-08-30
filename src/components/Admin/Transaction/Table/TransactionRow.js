@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ParseDateTime } from '../../../../helpers/Parser';
 
-export default function TransactionRow({ transaction, i, handleDelete }) {
+export default function TransactionRow({ transaction, i }) {
   return (
     <tr>
       <th scope="row">{i}</th>

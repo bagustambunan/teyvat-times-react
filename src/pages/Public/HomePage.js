@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import Carousel from '../../components/Public/Carousel';
 import PostsSection from '../../components/Public/PostsSection';
 import SearchSection from '../../components/Public/SearchSection';
 import TrendingSection from '../../components/Public/TrendingSection';

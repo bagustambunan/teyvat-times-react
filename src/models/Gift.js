@@ -3,7 +3,7 @@ export default class Gift {
     giftID,
     name,
     image,
-    stock
+    stock,
   ) {
     this.giftID = giftID;
     this.name = name;

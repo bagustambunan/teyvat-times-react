@@ -1,6 +1,6 @@
-import React from "react";
-import { ParseDateTime } from "../../../../helpers/Parser";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { ParseDateTime } from '../../../../helpers/Parser';
 
 export default function TransactionRow({ transaction, i }) {
   return (

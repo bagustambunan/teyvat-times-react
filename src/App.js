@@ -53,9 +53,9 @@ function App() {
           <Route path="/profile/mytransaction" element={<MyTransactionDashboard />} />
           <Route path="/profile/mytransaction/:transactionID" element={<MyTransactionDetailPage />} />
           <Route path="/profile/mysubscription" element={<MySubscriptionDashboard />} />
-          <Route path="/profile/myvoucher" element={"WIP"} />
+          <Route path="/profile/myvoucher" element="WIP" />
           <Route path="/profile/myreferral" element={<MyReferralDashboard />} />
-          <Route path="/profile/mygift" element={"WIP"} />
+          <Route path="/profile/mygift" element="WIP" />
         </Route>
       </Route>
 
@@ -80,7 +80,7 @@ function App() {
         <Route path="/admin/vouchers" element={<VoucherDashboard />} />
 
         <Route path="/admin/gifts" element={<GiftDashboard />} />
-        <Route path="/admin/gift-claims" element={"WIP"} />
+        <Route path="/admin/gift-claims" element="WIP" />
       </Route>
 
       <Route path="*" element={<h1>404 Not Found!</h1>} />

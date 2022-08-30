@@ -1,14 +1,8 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { ParseCurrency, ParseDateTime } from "../../../../helpers/Parser";
-import { selectToken } from "../../../../store/tokenSlice";
-import QrModal from './QrModal'
+import React from 'react';
+import { ParseCurrency, ParseDateTime } from '../../../../helpers/Parser';
+import QrModal from './QrModal';
 
 export default function TransactionDetail({ transaction }) {
-  const token = useSelector(selectToken);
-  const navigate = useNavigate();
   return (
     <div>
       <QrModal transaction={transaction} />
@@ -40,17 +34,16 @@ export default function TransactionDetail({ transaction }) {
         </tbody>
       </table>
       {transaction.status.transactionStatusID === 1 ? (
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#qrModal"
-          >
-            <i className="bi bi-credit-card me-2"></i>Continue to payment
-          </button>
-        ) : (
-          ""
-        )}
+        <button
+          type="button"
+          className="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#qrModal"
+        >
+          <i className="bi bi-credit-card me-2" />
+          Continue to payment
+        </button>
+      ) : ('')}
     </div>
   );
 }

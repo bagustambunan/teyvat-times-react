@@ -8,5 +8,5 @@ export default function TransactionDashboard() {
       <TitleSection title="Transactions" icon="bi-credit-card" />
       <TransactionTable />
     </>
-  )
+  );
 }

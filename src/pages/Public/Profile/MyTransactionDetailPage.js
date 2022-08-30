@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -33,7 +33,7 @@ export default function MyTransactionDetailPage() {
               res.data.netTotal,
               res.data.userVoucher,
               res.data.createdAt,
-            )
+            ),
           );
           setIsLoading(false);
         }
@@ -61,5 +61,5 @@ export default function MyTransactionDetailPage() {
     <div className="my-3">
       <TransactionDetail transaction={transaction} />
     </div>
-  )
+  );
 }

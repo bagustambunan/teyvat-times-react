@@ -1,5 +1,5 @@
-import React from 'react'
-import GiftRow from './GiftRow'
+import React from 'react';
+import GiftRow from './GiftRow';
 
 export default function GiftTable({ gifts }) {
   return (
@@ -22,5 +22,5 @@ export default function GiftTable({ gifts }) {
         ))}
       </tbody>
     </table>
-  )
+  );
 }

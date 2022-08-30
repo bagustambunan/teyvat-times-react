@@ -1,5 +1,5 @@
-import React from 'react'
-import SubscriptionItem from './SubscriptionItem'
+import React from 'react';
+import SubscriptionItem from './SubscriptionItem';
 
 export default function SubscriptionWrapper({ subscriptions }) {
   return (
@@ -11,5 +11,5 @@ export default function SubscriptionWrapper({ subscriptions }) {
         ))}
       </div>
     </div>
-  )
+  );
 }

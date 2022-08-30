@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import VoucherTable from '../../../components/Admin/Voucher/VoucherTable';
 import TitleSection from '../../../components/Admin/TitleSection';
 import Voucher from '../../../models/Voucher';
-import { selectToken } from '../../../store/tokenSlice'
+import { selectToken } from '../../../store/tokenSlice';
 import { apiUrl } from '../../../helpers/values';
 
 export default function VoucherDashboard() {
@@ -30,7 +30,7 @@ export default function VoucherDashboard() {
               item.image,
               item.amount,
               item.code,
-            )
+            );
             return voucher;
           });
           setVouchers(fetchedVouchers);
@@ -55,5 +55,5 @@ export default function VoucherDashboard() {
       <TitleSection title="Vouchers" icon="bi-ticket-perforated" />
       <VoucherTable vouchers={vouchers} />
     </>
-  )
+  );
 }

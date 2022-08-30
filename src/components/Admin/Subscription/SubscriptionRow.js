@@ -1,5 +1,5 @@
-import React from 'react'
-import { ParseCurrency } from '../../../helpers/Parser'
+import React from 'react';
+import { ParseCurrency } from '../../../helpers/Parser';
 
 export default function SubscriptionRow({ subscription, i }) {
   return (
@@ -15,5 +15,5 @@ export default function SubscriptionRow({ subscription, i }) {
         {subscription.moraAmount}
       </td>
     </tr>
-  )
+  );
 }

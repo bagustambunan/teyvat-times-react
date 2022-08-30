@@ -5,7 +5,7 @@ import GiftTable from '../../../components/Admin/Gift/GiftTable';
 import TitleSection from '../../../components/Admin/TitleSection';
 import { apiUrl } from '../../../helpers/values';
 import Gift from '../../../models/Gift';
-import { selectToken } from '../../../store/tokenSlice'
+import { selectToken } from '../../../store/tokenSlice';
 
 export default function GiftDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +28,7 @@ export default function GiftDashboard() {
               item.name,
               item.image,
               item.stock,
-            )
+            );
             return gift;
           });
           setGifts(fetchedGifts);
@@ -53,5 +53,5 @@ export default function GiftDashboard() {
       <TitleSection title="Gifts" icon="bi-gift" />
       <GiftTable gifts={gifts} />
     </>
-  )
+  );
 }

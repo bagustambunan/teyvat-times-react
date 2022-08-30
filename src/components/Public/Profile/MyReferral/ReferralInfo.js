@@ -23,7 +23,8 @@ export default function ReferralInfo({ referrals }) {
                 <ReferralRow referral={referral} i={i + 1} key={referral.userID} />
               ))}
             </tbody>
-          </table>) : (
+          </table>
+        ) : (
           <div className="alert alert-secondary" role="alert">
             No data
           </div>
