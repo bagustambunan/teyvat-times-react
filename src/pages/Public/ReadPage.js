@@ -1,27 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import PostDetail from '../../components/Public/Read/PostDetail';
-import Post from '../../models/Post';
-import { selectToken } from '../../store/tokenSlice';
-import { apiUrl } from '../../helpers/values';
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import PostDetail from "../../components/Public/Read/PostDetail";
+import { selectToken } from "../../store/tokenSlice";
+import { apiUrl } from "../../helpers/values";
+import Unlock from "../../components/Public/Read/Unlock";
+import Mora from "../../components/Mora";
+import Post from "../../models/Post";
 
 export default function ReadPage() {
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-  const [post, setPost] = useState('');
-  const [myActivity, setMyActivity] = useState({
-    isLiked: 0,
-    isShared: 0,
-  });
-
   const token = useSelector(selectToken);
+  const [isLoading, setIsLoading] = useState(true);
+  const [mode, setMode] = useState("overview");
+  const [overview, setOverview] = useState("");
+  const [read, setRead] = useState('');
 
-  const fetchMyActivity = (postID) => {
+  const fetchOverview = (slug) => {
     setIsLoading(true);
-    fetch(`${apiUrl}/pub/posts/${postID}/activities`, {
-      method: 'GET',
+    fetch(`${apiUrl}/pub/posts/overview/${slug}`, {
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -29,11 +27,9 @@ export default function ReadPage() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          setMyActivity({
-            isLiked: res.data.isLiked,
-            isShared: res.data.isShared,
-          });
+          setOverview(res.data);
           setIsLoading(false);
+          console.log(res.data);
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -44,8 +40,7 @@ export default function ReadPage() {
       });
   };
 
-  const fetchPost = (slug) => {
-    setIsLoading(true);
+  const fetchRead = (slug) => {
     fetch(`${apiUrl}/pub/posts/read/${slug}`, {
       method: 'GET',
       headers: {
@@ -72,33 +67,9 @@ export default function ReadPage() {
             res.data.totalLike,
             res.data.totalShare,
           );
-          setPost(fetchedPost);
-          setIsLoading(false);
-          fetchMyActivity(res.data.postID);
+          setRead(fetchedPost);
+          setMode('read');
         }
-        if (res.statusCode !== 200) {
-          navigate(`/unlock/${slug}`);
-        }
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`);
-      });
-  };
-
-  const updateMyActivity = () => {
-    const dataToPost = {
-      isLiked: myActivity.isLiked,
-      isShared: myActivity.isShared,
-    };
-    fetch(`${apiUrl}/pub/posts/${post.postID}/activities`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(dataToPost),
-    })
-      .then((res) => res.json())
-      .then((res) => {
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
         }
@@ -108,43 +79,32 @@ export default function ReadPage() {
       });
   };
 
-  const changeLike = () => {
-    setMyActivity({ ...myActivity, isLiked: myActivity.isLiked === 0 ? 1 : 0 });
-    const updatedPost = post;
-    updatedPost.totalLike += myActivity.isLiked === 0 ? 1 : -1;
-    setPost(updatedPost);
-  };
-  const changeShare = () => {
-    setMyActivity({ ...myActivity, isShared: myActivity.isShared === 0 ? 1 : 1 });
-    const updatedPost = post;
-    updatedPost.totalShare += myActivity.isShared === 0 ? 1 : 0;
-    setPost(updatedPost);
-  };
-  useEffect(() => {
-    if (!isLoading) {
-      updateMyActivity();
-    }
-  }, [myActivity]);
-
   const params = useParams();
   useEffect(() => {
     if (params.slug !== undefined) {
-      fetchPost(params.slug);
+      fetchOverview(params.slug);
     }
   }, []);
 
+  useEffect(() => {
+    if (!isLoading) {
+      if (overview.postTier.postTierID == 1) {
+        fetchRead(params.slug);
+      }
+    }
+  },[isLoading]);
+
   if (isLoading) {
-    return 'Loading...';
+    return "Loading...";
   }
 
   return (
     <div className="container bg-white p-4 border rounded shadow">
-      <PostDetail
-        post={post}
-        myActivity={myActivity}
-        changeLike={changeLike}
-        changeShare={changeShare}
-      />
+      {mode === "overview" ? (
+        <Unlock post={overview} fetchRead={fetchRead} />
+      ) : (
+        <PostDetail post={read} />
+      )}
     </div>
   );
 }
