@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import MySpending from '../../../components/Public/Profile/MyTransaction/MySpending';
 import TransactionHistory from '../../../components/Public/Profile/MyTransaction/TransactionHistory';
 import { apiUrl } from '../../../helpers/values';
 import Transaction from '../../../models/Transaction';
@@ -8,6 +9,7 @@ import { selectToken } from '../../../store/tokenSlice';
 
 export default function MyTransactionDashboard() {
   const [isLoading, setIsLoading] = useState(true);
+  const [spending, setSpending] = useState('');
   const [transactions, setTransactions] = useState([]);
   const [form, setForm] = useState({
     limit: 10,
@@ -48,6 +50,30 @@ export default function MyTransactionDashboard() {
           });
           setTransactions(fetchedTransactions);
           setPagination({ ...pagination, totalPage: res.data.totalPage });
+          fetchMySpending();
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+
+  const fetchMySpending = () => {
+    setIsLoading(true);
+    fetch(`${apiUrl}/pub/user-spending`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          ////
+          setSpending(res.data);
           setIsLoading(false);
         }
         if (res.statusCode !== 200) {
@@ -58,6 +84,7 @@ export default function MyTransactionDashboard() {
         toast.error(`Error: ${err.message}`);
       });
   };
+
   useEffect(() => {
     fetchTransactions();
   }, [form]);
@@ -69,6 +96,7 @@ export default function MyTransactionDashboard() {
   }
   return (
     <div className="">
+      <MySpending spending={spending} />
       <TransactionHistory
         transactions={transactions}
         pagination={pagination}
