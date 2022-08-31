@@ -34,7 +34,7 @@ export default function UserSubscriptionHistory({ userSubscriptions, pagination,
           <Pagination pagination={pagination} changePage={changePage} />
         </>
       ) : (
-        <div className="alert alert-secondary" role="alert">
+        <div className="alert alert-secondary">
           No data
         </div>
       )}

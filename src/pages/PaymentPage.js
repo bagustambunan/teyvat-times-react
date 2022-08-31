@@ -68,7 +68,7 @@ export default function PaymentPage() {
       />
 
       <div className="layout-main d-flex justify-content-center align-items-center">
-        <div className="p-3 bg-white border rounded">
+        <div className="p-3 bg-white border rounded shadow">
           <h5 className="text-center mt-1 mb-3">
             Payment
           </h5>

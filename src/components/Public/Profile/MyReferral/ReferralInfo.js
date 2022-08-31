@@ -23,7 +23,7 @@ export default function ReferralInfo({ referrals }) {
             </tbody>
           </table>
         ) : (
-          <div className="alert alert-secondary" role="alert">
+          <div className="alert alert-secondary">
             No data
           </div>
         )
