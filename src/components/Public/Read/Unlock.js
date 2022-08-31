@@ -24,7 +24,7 @@ export default function Unlock({ post, fetchRead }) {
           className="btn btn-primary"
         >
           <i className="bi bi-unlock me-3" />
-          Unlock
+          One time unlock
         </button>
       </div>
 

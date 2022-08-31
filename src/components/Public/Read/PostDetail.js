@@ -7,7 +7,7 @@ import { selectToken } from '../../../store/tokenSlice';
 import { useSelector } from 'react-redux';
 import { apiUrl } from '../../../helpers/values';
 
-export default function PostDetail({ post }) {
+export default function PostDetail({ post, setPost }) {
   const token = useSelector(selectToken);
   const [isLoading, setIsLoading] = useState(true);
   const [myActivity, setMyActivity] = useState({

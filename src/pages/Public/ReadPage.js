@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PostDetail from "../../components/Public/Read/PostDetail";
 import { selectToken } from "../../store/tokenSlice";
 import { apiUrl } from "../../helpers/values";
 import Unlock from "../../components/Public/Read/Unlock";
-import Mora from "../../components/Mora";
 import Post from "../../models/Post";
 
 export default function ReadPage() {
@@ -29,7 +28,6 @@ export default function ReadPage() {
         if (res.statusCode === 200) {
           setOverview(res.data);
           setIsLoading(false);
-          console.log(res.data);
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -103,7 +101,7 @@ export default function ReadPage() {
       {mode === "overview" ? (
         <Unlock post={overview} fetchRead={fetchRead} />
       ) : (
-        <PostDetail post={read} />
+        <PostDetail post={read} setPost={setRead} />
       )}
     </div>
   );
