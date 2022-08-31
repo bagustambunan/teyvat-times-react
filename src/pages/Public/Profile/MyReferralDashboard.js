@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import ReferralInfo from '../../../components/Public/Profile/MyReferral/ReferralInfo';
 import { apiUrl } from '../../../helpers/values';
-import Referral from '../../../models/Referral';
+import UserSpending from '../../../models/UserSpending';
 import { selectToken } from '../../../store/tokenSlice';
 import { selectUser } from '../../../store/userSlice';
 
@@ -25,7 +25,10 @@ export default function ReferralDashboard() {
         if (res.statusCode === 200) {
           if (res.data !== null) {
             const fetchedReferrals = res.data.map((item) => {
-              const referral = new Referral(item.userID, item.name);
+              const referral = new UserSpending(
+                item.userName,
+                item.totalSpending,
+              );
               return referral;
             });
             setReferrals(fetchedReferrals);

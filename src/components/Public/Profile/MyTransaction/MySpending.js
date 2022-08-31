@@ -7,7 +7,7 @@ export default function MySpending({ spending }) {
     <div className="mb-5">
       <TitleSection text="Total Spending" />
       <div className="alert alert-info">
-        {ParseCurrency(spending.totalSpending)}
+        {spending.getTotalSpending()}
       </div>
     </div>
   )

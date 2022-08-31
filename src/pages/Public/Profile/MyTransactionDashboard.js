@@ -5,6 +5,7 @@ import MySpending from '../../../components/Public/Profile/MyTransaction/MySpend
 import TransactionHistory from '../../../components/Public/Profile/MyTransaction/TransactionHistory';
 import { apiUrl } from '../../../helpers/values';
 import Transaction from '../../../models/Transaction';
+import UserSpending from '../../../models/UserSpending';
 import { selectToken } from '../../../store/tokenSlice';
 
 export default function MyTransactionDashboard() {
@@ -72,8 +73,10 @@ export default function MyTransactionDashboard() {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          ////
-          setSpending(res.data);
+          setSpending(new UserSpending(
+            res.data.userName,
+            res.data.totalSpending,
+          ));
           setIsLoading(false);
         }
         if (res.statusCode !== 200) {

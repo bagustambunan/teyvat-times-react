@@ -3,6 +3,7 @@ import TitleSection from '../TitleSection';
 import ReferralRow from './ReferralRow';
 
 export default function ReferralInfo({ referrals }) {
+  console.log(referrals);
   return (
     <div className="mb-5">
       <TitleSection text="My Referrals" />
@@ -13,7 +14,7 @@ export default function ReferralInfo({ referrals }) {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
-                <th scope="col">Spent amount</th>
+                <th scope="col">Total Spending</th>
               </tr>
             </thead>
             <tbody>
