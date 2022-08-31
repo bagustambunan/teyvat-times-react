@@ -28,6 +28,7 @@ import TransactionDetailPage from './pages/Admin/Subscriptions/TransactionDetail
 import PaymentPage from './pages/PaymentPage';
 import MyTransactionDetailPage from './pages/Public/Profile/MyTransactionDetailPage';
 import MySubscriptionDashboard from './pages/Public/Profile/MySubscriptionDashboard';
+import MyVoucherDashboard from './pages/Public/Profile/MyVoucherDashboard';
 
 function App() {
   return (
@@ -51,7 +52,7 @@ function App() {
           <Route path="/profile/mytransaction" element={<MyTransactionDashboard />} />
           <Route path="/profile/mytransaction/:transactionID" element={<MyTransactionDetailPage />} />
           <Route path="/profile/mysubscription" element={<MySubscriptionDashboard />} />
-          <Route path="/profile/myvoucher" element="WIP" />
+          <Route path="/profile/myvoucher" element={<MyVoucherDashboard />} />
           <Route path="/profile/myreferral" element={<MyReferralDashboard />} />
           <Route path="/profile/mygift" element="WIP" />
         </Route>

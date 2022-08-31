@@ -25,7 +25,7 @@ export default function PurchaseDetail({ subscription }) {
     setForm({ ...form, [name]: value });
   };
   const fetchUserVoucher = (code) => {
-    fetch(`${apiUrl}/pub/user_voucher/${code}`, {
+    fetch(`${apiUrl}/pub/user-vouchers/${code}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
