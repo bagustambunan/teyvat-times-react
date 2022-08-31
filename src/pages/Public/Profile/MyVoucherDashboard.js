@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
-import { apiUrl } from '../../../helpers/values';
-import { selectToken } from '../../../store/tokenSlice';
-import UserVoucher from '../../../models/UserVoucher';
-import VoucherInfo from '../../../components/Public/Profile/MyVoucher/VoucherInfo';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { apiUrl } from "../../../helpers/values";
+import { selectToken } from "../../../store/tokenSlice";
+import UserVoucher from "../../../models/UserVoucher";
+import VoucherInfo from "../../../components/Public/Profile/MyVoucher/VoucherInfo";
+import TitleSection from "../../../components/Public/Profile/TitleSection";
 
 export default function MyVoucherDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,15 +13,12 @@ export default function MyVoucherDashboard() {
   const token = useSelector(selectToken);
   const fetchMyVouchers = () => {
     setIsLoading(true);
-    fetch(
-      `${apiUrl}/pub/user-vouchers`,
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    fetch(`${apiUrl}/pub/user-vouchers`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-    )
+    })
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
@@ -50,11 +48,18 @@ export default function MyVoucherDashboard() {
     fetchMyVouchers();
   }, []);
   if (isLoading) {
-    return 'Loading...';
+    return "Loading...";
   }
   return (
     <div className="">
-      <VoucherInfo vouchers={myVouchers} />
+      {myVouchers.length > 0 ? (
+        <VoucherInfo vouchers={myVouchers} />
+      ) : (
+        <>
+          <TitleSection text="My Vouchers" />
+          <div className="alert alert-secondary">No data</div>
+        </>
+      )}
     </div>
   );
 }

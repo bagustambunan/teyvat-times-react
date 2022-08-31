@@ -98,7 +98,7 @@ section > h5 {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  background-color: #47af7e;
+  background-color: #73c49e;
 }
 
 .read-img > img {
@@ -121,6 +121,11 @@ section > h5 {
 .profile-sidebar > ul {
   display: flex;
   flex-direction: column;
+}
+
+.voucher-non-active {
+  background-color: rgb(219, 223, 223);
+  opacity: 0.5;
 }
 
 @media all and (max-width: 768px) {

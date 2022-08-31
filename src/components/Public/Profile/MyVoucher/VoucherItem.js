@@ -8,7 +8,7 @@ export default function VoucherItem({ voucher }) {
   }
   return (
     <div>
-      <div className={`card mb-3 ${voucher.isActive() ? "":"getDateExpired()"}`}>
+      <div className={`card mb-3 ${voucher.isActive() ? "":"voucher-non-active"}`}>
         <div className="row g-0">
           <div className="col-md-4">
             <img
@@ -22,14 +22,18 @@ export default function VoucherItem({ voucher }) {
               <h5 className="card-title">{voucher.voucher.name}</h5>
               <p className="card-text">{voucher.voucher.description}</p>
               <p className="card-text"><small className="text-muted">Expired: {voucher.getDateExpired()}</small></p>
-              <button
+
+              {voucher.isActive() ? (
+                <button
                 onClick={() => copyToClipboard()}
                 type="button"
-                className="btn btn-white border-primary border-4"
+                className="btn btn-light border border-primary border-2"
               >
                 <i className="bi bi-clipboard text-primary me-2"></i>
                 {voucher.voucher.code}
               </button>
+              ):("")}
+              
             </div>
           </div>
         </div>
