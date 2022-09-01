@@ -15,7 +15,7 @@ export default function ReadingHistoryPage() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 10,
+    limit: 2,
     page: 1,
   });
   const [pagination, setPagination] = useState({
@@ -51,6 +51,8 @@ export default function ReadingHistoryPage() {
               item.isLiked,
               item.isShared,
               item.viewsCount,
+              item.createdAt,
+              item.updatedAt,
             );
             return activity;
           });
