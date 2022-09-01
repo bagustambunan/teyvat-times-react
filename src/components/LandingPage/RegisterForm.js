@@ -117,7 +117,7 @@ export default function RegisterForm() {
       <h4 className="mb-5 text-center">Create New Account</h4>
       <form onSubmit={handleSubmit} className="row">
         <div className="row">
-          <div className="col">
+          <div className="col-12 col-md-6">
             <div className="mb-3">
               <label htmlFor="name" className="form-label">
                 Name
@@ -230,7 +230,7 @@ export default function RegisterForm() {
             </div>
           </div>
 
-          <div className="col">
+          <div className="col-12 col-md-6">
             <div className="mb-3">
               <label htmlFor="street" className="form-label">
                 Street Name
