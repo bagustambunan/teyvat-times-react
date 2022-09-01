@@ -8,7 +8,7 @@ export default function ReferralInfo({ referrals }) {
     <div className="mb-5">
       <TitleSection text="My Referrals" />
       {
-        referrals.length > 0 ? (
+        referrals.length > 0 && referrals[0].userName !== '' ? (
           <table className="table">
             <thead>
               <tr>
