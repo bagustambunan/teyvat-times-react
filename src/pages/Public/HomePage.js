@@ -9,6 +9,7 @@ import Post from '../../models/Post';
 import { selectToken } from '../../store/tokenSlice';
 
 export default function HomePage() {
+  const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [form, setForm] = useState({
     s: '',
@@ -31,6 +32,7 @@ export default function HomePage() {
 
   const token = useSelector(selectToken);
   const fetchPosts = () => {
+    setIsLoading(true);
     fetch(
       `${apiUrl}/pub/posts?s=${form.s}&category=${form.category}&tier=${form.tier}&sortBy=${form.sortBy}&sortOrder=${form.sortOrder}&limit=${form.limit}&page=${form.page}`,
       {
@@ -65,6 +67,7 @@ export default function HomePage() {
           });
           setPosts(fetchedPosts);
           setPagination({ ...pagination, totalPage: res.data.totalPage });
+          setIsLoading(false);
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -88,6 +91,10 @@ export default function HomePage() {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  if (isLoading) {
+    return "Loading...";
+  }
 
   return (
     <div className="row">
