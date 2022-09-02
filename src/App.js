@@ -30,6 +30,7 @@ import MyTransactionDetailPage from './pages/Public/Profile/MyTransactionDetailP
 import MySubscriptionDashboard from './pages/Public/Profile/MySubscriptionDashboard';
 import MyVoucherDashboard from './pages/Public/Profile/MyVoucherDashboard';
 import MyGiftDashboard from './pages/Public/Profile/MyGiftDashboard';
+import GiftClaimDashboard from './pages/Admin/Gifts/GiftClaimDashboard';
 
 function App() {
   return (
@@ -80,7 +81,7 @@ function App() {
         <Route path="/admin/vouchers" element={<VoucherDashboard />} />
 
         <Route path="/admin/gifts" element={<GiftDashboard />} />
-        <Route path="/admin/gift-claims" element="WIP" />
+        <Route path="/admin/gift-claims" element={<GiftClaimDashboard />} />
       </Route>
 
       <Route path="*" element={<h1>404 Not Found!</h1>} />

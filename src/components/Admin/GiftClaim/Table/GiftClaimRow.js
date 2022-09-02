@@ -1,11 +1,14 @@
-import React from 'react'
-import GiftItem from './GiftItem'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { ParseDateTime } from '../../../../helpers/Parser';
+import GiftItem from '../../../Public/Profile/MyGift/GiftItem';
 
-export default function MyClaimRow({ claim, i }) {
+export default function TransactionRow({ claim, i }) {
   return (
     <tr>
       <td>{i}</td>
       <td>Date</td>
+      <td>{claim.user.name}</td>
       <td className="d-flex gap-2">
         {
           claim.giftClaimItems.map((claimItem) => (
@@ -18,5 +21,5 @@ export default function MyClaimRow({ claim, i }) {
         ACTION
       </td>
     </tr>
-  )
+  );
 }
