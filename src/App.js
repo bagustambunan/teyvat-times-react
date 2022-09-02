@@ -29,6 +29,7 @@ import PaymentPage from './pages/PaymentPage';
 import MyTransactionDetailPage from './pages/Public/Profile/MyTransactionDetailPage';
 import MySubscriptionDashboard from './pages/Public/Profile/MySubscriptionDashboard';
 import MyVoucherDashboard from './pages/Public/Profile/MyVoucherDashboard';
+import MyGiftDashboard from './pages/Public/Profile/MyGiftDashboard';
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
           <Route path="/profile/mysubscription" element={<MySubscriptionDashboard />} />
           <Route path="/profile/myvoucher" element={<MyVoucherDashboard />} />
           <Route path="/profile/myreferral" element={<MyReferralDashboard />} />
-          <Route path="/profile/mygift" element="WIP" />
+          <Route path="/profile/mygift" element={<MyGiftDashboard />} />
         </Route>
       </Route>
 
