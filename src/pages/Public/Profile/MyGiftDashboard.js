@@ -60,6 +60,8 @@ export default function MyGiftDashboard() {
               item.user,
               item.address,
               item.status,
+              item.createdAt,
+              item.updatedAt,
               item.giftClaimItems,
             );
             return claim;

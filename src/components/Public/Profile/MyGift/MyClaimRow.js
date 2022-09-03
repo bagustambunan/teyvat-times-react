@@ -1,15 +1,15 @@
 import React from 'react'
-import GiftItem from './GiftItem'
+import GiftItemCircle from '../../../GiftItemCircle'
 
 export default function MyClaimRow({ claim, i }) {
   return (
     <tr>
       <td>{i}</td>
-      <td>Date</td>
+      <td>{claim.getCreatedAt()}</td>
       <td className="d-flex gap-2">
         {
           claim.giftClaimItems.map((claimItem) => (
-            <GiftItem gift={claimItem.gift} key={claimItem.giftClaimItemID} />
+            <GiftItemCircle gift={claimItem.gift} key={claimItem.giftClaimItemID} />
           ))
         }
       </td>

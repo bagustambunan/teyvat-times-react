@@ -2,10 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ParseCurrency, ParseDateTime } from '../../../helpers/Parser';
 import { apiUrl } from '../../../helpers/values';
 import { selectToken } from '../../../store/tokenSlice';
-import GiftItem from '../../Public/Profile/MyGift/GiftItem';
+import GiftItemCircle from '../../GiftItemCircle';
 
 export default function GiftClaimDetail({ giftClaim }) {
   const token = useSelector(selectToken);
@@ -78,7 +77,7 @@ export default function GiftClaimDetail({ giftClaim }) {
             <td className="d-flex gap-2">
             {
               giftClaim.giftClaimItems.map((claimItem) => (
-                <GiftItem gift={claimItem.gift} key={claimItem.giftClaimItemID} />
+                <GiftItemCircle gift={claimItem.gift} key={claimItem.giftClaimItemID} />
               ))
             }
             </td>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ParseDateTime } from '../../../../helpers/Parser';
+import GiftItemCircle from '../../../GiftItemCircle';
 import GiftItem from '../../../Public/Profile/MyGift/GiftItem';
 
 export default function TransactionRow({ claim, i }) {
@@ -12,7 +13,7 @@ export default function TransactionRow({ claim, i }) {
       <td className="d-flex gap-2">
         {
           claim.giftClaimItems.map((claimItem) => (
-            <GiftItem gift={claimItem.gift} key={claimItem.giftClaimItemID} />
+            <GiftItemCircle gift={claimItem.gift} key={claimItem.giftClaimItemID} />
           ))
         }
       </td>
