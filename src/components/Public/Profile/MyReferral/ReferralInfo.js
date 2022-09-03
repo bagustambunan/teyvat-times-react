@@ -3,7 +3,6 @@ import TitleSection from '../TitleSection';
 import ReferralRow from './ReferralRow';
 
 export default function ReferralInfo({ referrals }) {
-  console.log(referrals);
   return (
     <div className="mb-5">
       <TitleSection text="My Referrals" />

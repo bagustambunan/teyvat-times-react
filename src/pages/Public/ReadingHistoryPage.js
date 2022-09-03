@@ -59,7 +59,6 @@ export default function ReadingHistoryPage() {
           setActivities(fetchedActivities);
           setPagination({ ...pagination, totalPage: res.data.totalPage });
           setIsLoading(false);
-          console.log(fetchedActivities);
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);

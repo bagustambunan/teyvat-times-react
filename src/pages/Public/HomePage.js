@@ -17,7 +17,7 @@ export default function HomePage() {
     tier: '0',
     sortBy: 'date',
     sortOrder: 'desc',
-    limit: 10,
+    limit: 2,
     page: 1,
   });
   const [pagination, setPagination] = useState({
