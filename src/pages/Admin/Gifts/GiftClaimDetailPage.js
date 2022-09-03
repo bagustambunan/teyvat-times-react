@@ -30,6 +30,8 @@ export default function GiftClaimDetailPage() {
               res.data.user,
               res.data.address,
               res.data.status,
+              res.data.createdAt,
+              res.data.updatedAt,
               res.data.giftClaimItems,
             ),
           );

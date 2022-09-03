@@ -59,7 +59,7 @@ export default function GiftClaimDetail({ giftClaim }) {
         <tbody>
           <tr>
             <th scope="row">Date</th>
-            <td>DATE</td>
+            <td>{giftClaim.getCreatedAt()}</td>
           </tr>
           <tr>
             <th scope="row">User</th>

@@ -7,7 +7,7 @@ export default function TransactionRow({ claim, i }) {
   return (
     <tr>
       <td>{i}</td>
-      <td>Date</td>
+      <td>{claim.getCreatedAt()}</td>
       <td>{claim.user.name}</td>
       <td className="d-flex gap-2">
         {

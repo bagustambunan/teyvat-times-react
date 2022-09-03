@@ -45,6 +45,8 @@ export default function GiftClaimTable() {
               item.user,
               item.address,
               item.status,
+              item.createdAt,
+              item.updatedAt,
               item.giftClaimItems,
             )
             return giftClaim;
