@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { ParseDateTime } from '../../../../helpers/Parser';
 import GiftItem from '../../../Public/Profile/MyGift/GiftItem';
 
@@ -18,7 +18,12 @@ export default function TransactionRow({ claim, i }) {
       </td>
       <td>{claim.status.name}</td>
       <td>
-        ACTION
+        <Link
+          to={`/admin/gift-claims/${claim.giftClaimID}`}
+          className="btn btn-sm"
+        >
+          <i className="text-primary bi bi-eye-fill" />
+        </Link>
       </td>
     </tr>
   );
