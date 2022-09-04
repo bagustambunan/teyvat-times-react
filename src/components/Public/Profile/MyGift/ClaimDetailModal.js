@@ -1,8 +1,38 @@
 import React from "react";
-import GiftItemCircle from "../../../GiftItemCircle";
+import { toast } from "react-toastify";
+import { apiUrl } from "../../../../helpers/values";
 import GiftItem from "./GiftItem";
+import { selectToken } from "../../../../store/tokenSlice";
+import { useSelector } from "react-redux";
 
 export default function ClaimDetailModal({ claim }) {
+  const token = useSelector(selectToken);
+  const completeGiftClaim = (giftClaimID) => {
+    fetch(`${apiUrl}/pub/gift-claims/${giftClaimID}/complete`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          toast.success("Gift Claim completed");
+          window.location.href = '/profile/mygift';
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
+  const confirmComplete = () => {
+    if (confirm("Complete the gift claim? Make sure that you have received all the gifts claimed")) {
+      completeGiftClaim(claim.giftClaimID);
+    }
+  };
   return (
     <div
       className="modal fade"
@@ -61,13 +91,17 @@ export default function ClaimDetailModal({ claim }) {
             >
               Close
             </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => processGiftClaim()}
-            >
-              Process
-            </button>
+            {claim.status.giftClaimStatusID === 3 ? (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => confirmComplete()}
+              >
+                Complete Gift Claim
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
