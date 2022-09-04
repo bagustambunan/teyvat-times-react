@@ -35,7 +35,6 @@ export default function MyGiftDashboard() {
         myClaimsRes.json(),
       ]))
       .then(([myGiftsRes, myClaimsRes]) => {
-        // MY GIFTS
         if (myGiftsRes.statusCode === 200) {
           const fetchedGifts = myGiftsRes.data.map((item) => {
             const gift = new Gift(
@@ -52,7 +51,6 @@ export default function MyGiftDashboard() {
           toast.error(`Error: ${myGiftsRes.message}`);
         }
 
-        // MY CLAIMS
         if (myClaimsRes.statusCode === 200) {
           const fetchedClaims = myClaimsRes.data.map((item) => {
             const claim = new GiftClaim(

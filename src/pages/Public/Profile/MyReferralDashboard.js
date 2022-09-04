@@ -14,7 +14,7 @@ export default function ReferralDashboard() {
   const user = useSelector(selectUser);
   const fetchReferrals = () => {
     setIsLoading(true);
-    fetch(`${apiUrl}/pub/users/${user.userID}/downlines`, {
+    fetch(`${apiUrl}/pub/users/${user.userID}/down-lines`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
