@@ -1,15 +1,17 @@
-import React from "react";
-import { toast } from "react-toastify";
-import { apiUrl } from "../../../../helpers/values";
-import GiftItem from "./GiftItem";
-import { selectToken } from "../../../../store/tokenSlice";
-import { useSelector } from "react-redux";
+/* eslint-disable no-alert */
+/* eslint-disable no-restricted-globals */
+import React from 'react';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { apiUrl } from '../../../../helpers/values';
+import GiftItem from './GiftItem';
+import { selectToken } from '../../../../store/tokenSlice';
 
 export default function ClaimDetailModal({ claim }) {
   const token = useSelector(selectToken);
   const completeGiftClaim = (giftClaimID) => {
     fetch(`${apiUrl}/pub/gift-claims/${giftClaimID}/complete`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -17,7 +19,7 @@ export default function ClaimDetailModal({ claim }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("Gift Claim completed");
+          toast.success('Gift Claim completed');
           window.location.href = '/profile/mygift';
         }
         if (res.statusCode !== 200) {
@@ -29,7 +31,7 @@ export default function ClaimDetailModal({ claim }) {
       });
   };
   const confirmComplete = () => {
-    if (confirm("Complete the gift claim? Make sure that you have received all the gifts claimed")) {
+    if (confirm('Complete the gift claim? Make sure that you have received all the gifts claimed')) {
       completeGiftClaim(claim.giftClaimID);
     }
   };
@@ -100,7 +102,7 @@ export default function ClaimDetailModal({ claim }) {
                 Complete Gift Claim
               </button>
             ) : (
-              ""
+              ''
             )}
           </div>
         </div>

@@ -1,17 +1,17 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { apiUrl } from "../../../helpers/values";
-import { selectToken } from "../../../store/tokenSlice";
-import GiftItemCircle from "../../GiftItemCircle";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { apiUrl } from '../../../helpers/values';
+import { selectToken } from '../../../store/tokenSlice';
+import GiftItemCircle from '../../GiftItemCircle';
 
 export default function GiftClaimDetail({ giftClaim }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
   const deliverGiftClaim = (giftClaimID) => {
     fetch(`${apiUrl}/gift-claims/${giftClaimID}/deliver`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -19,8 +19,8 @@ export default function GiftClaimDetail({ giftClaim }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("Gift Claim delivered");
-          navigate("/admin/gift-claims");
+          toast.success('Gift Claim delivered');
+          navigate('/admin/gift-claims');
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -32,7 +32,7 @@ export default function GiftClaimDetail({ giftClaim }) {
   };
   const rejectGiftClaim = (giftClaimID) => {
     fetch(`${apiUrl}/gift-claims/${giftClaimID}/reject`, {
-      method: "POST",
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,8 +40,8 @@ export default function GiftClaimDetail({ giftClaim }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("Gift Claim rejected");
-          navigate("/admin/gift-claims");
+          toast.success('Gift Claim rejected');
+          navigate('/admin/gift-claims');
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -105,7 +105,7 @@ export default function GiftClaimDetail({ giftClaim }) {
           </button>
         </div>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

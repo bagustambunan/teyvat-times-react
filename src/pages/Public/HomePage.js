@@ -93,7 +93,7 @@ export default function HomePage() {
   }, []);
 
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...';
   }
 
   return (

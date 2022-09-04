@@ -14,10 +14,12 @@ export default class UserVoucher {
     this.dateExpired = dateExpired;
     this.isUsed = isUsed;
   }
+
   getDateExpired() {
     return ParseDate(this.dateExpired);
   }
+
   isActive() {
-    return this.isUsed === 0 ? true : false;
+    return this.isUsed === 0;
   }
 }

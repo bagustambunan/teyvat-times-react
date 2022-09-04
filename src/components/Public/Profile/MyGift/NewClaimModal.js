@@ -1,11 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../../../store/userSlice";
-import GiftItemCircle from "../../../GiftItemCircle";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../../store/userSlice';
+import GiftItemCircle from '../../../GiftItemCircle';
 
 export default function NewClaimModal({ gifts, processGiftClaim }) {
   const user = useSelector(selectUser);
-  const address = user.address;
+  const { address } = user;
   return (
     <div
       className="modal fade"

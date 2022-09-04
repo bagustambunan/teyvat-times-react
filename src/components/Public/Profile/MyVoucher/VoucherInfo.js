@@ -1,6 +1,6 @@
-import React from "react";
-import VoucherItem from "./VoucherItem";
-import TitleSection from "../TitleSection";
+import React from 'react';
+import VoucherItem from './VoucherItem';
+import TitleSection from '../TitleSection';
 
 export default function VoucherInfo({ vouchers }) {
   const activeVouchers = vouchers.filter((item) => item.isActive());

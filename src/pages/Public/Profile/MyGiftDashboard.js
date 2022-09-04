@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { apiUrl } from "../../../helpers/values";
-import { selectToken } from "../../../store/tokenSlice";
-import TitleSection from "../../../components/Public/Profile/TitleSection";
-import Gift from "../../../models/Gift";
-import UnclaimedGifts from "../../../components/Public/Profile/MyGift/UnclaimedGifts";
-import GiftClaim from "../../../models/GiftClaim";
-import MyClaimHistory from "../../../components/Public/Profile/MyGift/MyClaimHistory";
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+import { apiUrl } from '../../../helpers/values';
+import { selectToken } from '../../../store/tokenSlice';
+import TitleSection from '../../../components/Public/Profile/TitleSection';
+import Gift from '../../../models/Gift';
+import UnclaimedGifts from '../../../components/Public/Profile/MyGift/UnclaimedGifts';
+import GiftClaim from '../../../models/GiftClaim';
+import MyClaimHistory from '../../../components/Public/Profile/MyGift/MyClaimHistory';
 
 export default function MyGiftDashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,19 +17,19 @@ export default function MyGiftDashboard() {
 
   useEffect(() => {
     const fetchMyGifts = fetch(`${apiUrl}/pub/unclaimed-user-gifts`, {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
     const fetchMyClaims = fetch(`${apiUrl}/pub/gift-claims`, {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    Promise.all([fetchMyGifts,fetchMyClaims])
+    Promise.all([fetchMyGifts, fetchMyClaims])
       .then(([myGiftsRes, myClaimsRes]) => Promise.all([
         myGiftsRes.json(),
         myClaimsRes.json(),
@@ -77,12 +77,11 @@ export default function MyGiftDashboard() {
       .finally(() => {
         setIsLoading(false);
       });
-    
   }, []);
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...';
   }
-  
+
   return (
     <div>
       <div className="mb-5">
@@ -103,5 +102,5 @@ export default function MyGiftDashboard() {
         )}
       </div>
     </div>
-  )
+  );
 }

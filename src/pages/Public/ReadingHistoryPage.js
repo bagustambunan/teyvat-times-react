@@ -76,7 +76,7 @@ export default function ReadingHistoryPage() {
   }, []);
 
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...';
   }
 
   return (

@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
-import ClaimDetailModal from "./ClaimDetailModal";
-import MyClaimRow from "./MyClaimRow";
+/* eslint-disable no-undef */
+import React, { useEffect, useState } from 'react';
+import ClaimDetailModal from './ClaimDetailModal';
+import MyClaimRow from './MyClaimRow';
 
 export default function MyClaimHistory({ claims }) {
   const [selectedClaim, setSelectedClaim] = useState(null);
 
   useEffect(() => {
     if (selectedClaim !== null) {
-      var claimDetailModal = new bootstrap.Modal(document.getElementById("claimDetailModal"), {});
+      const claimDetailModal = new bootstrap.Modal(
+        document.getElementById('claimDetailModal'),
+        {},
+      );
       claimDetailModal.show();
     }
-  },[selectedClaim]);
+  }, [selectedClaim]);
 
   return (
     <>
@@ -26,15 +30,16 @@ export default function MyClaimHistory({ claims }) {
         </thead>
         <tbody>
           {claims.map((claim, i) => (
-            <MyClaimRow claim={claim} i={i + 1} key={claim.giftClaimID} setSelectedClaim={setSelectedClaim} />
+            <MyClaimRow
+              claim={claim}
+              i={i + 1}
+              key={claim.giftClaimID}
+              setSelectedClaim={setSelectedClaim}
+            />
           ))}
         </tbody>
       </table>
-      {
-        selectedClaim !== null ? (
-          <ClaimDetailModal claim={selectedClaim} />
-        ) : ("")
-      }
+      {selectedClaim !== null ? <ClaimDetailModal claim={selectedClaim} /> : ''}
     </>
   );
 }

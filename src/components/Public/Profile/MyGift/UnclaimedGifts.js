@@ -1,14 +1,12 @@
-import React from "react";
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import { toast } from 'react-toastify';
-import { apiUrl } from "../../../../helpers/values";
-import GiftItem from "./GiftItem";
-import NewClaimModal from "./NewClaimModal";
-import { selectToken } from "../../../../store/tokenSlice";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import { apiUrl } from '../../../../helpers/values';
+import GiftItem from './GiftItem';
+import NewClaimModal from './NewClaimModal';
+import { selectToken } from '../../../../store/tokenSlice';
 
 export default function UnclaimedGifts({ gifts }) {
-  const navigate = useNavigate();
   const token = useSelector(selectToken);
   const processGiftClaim = () => {
     fetch(`${apiUrl}/pub/gift-claims`, {
@@ -21,7 +19,7 @@ export default function UnclaimedGifts({ gifts }) {
       .then((res) => {
         if (res.statusCode === 200) {
           toast.success('Gift claim request created');
-          window.location.href = "/profile/mygift";
+          window.location.href = '/profile/mygift';
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);

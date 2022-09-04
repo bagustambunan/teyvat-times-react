@@ -1,8 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Post from "../../models/Post";
-import CategoryBox from "../CategoryBox";
-import TierBox from "../TierBox";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Post from '../../models/Post';
+import CategoryBox from '../CategoryBox';
+import TierBox from '../TierBox';
 
 export default function ReadHistoryCard({ activity }) {
   const post = new Post(
@@ -20,7 +20,7 @@ export default function ReadHistoryCard({ activity }) {
     activity.post.createdAt,
     activity.post.updatedAt,
     activity.post.totalLike,
-    activity.post.totalShare
+    activity.post.totalShare,
   );
   return (
     <div className="col-12 col-md-6">
@@ -46,14 +46,18 @@ export default function ReadHistoryCard({ activity }) {
               </NavLink>
               <p className="card-text">
                 <small className="text-muted">
-                  First read at {activity.getFirstReadDate()}
+                  First read at
+                  {' '}
+                  {activity.getFirstReadDate()}
                 </small>
                 <br />
                 <small className="text-muted">
-                  Last read at {activity.getLastReadDate()}
+                  Last read at
+                  {' '}
+                  {activity.getLastReadDate()}
                 </small>
               </p>
-              <p className="card-text"></p>
+              <p className="card-text" />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
-import React from "react";
-import GiftItemCircle from "../../../GiftItemCircle";
+import React from 'react';
+import GiftItemCircle from '../../../GiftItemCircle';
 
 export default function MyClaimRow({ claim, i, setSelectedClaim }) {
   return (

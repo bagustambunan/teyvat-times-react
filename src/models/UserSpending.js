@@ -1,4 +1,4 @@
-import { ParseCurrency } from "../helpers/Parser";
+import { ParseCurrency } from '../helpers/Parser';
 
 export default class UserSpending {
   constructor(
@@ -8,6 +8,7 @@ export default class UserSpending {
     this.userName = userName;
     this.totalSpending = totalSpending;
   }
+
   getTotalSpending() {
     return ParseCurrency(this.totalSpending);
   }

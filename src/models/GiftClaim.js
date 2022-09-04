@@ -1,4 +1,4 @@
-import { ParseDateTime } from "../helpers/Parser";
+import { ParseDateTime } from '../helpers/Parser';
 
 export default class GiftClaim {
   constructor(giftClaimID, user, address, status, createdAt, updatedAt, giftClaimItems) {
@@ -10,9 +10,11 @@ export default class GiftClaim {
     this.updatedAt = updatedAt;
     this.giftClaimItems = giftClaimItems;
   }
+
   getCreatedAt() {
     return ParseDateTime(this.createdAt);
   }
+
   getUpdatedAt() {
     return ParseDateTime(this.updatedAt);
   }

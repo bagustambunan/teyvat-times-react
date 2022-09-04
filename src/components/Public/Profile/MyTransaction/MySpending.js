@@ -1,5 +1,4 @@
-import React from 'react'
-import { ParseCurrency } from '../../../../helpers/Parser';
+import React from 'react';
 import TitleSection from '../TitleSection';
 
 export default function MySpending({ spending }) {
@@ -10,5 +9,5 @@ export default function MySpending({ spending }) {
         {spending.getTotalSpending()}
       </div>
     </div>
-  )
+  );
 }

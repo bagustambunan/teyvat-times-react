@@ -25,6 +25,31 @@ export default function MyTransactionDashboard() {
     setForm({ ...form, page });
   };
   const token = useSelector(selectToken);
+  const fetchMySpending = () => {
+    setIsLoading(true);
+    fetch(`${apiUrl}/pub/user-spending`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.statusCode === 200) {
+          setSpending(new UserSpending(
+            res.data.userName,
+            res.data.totalSpending,
+          ));
+          setIsLoading(false);
+        }
+        if (res.statusCode !== 200) {
+          toast.error(`Error: ${res.message}`);
+        }
+      })
+      .catch((err) => {
+        toast.error(`Error: ${err.message}`);
+      });
+  };
   const fetchTransactions = () => {
     setIsLoading(true);
     fetch(`${apiUrl}/pub/transactions?limit=${form.limit}&page=${form.page}`, {
@@ -52,32 +77,6 @@ export default function MyTransactionDashboard() {
           setTransactions(fetchedTransactions);
           setPagination({ ...pagination, totalPage: res.data.totalPage });
           fetchMySpending();
-        }
-        if (res.statusCode !== 200) {
-          toast.error(`Error: ${res.message}`);
-        }
-      })
-      .catch((err) => {
-        toast.error(`Error: ${err.message}`);
-      });
-  };
-
-  const fetchMySpending = () => {
-    setIsLoading(true);
-    fetch(`${apiUrl}/pub/user-spending`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.statusCode === 200) {
-          setSpending(new UserSpending(
-            res.data.userName,
-            res.data.totalSpending,
-          ));
-          setIsLoading(false);
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);

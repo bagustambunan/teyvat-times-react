@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { ParseDateTime } from '../../../../helpers/Parser';
+import { Link } from 'react-router-dom';
 import GiftItemCircle from '../../../GiftItemCircle';
-import GiftItem from '../../../Public/Profile/MyGift/GiftItem';
 
 export default function TransactionRow({ claim, i }) {
   return (

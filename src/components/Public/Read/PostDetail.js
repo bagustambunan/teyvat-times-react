@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 import TierBox from '../../TierBox';
 import CategoryBox from '../../CategoryBox';
 import Like from './Like';
 import Share from './Share';
 import { selectToken } from '../../../store/tokenSlice';
-import { useSelector } from 'react-redux';
 import { apiUrl } from '../../../helpers/values';
 
 export default function PostDetail({ post, setPost }) {
@@ -89,7 +90,7 @@ export default function PostDetail({ post, setPost }) {
   }, []);
 
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...';
   }
 
   return (

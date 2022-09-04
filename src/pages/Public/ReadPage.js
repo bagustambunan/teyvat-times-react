@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import PostDetail from "../../components/Public/Read/PostDetail";
-import { selectToken } from "../../store/tokenSlice";
-import { apiUrl } from "../../helpers/values";
-import Unlock from "../../components/Public/Read/Unlock";
-import Post from "../../models/Post";
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import PostDetail from '../../components/Public/Read/PostDetail';
+import { selectToken } from '../../store/tokenSlice';
+import { apiUrl } from '../../helpers/values';
+import Unlock from '../../components/Public/Read/Unlock';
+import Post from '../../models/Post';
 
 export default function ReadPage() {
   const token = useSelector(selectToken);
   const [isLoading, setIsLoading] = useState(true);
-  const [mode, setMode] = useState("overview");
-  const [overview, setOverview] = useState("");
+  const [mode, setMode] = useState('overview');
+  const [overview, setOverview] = useState('');
   const [read, setRead] = useState('');
 
   const fetchOverview = (slug) => {
     setIsLoading(true);
     fetch(`${apiUrl}/pub/posts/overview/${slug}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -86,19 +86,19 @@ export default function ReadPage() {
 
   useEffect(() => {
     if (!isLoading) {
-      if (overview.postTier.postTierID == 1) {
+      if (overview.postTier.postTierID === 1) {
         fetchRead(params.slug);
       }
     }
-  },[isLoading]);
+  }, [isLoading]);
 
   if (isLoading) {
-    return "Loading...";
+    return 'Loading...';
   }
 
   return (
     <div className="container bg-white p-4 border rounded shadow">
-      {mode === "overview" ? (
+      {mode === 'overview' ? (
         <Unlock post={overview} fetchRead={fetchRead} />
       ) : (
         <PostDetail post={read} setPost={setRead} />

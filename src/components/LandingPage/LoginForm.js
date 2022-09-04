@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { toast } from "react-toastify";
-import { apiUrl } from "../../helpers/values";
-import { setToken } from "../../store/tokenSlice";
-import SubmitButton from "../Form/SubmitButton";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { apiUrl } from '../../helpers/values';
+import { setToken } from '../../store/tokenSlice';
+import SubmitButton from '../Form/SubmitButton';
 
 export default function LoginForm({ checkToken }) {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
   const handleChange = (e) => {
     const { name } = e.currentTarget;
@@ -18,10 +18,10 @@ export default function LoginForm({ checkToken }) {
     setForm({ ...form, [name]: value });
   };
   const isFormValid = () => {
-    if (form.email === "") {
+    if (form.email === '') {
       return false;
     }
-    if (form.password === "") {
+    if (form.password === '') {
       return false;
     }
     return true;
@@ -33,7 +33,7 @@ export default function LoginForm({ checkToken }) {
     };
 
     fetch(`${apiUrl}/sign-in`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify(dataToPost),
     })
       .then((res) => res.json())
@@ -43,7 +43,7 @@ export default function LoginForm({ checkToken }) {
           checkToken();
         }
         if (res.statusCode !== 200) {
-          toast.warn("Wrong email or password");
+          toast.warn('Wrong email or password');
         }
       })
       .catch((err) => {
@@ -60,7 +60,7 @@ export default function LoginForm({ checkToken }) {
   return (
     <div className="row justify-content-evenly">
       <div className="col-12 col-md-5">
-        <img src="./venti-full.webp" className="img-fluid" />
+        <img src="./venti-full.webp" className="img-fluid" alt="" />
       </div>
       <div className="col-12 col-md-3 d-flex justify-content-center align-items-center">
         <div className="card p-4 shadow w-100">
