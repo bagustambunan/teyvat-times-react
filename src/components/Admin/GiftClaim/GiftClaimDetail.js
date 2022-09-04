@@ -9,8 +9,8 @@ import GiftItemCircle from "../../GiftItemCircle";
 export default function GiftClaimDetail({ giftClaim }) {
   const token = useSelector(selectToken);
   const navigate = useNavigate();
-  const approveGiftClaim = (giftClaimID) => {
-    fetch(`${apiUrl}/giftClaims/${giftClaimID}/approve`, {
+  const deliverGiftClaim = (giftClaimID) => {
+    fetch(`${apiUrl}/gift-claims/${giftClaimID}/deliver`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,8 +19,8 @@ export default function GiftClaimDetail({ giftClaim }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("GiftClaim approved");
-          navigate("/admin/giftClaims");
+          toast.success("Gift Claim delivered");
+          navigate("/admin/gift-claims");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -31,7 +31,7 @@ export default function GiftClaimDetail({ giftClaim }) {
       });
   };
   const rejectGiftClaim = (giftClaimID) => {
-    fetch(`${apiUrl}/giftClaims/${giftClaimID}/reject`, {
+    fetch(`${apiUrl}/gift-claims/${giftClaimID}/reject`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -40,8 +40,8 @@ export default function GiftClaimDetail({ giftClaim }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.statusCode === 200) {
-          toast.success("GiftClaim rejected");
-          navigate("/admin/giftClaims");
+          toast.success("Gift Claim rejected");
+          navigate("/admin/gift-claims");
         }
         if (res.statusCode !== 200) {
           toast.error(`Error: ${res.message}`);
@@ -85,15 +85,15 @@ export default function GiftClaimDetail({ giftClaim }) {
           </tr>
         </tbody>
       </table>
-      {giftClaim.status.giftClaimStatusID === 2 ? (
+      {giftClaim.status.giftClaimStatusID === 2 || giftClaim.status.giftClaimStatusID === 1 ? (
         <div className="d-flex gap-3">
           <button
-            onClick={() => approveGiftClaim(giftClaim.giftClaimID)}
+            onClick={() => deliverGiftClaim(giftClaim.giftClaimID)}
             type="button"
             className="btn btn-success"
           >
             <i className="bi bi-check-circle me-2" />
-            Approve
+            Deliver
           </button>
           <button
             onClick={() => rejectGiftClaim(giftClaim.giftClaimID)}
