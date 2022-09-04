@@ -128,6 +128,10 @@ section > h5 {
   opacity: 0.5;
 }
 
+footer {
+  background-color: #389d6f;
+}
+
 @media all and (max-width: 768px) {
   .profile-layout {
     margin: 0px;

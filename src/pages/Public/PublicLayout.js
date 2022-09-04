@@ -7,6 +7,7 @@ import { selectToken } from '../../store/tokenSlice';
 import { selectUser } from '../../store/userSlice';
 import Auth from '../../models/Auth';
 import AuthHelper from '../../helpers/AuthHelper';
+import Footer from '../../components/Footer';
 
 export default function PublicLayout() {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +37,7 @@ export default function PublicLayout() {
       <div className="container pt-5 pb-5">
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }
